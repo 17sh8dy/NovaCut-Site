@@ -1,0 +1,16 @@
+{
+  "name": "@opencut/website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The official Open Cut website. Static, zero-dependency, built from one data source.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node build.mjs --check",
+    "dev": "node build.mjs && node serve.mjs",
+    "preview": "node serve.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

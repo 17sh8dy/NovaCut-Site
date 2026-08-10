@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1681 360" width="1681" height="360" role="img" aria-label="Open Cut">
+  <title>Open Cut</title>
+  <g transform="scale(0.352)">
+    <rect width="1024" height="1024" rx="228" fill="#0A84FF"/>
+    <g transform="translate(512, 520)" fill="#FFFFFF">
+      <rect x="-240" y="-288" width="480" height="320" rx="40" opacity="0.35" transform="rotate(-12)"/>
+      <rect x="-256" y="-192" width="512" height="352" rx="40" opacity="0.25"/>
+      <path d="M-56,-56 L-56,56 L64,0 Z"/>
+      <g fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round">
+        <line x1="-200" y1="-136" x2="-200" y2="-80"/><line x1="-200" y1="-136" x2="-144" y2="-136"/>
+        <line x1="200" y1="104" x2="200" y2="48"/><line x1="200" y1="104" x2="144" y2="104"/>
+      </g>
+    </g>
+  </g>
+  <g transform="translate(468.448 0)" fill="none" stroke="#F3F4F6" stroke-width="42" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 140a78 100 0 1 0 156 0a78 100 0 1 0 -156 0"/><path d="M190 77V318"/><path d="M190 169a68 71 0 1 0 136 0a68 71 0 1 0 -136 0"/><path d="M360 169h132a66 71 0 1 0 -27.72 65.32000000000001"/><path d="M492 169a66 71 0 0 0 -132 0"/><path d="M526 240V98"/><path d="M526 138.92000000000002a66 60.720000000000006 0 0 1 132 0V240"/><path d="M877.4825196196776 81.89648394626948A78 100 0 1 0 877.4825196196776 198.10351605373052"/><path d="M926 98V199.07999999999998a66 60.720000000000006 0 0 0 132 0V98"/><path d="M1058 226.8V240"/><path d="M1126 46V196a44 44 0 0 0 44 44"/><path d="M1092 98h86"/>
+  </g>
+</svg>
