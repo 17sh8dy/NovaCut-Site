@@ -42,9 +42,15 @@ export const site = {
   /**
    * Contact and issue reporting. `null` means "no channel exists yet", and the Help page then
    * renders an honest explanation instead of a dead link. Fill these in when they are real.
+   *
+   * `community` is the Discord invite — the one live channel today, so it is what the "where do
+   * I report a bug" answer points at and what the footer links to. That answer composes itself
+   * from whichever of these fields exist (see `report` in src/pages/help.mjs), so adding an
+   * issue tracker later changes the wording everywhere without editing any prose.
    */
   contact: {
     email: null,
+    community: 'https://discord.gg/XBhER9Z6EB',
     issues: null,
     repository: null,
   },
@@ -188,6 +194,8 @@ export const footerLinks = [
       { href: '/help/', label: 'Help & FAQ' },
       { href: '/download/#requirements', label: 'System requirements' },
       { href: '/help/#report-a-bug', label: 'Report a bug' },
+      /* The one live channel. `external` makes the footer open it in a new tab. */
+      { href: site.contact.community, label: 'Discord', external: true },
     ],
   },
   {

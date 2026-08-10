@@ -433,6 +433,25 @@ kbd {
   flex: none;
 }
 
+/*
+ * An icon SVG fills the box its wrapper defines.
+ *
+ * The icons ship with width="24" height="24" attributes so that an unstyled one is 24px rather
+ * than the 300x150 a bare viewBox gives a replaced element. The cost is that a wrapper which
+ * sizes only ITSELF leaves the SVG at 17x24: `max-width: 100%` in the reset clamps the width and
+ * nothing clamps the height, so the glyph is squashed sideways and overflows downwards. That is
+ * what made the arrow on "See everything Open Cut does" look mis-spaced.
+ *
+ * Wrappers that set an explicit size on a plain `svg` selector (.hero__meta, .freelist, .notice,
+ * .theme, .dl-card__os) were never affected — only these two, which size a span around it.
+ */
+.btn__icon svg,
+.faq__chevron svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .btn-row {
   display: flex;
   flex-wrap: wrap;
@@ -1560,6 +1579,114 @@ kbd {
   font-size: inherit;
 }
 
+/* ── Page transitions ───────────────────────────────────────────────────────────────── */
+
+/*
+ * Navigating between pages should feel like moving through one product, not like eight separate
+ * documents. Two mechanisms, in preference order, and only ever one of them runs:
+ *
+ * 1. THE VIEW TRANSITIONS API, where the browser supports it. The browser itself cross-fades the
+ *    old page into the new one across a real navigation. No JavaScript, no SPA router, and the
+ *    site stays eight static HTML files.
+ *
+ * 2. AN ENTER ANIMATION, everywhere else — the content rises and fades in on load, which reads
+ *    as a transition without needing to know anything about the page being left.
+ *
+ * The @supports guard is what stops both running at once and double-animating.
+ */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: oc-fade-out 90ms var(--ease) both;
+}
+
+::view-transition-new(root) {
+  animation: oc-page-in 260ms var(--ease) both;
+}
+
+@supports not (view-transition-name: none) {
+  .js main {
+    animation: oc-page-in 300ms var(--ease) both;
+  }
+}
+
+@keyframes oc-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes oc-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* The header is continuous across a navigation, so it must not be part of the transition. */
+.header,
+.brandline {
+  view-transition-name: none;
+}
+
+/* ── Navigation ─────────────────────────────────────────────────────────────────────── */
+
+/*
+ * The current page gets a rule that grows from the centre rather than a colour change, so the
+ * indicator moves with you as you click through rather than blinking between states.
+ */
+.nav a {
+  position: relative;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 3px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur) var(--ease);
+}
+
+.nav a:hover::after {
+  transform: scaleX(0.55);
+}
+
+.nav a[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+/* Mobile: the panel slides down, then its links arrive in sequence just behind it. */
+@media (max-width: 860px) {
+  .nav a::after {
+    display: none;
+  }
+
+  .nav[data-open='true'] a {
+    animation: oc-nav-item 260ms var(--ease) backwards;
+  }
+
+  .nav[data-open='true'] a:nth-child(1) { animation-delay: 40ms; }
+  .nav[data-open='true'] a:nth-child(2) { animation-delay: 75ms; }
+  .nav[data-open='true'] a:nth-child(3) { animation-delay: 110ms; }
+  .nav[data-open='true'] a:nth-child(4) { animation-delay: 145ms; }
+  .nav[data-open='true'] a:nth-child(5) { animation-delay: 180ms; }
+}
+
+@keyframes oc-nav-item {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
 /* ── Scroll reveal ──────────────────────────────────────────────────────────────────── */
 
 /*
@@ -1580,6 +1707,85 @@ kbd {
   will-change: auto;
 }
 
+/*
+ * Staggered reveal, opt-in via data-stagger (see `reveal()` in components.mjs).
+ *
+ * The CONTAINER stops hiding itself and hands the animation to its children, so a grid of cards
+ * arrives as a sequence rather than as one slab. Deliberately not applied to everything: a
+ * figure's chrome bar, image and caption are parts of one object and must arrive together.
+ *
+ * The step is 45ms and the list is capped at eight. A stagger long enough to notice waiting for
+ * is a stagger that has become a loading screen — eight cards finish 315ms after the first.
+ */
+.js [data-reveal][data-stagger] {
+  opacity: 1;
+  transform: none;
+}
+
+.js [data-reveal][data-stagger] > * {
+  opacity: 0;
+}
+
+/*
+ * `both`, not `backwards`. The children's resting opacity is 0 (above), so a fill that only
+ * covers the delay hands them straight back to invisible the moment the animation ends.
+ */
+.js [data-reveal='shown'][data-stagger] > * {
+  animation: oc-rise 440ms var(--ease) both;
+}
+
+.js [data-reveal='shown'][data-stagger] > *:nth-child(1) { animation-delay: 0ms; }
+.js [data-reveal='shown'][data-stagger] > *:nth-child(2) { animation-delay: 45ms; }
+.js [data-reveal='shown'][data-stagger] > *:nth-child(3) { animation-delay: 90ms; }
+.js [data-reveal='shown'][data-stagger] > *:nth-child(4) { animation-delay: 135ms; }
+.js [data-reveal='shown'][data-stagger] > *:nth-child(5) { animation-delay: 180ms; }
+.js [data-reveal='shown'][data-stagger] > *:nth-child(6) { animation-delay: 225ms; }
+.js [data-reveal='shown'][data-stagger] > *:nth-child(7) { animation-delay: 270ms; }
+.js [data-reveal='shown'][data-stagger] > *:nth-child(n + 8) { animation-delay: 315ms; }
+
+@keyframes oc-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/*
+ * Scroll-linked lift on the application screenshots.
+ *
+ * Driven by the scroll position itself rather than by a one-shot trigger, so the figure settles
+ * as it travels up the viewport instead of playing a fixed animation on arrival. Pure CSS — no
+ * scroll listener, nothing on the main thread — and where `animation-timeline` is unsupported
+ * the @supports guard means the figure is simply always in its resting state.
+ *
+ * `entry 0% cover 30%` keeps the whole movement in the lower third of the viewport, so it is
+ * finished by the time the screenshot is somewhere a reader would actually be looking at it.
+ */
+@supports (animation-timeline: view()) {
+  .js .shot {
+    animation: oc-shot-settle linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+}
+
+@keyframes oc-shot-settle {
+  from {
+    opacity: 0.55;
+    transform: translateY(28px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1590,13 +1796,29 @@ kbd {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    /* Without this the staggered items hold their `backwards` fill — invisible — for the whole
+       delay and then snap in. A neutralised animation must have a neutralised delay too. */
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 
-  .js [data-reveal] {
+  .js [data-reveal],
+  .js [data-reveal][data-stagger] > * {
     opacity: 1;
     transform: none;
+  }
+
+  /* Scroll-linked and cross-document transitions are movement the reader asked not to see. */
+  .js .shot {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
   }
 }
 

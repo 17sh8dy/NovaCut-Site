@@ -47,7 +47,7 @@ function group(g) {
         ${stats}
       </div>
       ${image}
-      ${reveal(`<div class="feature-list">${g.features.map(featureCard).join('')}</div>`)}
+      ${reveal(`<div class="feature-list">${g.features.map(featureCard).join('')}</div>`, { stagger: true })}
     </section>`;
 }
 

@@ -70,9 +70,20 @@ function header(current) {
 }
 
 function footer() {
+  /*
+   * A link with no href is dropped rather than rendered as href="null". Some footer entries read
+   * their target from site.contact, which is null until that channel exists — the footer has to
+   * follow the same rule as the rest of the site: no destination, no link.
+   */
+  const item = (l) => {
+    if (!l.href) return '';
+    const attrs = l.external ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<li><a href="${l.href}"${attrs}>${esc(l.label)}</a></li>`;
+  };
+
   const column = (col) => `<div>
       <h2>${esc(col.title)}</h2>
-      <ul>${col.links.map((l) => `<li><a href="${l.href}">${esc(l.label)}</a></li>`).join('')}</ul>
+      <ul>${col.links.map(item).join('')}</ul>
     </div>`;
 
   return `<footer class="footer">

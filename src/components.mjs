@@ -31,7 +31,16 @@ export function inline(text) {
   return esc(text)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/`(.+?)`/g, '<code>$1</code>')
-    .replace(/\[(.+?)\]\((.+?)\)/g, (_, label, href) => `<a href="${href}">${label}</a>`);
+    .replace(/\[(.+?)\]\((.+?)\)/g, (_, label, href) => {
+      /*
+       * A link off the site opens in a new tab, so following one does not cost the reader the
+       * page they were part-way through. `noopener` because a target=_blank link hands the new
+       * page a reference back to this one otherwise.
+       */
+      const external = /^https?:/.test(href);
+      const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
+      return `<a href="${href}"${attrs}>${label}</a>`;
+    });
 }
 
 /*
@@ -91,9 +100,28 @@ export function statusBadge(status) {
   return '';
 }
 
-export function button({ href, label, variant = 'primary', icon, large = false, disabled = false, describedBy }) {
+/**
+ * `iconEnd` puts the icon AFTER the label instead of before it.
+ *
+ * Which side an icon sits on is not a style preference, it follows the icon's meaning. A
+ * download glyph labels the action and leads. A right arrow means "onwards from here" and has to
+ * trail — leading, it points back at the very words it is supposed to lead you away from. That
+ * reads as broken spacing even when the gap is identical on both sides, which is exactly how it
+ * was reported.
+ */
+export function button({
+  href,
+  label,
+  variant = 'primary',
+  icon,
+  iconEnd = false,
+  large = false,
+  disabled = false,
+  describedBy,
+}) {
   const cls = `btn btn--${variant}${large ? ' btn--lg' : ''}`;
-  const inner = `${icon ? `<span class="btn__icon">${icon}</span>` : ''}${esc(label)}`;
+  const glyph = icon ? `<span class="btn__icon">${icon}</span>` : '';
+  const inner = iconEnd ? `${esc(label)}${glyph}` : `${glyph}${esc(label)}`;
   const described = describedBy ? ` aria-describedby="${describedBy}"` : '';
   if (disabled) {
     return `<span class="${cls}" role="button" aria-disabled="true"${described}>${inner}</span>`;
@@ -123,5 +151,12 @@ export function notice({ tone = 'default', icon = icons.info, title, body, level
     </div>`;
 }
 
-/** Wrap a block so site.js can reveal it on scroll. No-ops entirely without JavaScript. */
-export const reveal = (html) => html.replace(/^(\s*<\w+)/, '$1 data-reveal');
+/**
+ * Wrap a block so site.js can reveal it on scroll. No-ops entirely without JavaScript.
+ *
+ * `stagger` reveals the block's CHILDREN in sequence instead of the block as one piece — right
+ * for a grid of cards, wrong for anything whose children are parts of a single object (a figure's
+ * chrome bar, image and caption must never arrive separately), which is why it is opt-in.
+ */
+export const reveal = (html, { stagger = false } = {}) =>
+  html.replace(/^(\s*<\w+)/, `$1 data-reveal${stagger ? ' data-stagger' : ''}`);

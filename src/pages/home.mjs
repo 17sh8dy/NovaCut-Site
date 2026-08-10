@@ -126,9 +126,9 @@ export function homePage() {
           <p class="lede">Cut the video and design its thumbnail without leaving the app — or paying for two
             of them.</p>
         </div>
-        ${reveal(`<div class="grid grid--3">${highlights()}</div>`)}
+        ${reveal(`<div class="grid grid--3">${highlights()}</div>`, { stagger: true })}
         <div class="btn-row" style="margin-top:var(--s7)">
-          ${button({ href: '/features/', label: 'See everything Open Cut does', variant: 'secondary', icon: icons.arrowRight })}
+          ${button({ href: '/features/', label: 'See everything Open Cut does', variant: 'secondary', icon: icons.arrowRight, iconEnd: true })}
         </div>
       </div>
     </section>

@@ -128,8 +128,21 @@ That same inline script adds a `js` class, and the scroll-reveal rules are scope
 hidden state therefore only ever exists when a script is running to undo it, so a visitor without
 JavaScript can never be shown a blank section.
 
-Everything honours `prefers-reduced-motion`: reveals resolve instantly, transitions collapse and
-smooth scrolling is switched off.
+### Motion
+
+Four layers, all CSS — no framework, no scroll listener, nothing on the main thread:
+
+| | |
+| --- | --- |
+| **Page transitions** | `@view-transition { navigation: auto }` cross-fades real navigations where the browser supports it. Elsewhere an `@supports not` guard swaps in a short enter animation, so only ever one of the two runs. |
+| **Navigation** | The rule under each nav link grows from the centre, so the current-page indicator travels as you click through rather than blinking between states. On mobile the panel slides down and its links follow in sequence. |
+| **Scroll reveal** | Blocks fade and rise as they enter. Card grids opt in via `reveal(html, { stagger: true })`, which hands the animation to the children so a grid arrives as a sequence — 45 ms apart, capped at eight, because a stagger long enough to notice waiting for has become a loading screen. |
+| **Screenshots** | `animation-timeline: view()` ties the figure's settle to scroll position itself, so it resolves as it travels instead of playing a fixed animation on arrival. Behind `@supports`; browsers without it simply get the resting state. |
+
+Everything honours `prefers-reduced-motion`: reveals resolve instantly, transitions collapse,
+**animation delays are zeroed** (a neutralised animation with a live delay still holds its fill
+and then flashes in), the scroll-linked and cross-document transitions are switched off outright,
+and smooth scrolling is disabled.
 
 ---
 

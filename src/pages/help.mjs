@@ -61,12 +61,30 @@ const DYNAMIC = {
   },
 
   report() {
-    const { issues, email, repository } = site.contact;
+    const { issues, email, community } = site.contact;
+    /* The same closing advice whichever route exists — worth saying once, not three times. */
+    const detail =
+      'Whichever route you use, a useful report has three things in it: your Open Cut version, your Windows version, and the shortest sequence of steps that reproduces the problem. The About section of Settings shows the version and system details to quote.';
+
     if (issues) {
       return [
-        `Report bugs on the [issue tracker](${issues}). Include your Open Cut version, your Windows version, and the shortest sequence of steps that reproduces the problem.`,
+        `Report bugs on the [issue tracker](${issues}).`,
+        community ? `For questions, help and general chat there is also the [Discord](${community}).` : '',
+        detail,
+      ].filter(Boolean);
+    }
+
+    if (community) {
+      return [
+        `**On [Discord](${community}).** That is where bug reports, questions and feature requests go for now — post one there and it will be seen.`,
+        `There is no public issue tracker yet. Open Cut ${version} ${
+          releaseStatus === 'released' ? 'is a very early release' : 'has not been publicly released yet'
+        }, and one will be published alongside it rather than announced here before it exists.`,
+        'It is worth checking the [Updates](/updates/) page first — the known issues for the current build are listed there in full, and the most common problems with it are already written down.',
+        detail,
       ];
     }
+
     return [
       `**There is no public bug tracker yet.** Open Cut ${version} ${
         releaseStatus === 'released' ? 'is a very early release' : 'has not been publicly released yet'
@@ -74,7 +92,7 @@ const DYNAMIC = {
       email
         ? `In the meantime, problems can be sent to [${email}](mailto:${email}).`
         : 'Until then, the known issues for the current build are listed in full on the [Updates](/updates/) page — it is worth checking there first, since the most common problems with this build are already written down.',
-      'When a channel does exist, the most useful report includes the Open Cut version, your Windows version, and the shortest sequence of steps that reproduces the problem. The About section of Settings shows the version and system details to include.',
+      detail,
     ].filter(Boolean);
   },
 };

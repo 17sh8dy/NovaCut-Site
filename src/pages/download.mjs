@@ -155,7 +155,7 @@ export function downloadPage() {
               <h2 style="font-size:var(--t-h3);margin-bottom:var(--s4)">This release</h2>
               ${specList(versionSpecs)}
               <div class="btn-row" style="margin-top:var(--s5)">
-                ${button({ href: '/updates/', label: 'Release notes', variant: 'secondary', icon: icons.arrowRight })}
+                ${button({ href: '/updates/', label: 'Release notes', variant: 'secondary', icon: icons.arrowRight, iconEnd: true })}
               </div>
             </div>
 
