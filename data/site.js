@@ -65,7 +65,7 @@ export const site = {
  */
 export const releaseStatus = 'unreleased';
 
-export const version = '0.1.0';
+export const version = '1.0.0';
 
 /** ISO date, or null while unreleased. Never guess this. */
 export const releaseDate = null;
@@ -74,7 +74,7 @@ export const releaseDate = null;
  * The date the current Windows artifacts were produced locally. This is a BUILD date, not a
  * release date, and every surface that shows it labels it as such.
  */
-export const buildDate = '2026-07-22';
+export const buildDate = '2026-08-10';
 
 export const platforms = {
   windows: {
@@ -88,9 +88,9 @@ export const platforms = {
         id: 'win-installer',
         label: 'Installer',
         format: 'NSIS installer (.exe)',
-        filename: 'Open Cut-0.1.0-x64.exe',
+        filename: 'Open Cut-1.0.0-x64.exe',
         /** Exact byte size of the produced artifact. */
-        sizeBytes: 82251466,
+        sizeBytes: 152838241,
         /** null while unreleased — the button renders disabled rather than 404ing. */
         url: null,
         recommended: true,
@@ -100,8 +100,8 @@ export const platforms = {
         id: 'win-portable',
         label: 'Portable',
         format: 'Portable executable (.exe)',
-        filename: 'Open Cut-0.1.0-portable.exe',
-        sizeBytes: 81999980,
+        filename: 'Open Cut-1.0.0-portable.exe',
+        sizeBytes: 152610298,
         url: null,
         recommended: false,
         note: 'Runs without installing. Useful on machines where you cannot install software.',
@@ -140,29 +140,32 @@ export const requirements = {
     },
     {
       label: 'Disk space',
-      value: 'About 300 MB for the application, plus room for your projects and exports.',
+      value: 'About 550 MB for the application, plus room for your projects and exports.',
     },
   ],
 };
 
 /**
- * ── THE FFMPEG CAVEAT ────────────────────────────────────────────────────────────────
+ * ── FFMPEG ───────────────────────────────────────────────────────────────────────────
  *
- * Surfaced prominently on Download and Help rather than buried, because it is the single thing
- * most likely to make a first run look broken: without FFmpeg the editor opens and edits fine,
- * but media probing, thumbnails and export do not work.
+ * `bundled` flips a lot of copy at once. While it was false, the Download and Help pages carried
+ * a prerequisite warning and every affected feature wore a "Needs FFmpeg" badge — because
+ * without FFmpeg the editor opened and edited fine but could not read, thumbnail or export
+ * media, which is the single thing most likely to make a first run look broken.
  *
- * Set `bundled: true` the moment FFmpeg ships inside the installer and this notice disappears
- * from every page at once.
+ * It ships inside the installer as of 1.0.0, so all of that disappeared from every page by
+ * changing this one field. The text below is what remains: not a warning, just the answer to
+ * "do I need to install anything?" and "can I use my own build?".
  */
 export const ffmpeg = {
-  bundled: false,
+  bundled: true,
   summary:
-    'FFmpeg is required for importing media, generating thumbnails and exporting video, and is not bundled with the current build.',
+    'FFmpeg is included in the installer. There is nothing else to install to import or export.',
   detail:
-    'Install FFmpeg and make sure ffmpeg and ffprobe are on your PATH before importing media. Open Cut also ' +
-    'reads the OPENCUT_FFMPEG and OPENCUT_FFPROBE environment variables, and looks in a resources/ffmpeg ' +
-    'folder inside the installed application. Everything else in the editor works without it.',
+    'The bundled build is LGPL-licensed and its licence text ships with it. If you would rather use your own ' +
+    'build — a newer one, or one with different codecs — set the OPENCUT_FFMPEG and OPENCUT_FFPROBE environment ' +
+    'variables to point at it, or replace the executables in the resources/ffmpeg folder inside the installed ' +
+    'application. Open Cut prefers those over the bundled copy.',
 };
 
 /** Unsigned builds are a real first-run experience, and users deserve the warning up front. */

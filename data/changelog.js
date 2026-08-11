@@ -12,23 +12,25 @@
  *   summary   one paragraph; what this release is
  *   sections  { new, improved, fixed, known } — omit any that is empty
  *
- * The 0.1.0 entry below describes work that is actually in the tree and was verified in the
+ * The 1.0.0 entry below describes work that is actually in the tree and was verified in the
  * running application. Where an item was measured, the measurement is included, because a
  * changelog that says "improved export reliability" tells a user nothing they can check.
  */
 
 export const releases = [
   {
-    version: '0.1.0',
+    version: '1.0.0',
     name: 'First public release',
     status: 'unreleased',
     date: null,
     summary:
-      'The first release of Open Cut: a multi-track video editor and a layer-based photo editor in one desktop application, ' +
-      'packaged as a real Windows installer. This entry describes the build as it stands; it is published here so the ' +
+      'The first release of Open Cut: a multi-track video editor and a layer-based photo editor in one desktop ' +
+      'application, packaged as a Windows installer with FFmpeg included, so importing and exporting work on a clean ' +
+      'machine with nothing else to install. This entry describes the build as it stands; it is written here so the ' +
       'release notes are ready the day the download is.',
     sections: {
       new: [
+        'FFmpeg ships inside the installer, so importing, thumbnails and export all work on a clean machine with nothing else to install. The bundled build is LGPL-licensed; its licence text is included, and OPENCUT_FFMPEG lets you point Open Cut at your own build instead.',
         'Multi-track video and audio timeline with split, trim, ripple delete, duplicate, snapping, magnetic edges, zoom and per-track mute, solo, lock, hide and rename.',
         '53 GPU effects across seven categories, each with real parameters that can be keyframed.',
         '18 transitions, all implemented as shaders. A transition window is centred on the cut and clamped so that adding one never shortens the sequence.',
@@ -54,6 +56,14 @@ export const releases = [
         'Export now streams frames from the same GPU compositor the preview uses, so there is no second render path that can disagree with what you were watching.',
       ],
       fixed: [
+        'A transition froze the picture for the rest of the export. Rendering a transition asks each clip for frames outside its own range, and that seek was never acknowledged, so the source stopped decoding and every later frame waited out a timeout. One cross dissolve took an eight-second export from 22 seconds to about 190, and left the second half of the video a still image.',
+        'Exports carried no colour information at all, so every player guessed — and they do not all guess alike. Output is now converted and tagged as BT.709, and round-trips within one value of 255 against the source.',
+        'Autosave stopped for the rest of the session after a single failed write, silently, while the interface went on implying it was running.',
+        'Edits made while a save was in progress were marked as already saved. Since the quit guard reads that same flag, the window could close without warning and lose them.',
+        'A failed save reported nothing at all — no message, no warning — so a save that had not happened looked exactly like one that had.',
+        'Importing without FFmpeg installed reported success and produced a zero-length clip with invented dimensions. It now says what went wrong and what to do about it.',
+        'Hardware-accelerated export always asked for an NVIDIA encoder, so the option failed outright on AMD and Intel machines. It now uses whichever encoder the machine actually has.',
+        'A failed export left FFmpeg running with the output file still open, so the part-written file could not be deleted or overwritten.',
         'Text was silently dropped from every export. Titles and captions were drawn as HTML over the preview canvas, and the exporter — which reads pixels back from that canvas — could not see them. Text is now rasterised into the compositor, so preview and export are the same image by construction.',
         'The preview could freeze on the first frame while the timecode kept advancing. Ranged reads of local media were answered with the whole file, which Chromium treats as "this source cannot seek", permanently downgrading the video element to a non-seekable stream. Media is now served with correct partial-content responses.',
         'Exports could contain long runs of black frames. The exporter waited a fixed interval for asynchronous seeks and wrote a black frame whenever a decode missed the window — measured at 746 of 1569 frames on one test render. Seeks are now awaited on the decoder’s own events; the same render measured 0 black frames afterwards.',
@@ -62,8 +72,8 @@ export const releases = [
         'A photo document larger than the preview cap exported at preview resolution rather than document resolution.',
       ],
       known: [
-        'FFmpeg is not bundled with the installer. Importing media, generating thumbnails and exporting video all require FFmpeg to be installed separately and reachable on your PATH. Everything else in the editor works without it.',
         'Builds are not code-signed, so Windows SmartScreen warns the first time you run the installer.',
+        'Exporting from a 4K source costs roughly four times as much per second of output as a 1080p source, because every frame is decoded at full resolution before being scaled down. A 1080p project renders at around three seconds per second of output.',
         'Windows x64 is the only platform with a build. macOS and Linux targets are configured but untested.',
         'The captions panel and the audio library panel are placeholders with no functionality behind them.',
         'EQ, pitch and normalise appear in the audio inspector but are not applied by the audio engine yet.',
