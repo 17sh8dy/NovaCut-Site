@@ -74,7 +74,7 @@ export const releaseDate = null;
  * The date the current Windows artifacts were produced locally. This is a BUILD date, not a
  * release date, and every surface that shows it labels it as such.
  */
-export const buildDate = '2026-08-10';
+export const buildDate = '2026-08-11';
 
 export const platforms = {
   windows: {
@@ -90,7 +90,7 @@ export const platforms = {
         format: 'NSIS installer (.exe)',
         filename: 'Open Cut-1.0.0-x64.exe',
         /** Exact byte size of the produced artifact. */
-        sizeBytes: 152838241,
+        sizeBytes: 152868253,
         /** null while unreleased — the button renders disabled rather than 404ing. */
         url: null,
         recommended: true,
@@ -101,7 +101,7 @@ export const platforms = {
         label: 'Portable',
         format: 'Portable executable (.exe)',
         filename: 'Open Cut-1.0.0-portable.exe',
-        sizeBytes: 152610298,
+        sizeBytes: 152640301,
         url: null,
         recommended: false,
         note: 'Runs without installing. Useful on machines where you cannot install software.',

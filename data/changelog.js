@@ -30,6 +30,9 @@ export const releases = [
       'release notes are ready the day the download is.',
     sections: {
       new: [
+        'When an export finishes, Open Cut opens the folder it was written to with the file selected. Only on success — a failed or cancelled export opens nothing.',
+        'Cancel now actually stops an export that is running, rather than only closing the window while the render carried on in the background.',
+        'New projects are named for the time they were created — "OpenCut Video File at 1.42 PM", or "OpenCut Photo File at…" in the photo editor — instead of every one of them being called Untitled. Renaming works as before and a name you choose is kept.',
         'FFmpeg ships inside the installer, so importing, thumbnails and export all work on a clean machine with nothing else to install. The bundled build is LGPL-licensed; its licence text is included, and OPENCUT_FFMPEG lets you point Open Cut at your own build instead.',
         'Multi-track video and audio timeline with split, trim, ripple delete, duplicate, snapping, magnetic edges, zoom and per-track mute, solo, lock, hide and rename.',
         '53 GPU effects across seven categories, each with real parameters that can be keyframed.',
@@ -54,8 +57,12 @@ export const releases = [
         'The interface was rebuilt on a neutral design system. Surfaces are grey and charcoal, colour is reserved for things that are interactive or active, and the brand gradient is limited to the logo.',
         'Effects that declared parameters but rendered nothing were either implemented or removed, so the effect list no longer contains entries that do nothing.',
         'Export now streams frames from the same GPU compositor the preview uses, so there is no second render path that can disagree with what you were watching.',
+        'Exports are about 20% faster. The render loop now reads each finished frame off the GPU asynchronously and starts the next frame’s decode before draining the current one, so work that used to happen one after another overlaps. Measured over repeated runs on the same project: 52.2s to 41.0s, and the resulting file is byte-for-byte identical to the one the previous build produced — this is the same export, done sooner, not a lower-quality one.',
+        'A note on export speed generally: most of the time goes into seeking the source video, so footage with widely spaced keyframes exports several times slower than the same footage with a normal keyframe interval. On this machine the identical project measured 66ms per frame against an 8-second keyframe interval and 19ms against a 1-second one.',
       ],
       fixed: [
+        'Turning on hardware-accelerated export asked for an NVIDIA encoder on machines that had no NVIDIA card, and the export failed outright. Open Cut previously chose from the encoders FFmpeg was BUILT with, which on a full build is every vendor’s at once; it now tests that an encoder actually opens on this machine before choosing it, and falls back to software when none does.',
+        'In the light theme, the success, warning and error colours were the ones tuned for the dark theme and were close to illegible on white — warning text measured 2.0:1 against its background where 4.5:1 is the standard. All three, and the muted label colour, are now tuned for light surfaces.',
         'A transition froze the picture for the rest of the export. Rendering a transition asks each clip for frames outside its own range, and that seek was never acknowledged, so the source stopped decoding and every later frame waited out a timeout. One cross dissolve took an eight-second export from 22 seconds to about 190, and left the second half of the video a still image.',
         'Exports carried no colour information at all, so every player guessed — and they do not all guess alike. Output is now converted and tagged as BT.709, and round-trips within one value of 255 against the source.',
         'Autosave stopped for the rest of the session after a single failed write, silently, while the interface went on implying it was running.',
