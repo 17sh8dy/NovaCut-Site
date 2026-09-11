@@ -88,6 +88,45 @@
     });
   }
 
+  /* ── Nova switcher ─────────────────────────────────────────────────────────────── */
+
+  var switcherTrigger = document.getElementById('nova-switcher-trigger');
+  var switcherMenu = document.getElementById('nova-switcher-menu');
+
+  if (switcherTrigger && switcherMenu) {
+    /*
+     * Hand visibility over from the native [hidden] the markup ships with to the animated
+     * [data-open] state in styles.css — display:none can't transition, so JS has to be the one
+     * to take the menu off [hidden] before anything can fade. Without this script the menu stays
+     * [hidden] forever, which is correct: there'd be no way to open it anyway.
+     */
+    switcherMenu.hidden = false;
+    switcherMenu.setAttribute('data-open', 'false');
+
+    var setSwitcherOpen = function (open) {
+      switcherTrigger.setAttribute('aria-expanded', String(open));
+      switcherMenu.setAttribute('data-open', String(open));
+    };
+
+    switcherTrigger.addEventListener('click', function () {
+      setSwitcherOpen(switcherTrigger.getAttribute('aria-expanded') !== 'true');
+    });
+
+    /* Anywhere outside the trigger or its menu closes it — the standard dropdown contract. */
+    document.addEventListener('click', function (e) {
+      if (switcherTrigger.getAttribute('aria-expanded') !== 'true') return;
+      if (switcherTrigger.contains(e.target) || switcherMenu.contains(e.target)) return;
+      setSwitcherOpen(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && switcherTrigger.getAttribute('aria-expanded') === 'true') {
+        setSwitcherOpen(false);
+        switcherTrigger.focus();
+      }
+    });
+  }
+
   /* ── Deep links into a collapsed answer ─────────────────────────────────────────── */
 
   /*

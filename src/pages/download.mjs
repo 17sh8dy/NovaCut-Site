@@ -102,8 +102,8 @@ export function downloadPage() {
     <section class="section section--tight">
       <div class="wrap">
         <p class="eyebrow">Download</p>
-        <h1 style="font-size:var(--t-h1)">Download Open Cut</h1>
-        <p class="lede" style="margin-top:var(--s5);max-width:58ch">Get the latest version of Open Cut for
+        <h1 style="font-size:var(--t-h1)">Download Nova Cut</h1>
+        <p class="lede" style="margin-top:var(--s5);max-width:58ch">Get the latest version of Nova Cut for
           your desktop. It’s free, there’s no account to create, and there’s no watermark on anything you
           export.</p>
       </div>
@@ -205,7 +205,7 @@ export function downloadPage() {
       <div class="wrap">
         <div class="section-head" style="margin-bottom:var(--s3)">
           <h2 style="font-size:var(--t-h3)">Other platforms</h2>
-          <p class="lede">More platforms are planned. Open Cut is built so that the editor itself is
+          <p class="lede">More platforms are planned. Nova Cut is built so that the editor itself is
             platform-agnostic — only the layer that talks to the operating system has to change — but a
             platform is not supported until there is a build that has been tested on it.</p>
         </div>
@@ -233,8 +233,8 @@ export function downloadPage() {
     </section>`;
 
   return page({
-    title: 'Download — Open Cut',
-    description: `Download Open Cut ${version} for Windows. Free desktop video and photo editing, with no account, no watermark and no subscription.`,
+    title: 'Download — Nova Cut',
+    description: `Download Nova Cut ${version} for Windows. Free desktop video and photo editing, with no account, no watermark and no subscription.`,
     path: '/download/',
     current: '/download/',
     body,

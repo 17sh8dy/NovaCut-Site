@@ -1,7 +1,7 @@
 /**
  * ── THE FEATURE CATALOG ──────────────────────────────────────────────────────────────
  *
- * Everything the website says Open Cut can do lives here, and every entry carries a `status`.
+ * Everything the website says Nova Cut can do lives here, and every entry carries a `status`.
  *
  *   'stable'   — implemented, wired end to end, and exercised in the running application.
  *   'beta'     — implemented and usable, but with a stated limitation the user should know
@@ -27,7 +27,7 @@ export const featureGroups = [
       src: 'editor',
       width: 1600,
       height: 984,
-      alt: 'The Open Cut video editor: a multi-track timeline with text clips, a live preview, and the text inspector open on the right.',
+      alt: 'The Nova Cut video editor: a multi-track timeline with text clips, a live preview, and the text inspector open on the right.',
     },
     features: [
       {
@@ -80,7 +80,7 @@ export const featureGroups = [
       src: 'transitions',
       width: 1600,
       height: 984,
-      alt: 'The Open Cut transitions browser, showing the full list of available transitions alongside the timeline.',
+      alt: 'The Nova Cut transitions browser, showing the full list of available transitions alongside the timeline.',
     },
     stats: [
       { value: '53', label: 'effects' },
@@ -150,7 +150,7 @@ export const featureGroups = [
       src: 'photo',
       width: 1600,
       height: 984,
-      alt: 'The Open Cut photo editor: a layer list, the tool rail, and a composed thumbnail on the canvas with the inspector open.',
+      alt: 'The Nova Cut photo editor: a layer list, the tool rail, and a composed thumbnail on the canvas with the inspector open.',
     },
     features: [
       {
@@ -203,7 +203,7 @@ export const featureGroups = [
       src: 'export',
       width: 1600,
       height: 1042,
-      alt: 'The Open Cut export dialog, showing resolution, frame rate, container, codec, quality and bitrate controls with live size and render-time estimates.',
+      alt: 'The Nova Cut export dialog, showing resolution, frame rate, container, codec, quality and bitrate controls with live size and render-time estimates.',
     },
     features: [
       {
@@ -245,18 +245,18 @@ export const featureGroups = [
       src: 'home',
       width: 1600,
       height: 984,
-      alt: 'The Open Cut launcher, offering the video editor and the photo editor, with recent projects below.',
+      alt: 'The Nova Cut launcher, offering the video editor and the photo editor, with recent projects below.',
     },
     features: [
       {
         title: 'Autosave and crash recovery',
         status: 'stable',
-        body: 'Work is saved automatically as you go, and if the application closes unexpectedly Open Cut offers to restore the session — timeline, media, effects, playhead, zoom and selection.',
+        body: 'Work is saved automatically as you go, and if the application closes unexpectedly Nova Cut offers to restore the session — timeline, media, effects, playhead, zoom and selection.',
       },
       {
         title: 'Project files',
         status: 'stable',
-        body: 'Projects are saved as .opencut files. Double-clicking one opens it, and an already-running Open Cut takes it over rather than starting a second copy.',
+        body: 'Projects are saved as .novacut files. Double-clicking one opens it, and an already-running Nova Cut takes it over rather than starting a second copy.',
       },
       {
         title: 'Rebindable keyboard shortcuts',
@@ -318,7 +318,7 @@ export const planned = [
   },
   {
     title: 'AI-assisted tools',
-    body: 'Nothing AI-powered exists in Open Cut today. The architecture has a place for it, and if it arrives it will be optional.',
+    body: 'Nothing AI-powered exists in Nova Cut today. The architecture has a place for it, and if it arrives it will be optional.',
   },
 ];
 

@@ -14,7 +14,7 @@
  */
 
 import { site, nav, footerLinks, version } from '../data/site.js';
-import { esc, escJson, icons } from './components.mjs';
+import { esc, escJson, icons, novaSwitcher } from './components.mjs';
 
 /*
  * The mark, inlined so the header needs no extra request.
@@ -52,7 +52,8 @@ function header(current) {
   return `<div class="brandline" aria-hidden="true"></div>
   <header class="header" id="site-header">
     <div class="wrap header__inner">
-      <a class="logo" href="/" aria-label="Open Cut — home">${SYMBOL}<span>Open Cut</span></a>
+      <a class="logo" href="/" aria-label="Nova Cut — home">${SYMBOL}<span>Nova Cut</span></a>
+      ${novaSwitcher('nova-cut', 'Nova Cut Website')}
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
         <span class="icon-open">${icons.menu}</span><span class="icon-close">${icons.close}</span>
       </button>
@@ -90,7 +91,7 @@ function footer() {
     <div class="wrap">
       <div class="footer__top">
         <div class="footer__brand">
-          <a class="logo" href="/">${SYMBOL}<span>Open Cut</span></a>
+          <a class="logo" href="/">${SYMBOL}<span>Nova Cut</span></a>
           <p>${esc(site.tagline)} A desktop video and photo editor whose core editing features will always be free.</p>
         </div>
         ${footerLinks.map(column).join('')}
@@ -168,14 +169,14 @@ export function page({ title, description, path, body, current, jsonLd }) {
   <meta property="og:image" content="${site.origin}/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Open Cut — powerful editing, made open.">
+  <meta property="og:image:alt" content="Nova Cut — powerful editing, made open.">
   <meta property="og:locale" content="en_GB">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${site.origin}/og-image.png">
-  <meta name="twitter:image:alt" content="Open Cut — powerful editing, made open.">
+  <meta name="twitter:image:alt" content="Nova Cut — powerful editing, made open.">
 
   <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/brand/icon-192.png" sizes="192x192" type="image/png">

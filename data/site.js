@@ -21,24 +21,24 @@
  */
 
 export const site = {
-  name: 'Open Cut',
+  name: 'Nova Cut',
   tagline: 'Powerful editing. Made open.',
   description:
-    'Open Cut is a powerful desktop video and photo editor built for creators. Every core editing feature will always be free.',
+    'Nova Cut is a powerful desktop video and photo editor built for creators. Every core editing feature will always be free.',
   /**
    * Used to build absolute URLs for Open Graph and canonical tags. Set this to the real domain
    * before deploying — relative OG images are ignored by most crawlers.
    */
-  origin: 'https://opencut.app',
+  origin: 'https://novacut.app',
   /** Set at build time so the footer year can never go stale. */
   year: new Date().getFullYear(),
   license: 'MIT',
   /**
-   * Open Cut is an independent project. There is deliberately no company name, legal entity or
+   * Nova Cut is an independent project. There is deliberately no company name, legal entity or
    * address here, because the repository does not record one and inventing one would be a lie
    * with legal consequences. `author` is package.json's author field, verbatim.
    */
-  author: 'Open Cut',
+  author: 'Nova Cut',
   /**
    * Contact and issue reporting. `null` means "no channel exists yet", and the Help page then
    * renders an honest explanation instead of a dead link. Fill these in when they are real.
@@ -74,7 +74,7 @@ export const releaseDate = null;
  * The date the current Windows artifacts were produced locally. This is a BUILD date, not a
  * release date, and every surface that shows it labels it as such.
  */
-export const buildDate = '2026-08-11';
+export const buildDate = '2026-09-09';
 
 export const platforms = {
   windows: {
@@ -88,20 +88,20 @@ export const platforms = {
         id: 'win-installer',
         label: 'Installer',
         format: 'NSIS installer (.exe)',
-        filename: 'Open Cut-1.0.0-x64.exe',
+        filename: 'Nova Cut-1.0.0-x64.exe',
         /** Exact byte size of the produced artifact. */
-        sizeBytes: 152868253,
+        sizeBytes: 152530294,
         /** null while unreleased — the button renders disabled rather than 404ing. */
         url: null,
         recommended: true,
-        note: 'Lets you choose the install location, adds Start menu and desktop shortcuts, and associates .opencut project files.',
+        note: 'Lets you choose the install location, adds Start menu and desktop shortcuts, and associates .novacut project files.',
       },
       {
         id: 'win-portable',
         label: 'Portable',
         format: 'Portable executable (.exe)',
-        filename: 'Open Cut-1.0.0-portable.exe',
-        sizeBytes: 152640301,
+        filename: 'Nova Cut-1.0.0-portable.exe',
+        sizeBytes: 152302337,
         url: null,
         recommended: false,
         note: 'Runs without installing. Useful on machines where you cannot install software.',
@@ -113,7 +113,7 @@ export const platforms = {
     available: false,
     /**
      * electron-builder.yml *configures* dmg and zip targets for macOS, but no macOS build of
-     * Open Cut has been produced or tested. "Configured" is not "available", so the site says
+     * Nova Cut has been produced or tested. "Configured" is not "available", so the site says
      * planned until an artifact exists.
      */
     status: 'Build targets are configured, but no macOS build has been produced or tested yet.',
@@ -165,7 +165,7 @@ export const ffmpeg = {
     'The bundled build is LGPL-licensed and its licence text ships with it. If you would rather use your own ' +
     'build — a newer one, or one with different codecs — set the OPENCUT_FFMPEG and OPENCUT_FFPROBE environment ' +
     'variables to point at it, or replace the executables in the resources/ffmpeg folder inside the installed ' +
-    'application. Open Cut prefers those over the bundled copy.',
+    'application. Nova Cut prefers those over the bundled copy.',
 };
 
 /** Unsigned builds are a real first-run experience, and users deserve the warning up front. */

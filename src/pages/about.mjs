@@ -22,7 +22,7 @@ export function aboutPage() {
     <section class="section" style="padding-top:0">
       <div class="wrap">
         <div class="prose">
-          <blockquote>Open Cut is built around a simple idea: powerful creative software shouldn’t require
+          <blockquote>Nova Cut is built around a simple idea: powerful creative software shouldn’t require
             a subscription just to reach the basic tools you need.</blockquote>
 
           <p style="margin-top:var(--s6)">Editing a video and designing its thumbnail are ordinary things to
@@ -30,22 +30,22 @@ export function aboutPage() {
             the ability to cut a clip, add a title and export a file — and losing that ability the month you
             stop.</p>
 
-          <p>Open Cut is a desktop video and photo editor built the other way round. You download it, it
+          <p>Nova Cut is a desktop video and photo editor built the other way round. You download it, it
             runs on your machine, it opens your files, and it keeps working. There is no account, no trial
             period, no watermark, and no feature in the editor that stops working when you stop paying.</p>
 
           <h2>What “always free” actually covers</h2>
           <p>Video editing. Photo editing. The timeline tools. Audio tools. Transitions. Effects. Export.
             And the improvements made to all of them from here on. These are what an editor <em>is</em>, and
-            they stay part of the free Open Cut experience.</p>
-          <p>The one honest asterisk is AI. Open Cut has no AI features today. If it gains them, they may be
+            they stay part of the free Nova Cut experience.</p>
+          <p>The one honest asterisk is AI. Nova Cut has no AI features today. If it gains them, they may be
             offered as <strong>optional paid services</strong>, because removing a background or upscaling a
             shot can mean running a model on hardware that costs money every time — a cost that keeps
             arriving long after a download. Anything like that would sit alongside the editor, never in
             front of it.</p>
 
           <h2>How it’s built</h2>
-          <p>Open Cut is a native desktop application, not a web page in a wrapper. The preview and the
+          <p>Nova Cut is a native desktop application, not a web page in a wrapper. The preview and the
             exporter share one GPU compositor, so what you watch is what gets written to the file. Timeline
             positions are stored as integer ticks rather than floating-point seconds, so thousands of edits
             never accumulate drift. Every edit is a command with a real undo history behind it.</p>
@@ -54,7 +54,7 @@ export function aboutPage() {
             rewriting the application.</p>
 
           <h2>What it isn’t</h2>
-          <p>Open Cut is early. Version ${esc(version)} is its first release${
+          <p>Nova Cut is early. Version ${esc(version)} is its first release${
             releaseStatus === 'released' ? '' : ', and it has not been published yet'
           }. There is one platform with a build, a list of things that are designed for but not delivered,
             and a set of known issues written down in full rather than smoothed over.</p>
@@ -69,7 +69,7 @@ export function aboutPage() {
             lose that trust is to be surprised by something the website could have told you.</p>
 
           <h2>Where it stands</h2>
-          <p>Open Cut is under active development and improving. It is an independent project released
+          <p>Nova Cut is under active development and improving. It is an independent project released
             under the ${esc(site.license)} licence — not a product of a company, and not something with a
             roadmap sold in advance.</p>
         </div>
@@ -81,16 +81,16 @@ export function aboutPage() {
         <h2>Powerful editing. Made open.</h2>
         <p class="lede">See what’s in it, or read exactly what state it’s in.</p>
         <div class="btn-row">
-          ${button({ href: '/download/', label: 'Download Open Cut', icon: icons.download, large: true })}
+          ${button({ href: '/download/', label: 'Download Nova Cut', icon: icons.download, large: true })}
           ${button({ href: '/updates/', label: 'Read the release notes', variant: 'secondary', large: true })}
         </div>
       </div>
     </section>`;
 
   return page({
-    title: 'About — Open Cut',
+    title: 'About — Nova Cut',
     description:
-      'Open Cut is built around a simple idea: powerful creative software shouldn’t require a subscription to reach the basic tools you need. An independent, actively developed desktop editor.',
+      'Nova Cut is built around a simple idea: powerful creative software shouldn’t require a subscription to reach the basic tools you need. An independent, actively developed desktop editor.',
     path: '/about/',
     current: '/about/',
     body,

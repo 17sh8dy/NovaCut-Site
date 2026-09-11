@@ -3,7 +3,7 @@
  *
  * One stylesheet, one source of truth. It deliberately mirrors the three rules the
  * application's own token file is held to, so the site and the product cannot disagree about
- * what Open Cut looks like:
+ * what Nova Cut looks like:
  *
  *   1. SURFACES ARE NEUTRAL. Charcoal in dark, white and light grey in light. The screenshots
  *      of the editor are the only saturated things on the page.
@@ -23,7 +23,7 @@
   color-scheme: dark;
 
   /*
-   * Brand — --brand-blue is the logo's fill, verbatim from the application's assets/OpenCut.svg.
+   * Brand — --brand-blue is the logo's fill, verbatim from the application's assets/NovaCut.svg.
    * The mark is a single flat blue; --brand-deep and --brand-sky are a shade and a tint of it at
    * the same hue (210°) and exist only to give the 2px top rule somewhere to travel. Nothing
    * that is meant to match the icon may use them — match it with --brand-blue.
@@ -440,7 +440,7 @@ kbd {
  * than the 300x150 a bare viewBox gives a replaced element. The cost is that a wrapper which
  * sizes only ITSELF leaves the SVG at 17x24: `max-width: 100%` in the reset clamps the width and
  * nothing clamps the height, so the glyph is squashed sideways and overflows downwards. That is
- * what made the arrow on "See everything Open Cut does" look mis-spaced.
+ * what made the arrow on "See everything Nova Cut does" look mis-spaced.
  *
  * Wrappers that set an explicit size on a plain `svg` selector (.hero__meta, .freelist, .notice,
  * .theme, .dl-card__os) were never affected — only these two, which size a span around it.
@@ -654,6 +654,207 @@ kbd {
 .theme svg {
   width: 14px;
   height: 14px;
+}
+
+/* Nova switcher — a small "Nova ▾" trigger next to the logo, opening a menu of sibling
+   products. See src/components.mjs `novaSwitcher()` for the markup and data/nova.js for the
+   product list. */
+.switcher {
+  position: relative;
+  flex: none;
+}
+
+.switcher__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding-inline: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-full);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--font);
+  font-size: var(--t-tiny);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.switcher__trigger:hover,
+.switcher__trigger[aria-expanded='true'] {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: var(--surface-raised);
+}
+
+.switcher__mark {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  overflow: hidden;
+  flex: none;
+}
+
+.switcher__mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.switcher__trigger > svg {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.switcher__trigger[aria-expanded='true'] > svg {
+  transform: rotate(180deg);
+}
+
+/*
+ * Animated via [data-open] rather than the native [hidden] — display:none can't transition, and
+ * this needs to fade and settle into place rather than snap. [hidden] is still what the markup
+ * ships with (see novaSwitcher() in components.mjs), so with JavaScript disabled the menu stays
+ * display:none forever; site.js's one job on init is switching it over to this data-open-driven
+ * state before it ever toggles the trigger.
+ */
+.switcher__menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 60;
+  width: max(268px, 100%);
+  padding: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px) scale(0.97);
+  transform-origin: top left;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease),
+    visibility 0s linear var(--dur);
+}
+
+.switcher__menu[hidden] {
+  display: none;
+}
+
+.switcher__menu[data-open='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+/* Items arrive in a quick stagger behind the panel, same rhythm as the mobile nav below. */
+.switcher__menu[data-open='true'] .switcher__item {
+  animation: oc-nav-item 200ms var(--ease) backwards;
+}
+
+.switcher__menu[data-open='true'] .switcher__item:nth-child(2) { animation-delay: 30ms; }
+.switcher__menu[data-open='true'] .switcher__item:nth-child(3) { animation-delay: 55ms; }
+.switcher__menu[data-open='true'] .switcher__item:nth-child(4) { animation-delay: 80ms; }
+.switcher__menu[data-open='true'] .switcher__item:nth-child(5) { animation-delay: 105ms; }
+
+.switcher__eyebrow {
+  margin: 2px var(--s2) 6px;
+  color: var(--text-faint);
+  font-size: var(--t-tiny);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.switcher__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px var(--s2);
+  border-radius: var(--r-md);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.switcher__item:hover {
+  background: var(--surface);
+}
+
+.switcher__item--current {
+  cursor: default;
+  background: var(--accent-soft);
+}
+
+.switcher__item--soon {
+  cursor: default;
+  color: var(--text-faint);
+}
+
+.switcher__icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text-muted);
+  flex: none;
+}
+
+.switcher__item--current .switcher__icon {
+  color: var(--accent-text);
+}
+
+.switcher__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.switcher__text {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.switcher__label {
+  font-size: var(--t-small);
+  font-weight: 600;
+}
+
+.switcher__tagline {
+  color: var(--text-faint);
+  font-size: var(--t-tiny);
+}
+
+.switcher__item--current .switcher__tagline {
+  color: var(--accent-text);
+}
+
+.switcher__badge {
+  flex: none;
+  margin-inline-start: auto;
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  background: var(--surface);
+  color: var(--text-faint);
+  font-size: var(--t-tiny);
+  font-weight: 600;
+}
+
+@media (max-width: 420px) {
+  .switcher__trigger-label {
+    display: none;
+  }
 }
 
 /* Mobile navigation. The checkbox-free version: a button toggling a class, progressively

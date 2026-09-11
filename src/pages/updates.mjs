@@ -39,7 +39,7 @@ function release(r) {
 
   return `<article class="release" id="v${esc(r.version.replace(/\./g, '-'))}">
       <div class="release__head">
-        <h2>Open Cut ${esc(r.version)}</h2>
+        <h2>Nova Cut ${esc(r.version)}</h2>
         <span class="release__name">${esc(r.name)}</span>
         ${badge}
       </div>
@@ -56,13 +56,13 @@ export function updatesPage() {
       <div class="wrap wrap--article">
         <p class="eyebrow">Updates</p>
         <h1 style="font-size:var(--t-h1)">Release notes</h1>
-        <p class="lede" style="margin-top:var(--s5)">Everything that changes in Open Cut, written down.
+        <p class="lede" style="margin-top:var(--s5)">Everything that changes in Nova Cut, written down.
           Each release lists what is new, what improved, what was fixed — and the known issues that were
           still open when it shipped, because those matter more than the rest of it put together.</p>
         ${
           latest && latest.status !== 'released'
             ? `<p class="muted" style="margin-top:var(--s5);font-size:var(--t-small)">
-                 Open Cut ${esc(version)} has not been published yet. These notes describe the build as it
+                 Nova Cut ${esc(version)} has not been published yet. These notes describe the build as it
                  stands and are kept up to date as it changes.
                </p>`
             : ''
@@ -81,15 +81,15 @@ export function updatesPage() {
         <h2>Get the current build</h2>
         <p class="lede">Full build details, prerequisites and system requirements are on the download page.</p>
         <div class="btn-row">
-          ${button({ href: '/download/', label: 'Download Open Cut', icon: icons.download, large: true })}
+          ${button({ href: '/download/', label: 'Download Nova Cut', icon: icons.download, large: true })}
         </div>
       </div>
     </section>`;
 
   return page({
-    title: 'Updates — Open Cut',
+    title: 'Updates — Nova Cut',
     description:
-      'Release notes for Open Cut: what is new, what improved, what was fixed, and the known issues still open in each release.',
+      'Release notes for Nova Cut: what is new, what improved, what was fixed, and the known issues still open in each release.',
     path: '/updates/',
     current: '/updates/',
     body,

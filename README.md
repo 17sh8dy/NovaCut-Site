@@ -1,12 +1,12 @@
-# Open Cut — website
+# Nova Cut — website
 
-The official website for Open Cut. Static, zero-dependency, and built so that shipping a new
+The official website for Nova Cut. Static, zero-dependency, and built so that shipping a new
 version of the app is one edit in one file.
 
-**This is a separate project from the application.** The website lives at `D:\Dev\OpenCutSite`
-and the Open Cut application at `D:\Dev\OpenCut`; nothing here imports from there, and the build
+**This is a separate project from the application.** The website lives at `D:\Dev\NovaCutSite`
+and the Nova Cut application at `D:\Dev\NovaCut`; nothing here imports from there, and the build
 never reads the application's source. Paths in this document that name application files —
-`assets/OpenCut.svg`, `packages/ui/src/theme/tokens.css` — are relative to the **application**
+`assets/NovaCut.svg`, `packages/ui/src/theme/tokens.css` — are relative to the **application**
 repository.
 
 ```bash
@@ -149,7 +149,7 @@ and smooth scrolling is disabled.
 ## Brand assets
 
 See [`public/brand/README.md`](./public/brand/README.md). The symbol is the application's own
-mark — `assets/OpenCut.svg` in the **application** repository remains the single source of truth
+mark — `assets/NovaCut.svg` in the **application** repository remains the single source of truth
 for every icon the app ships, and nothing here overrides it.
 
 ---

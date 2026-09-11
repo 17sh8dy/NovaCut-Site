@@ -56,12 +56,12 @@ export function homePage() {
     <section class="hero">
       <div class="wrap">
         <div class="hero__inner">
-          <p class="eyebrow">Open Cut</p>
+          <p class="eyebrow">Nova Cut</p>
           <h1>Powerful editing.<br>Made open.</h1>
-          <p class="lede">Open Cut is a powerful desktop video and photo editor built for creators who want
+          <p class="lede">Nova Cut is a powerful desktop video and photo editor built for creators who want
             professional tools without putting essential editing features behind a subscription.</p>
           <div class="btn-row">
-            ${button({ href: '/download/', label: 'Download Open Cut', icon: icons.download, large: true })}
+            ${button({ href: '/download/', label: 'Download Nova Cut', icon: icons.download, large: true })}
             ${button({ href: '/features/', label: 'Explore features', variant: 'secondary', large: true })}
           </div>
           <p class="hero__meta">
@@ -77,9 +77,9 @@ export function homePage() {
           width: 1600,
           height: 984,
           eager: true,
-          title: 'Open Cut — video editor',
-          alt: 'The Open Cut video editor. A multi-track timeline holds several text clips, the preview shows the composited frame, and the inspector on the right edits the selected clip’s text.',
-          caption: 'The Open Cut video editor running on Windows.',
+          title: 'Nova Cut — video editor',
+          alt: 'The Nova Cut video editor. A multi-track timeline holds several text clips, the preview shows the composited frame, and the inspector on the right edits the selected clip’s text.',
+          caption: 'The Nova Cut video editor running on Windows.',
         })}
       </div>
     </section>
@@ -98,14 +98,14 @@ export function homePage() {
               ${FREE.map((f) => `<li>${icons.check}<span>${esc(f)}</span></li>`).join('')}
             </ul>
             <p class="muted" style="margin-top:var(--s5);font-size:var(--t-small);max-width:52ch">
-              These are what an editor <em>is</em>. They stay part of the free Open Cut experience, and so do
+              These are what an editor <em>is</em>. They stay part of the free Nova Cut experience, and so do
               the improvements made to them.
             </p>
           </div>
           <aside class="aside-note">
             <p class="eyebrow eyebrow--muted">A note on AI</p>
             <h3>AI is different.</h3>
-            <p><strong>Open Cut has no AI features today.</strong> Nothing in the current build uses AI, and
+            <p><strong>Nova Cut has no AI features today.</strong> Nothing in the current build uses AI, and
               nothing on this site describes an AI feature that exists.</p>
             <p>It may gain them later, and they are genuinely a different kind of thing: removing a
               background or upscaling a shot can mean running a model on hardware that costs money every
@@ -128,7 +128,7 @@ export function homePage() {
         </div>
         ${reveal(`<div class="grid grid--3">${highlights()}</div>`, { stagger: true })}
         <div class="btn-row" style="margin-top:var(--s7)">
-          ${button({ href: '/features/', label: 'See everything Open Cut does', variant: 'secondary', icon: icons.arrowRight, iconEnd: true })}
+          ${button({ href: '/features/', label: 'See everything Nova Cut does', variant: 'secondary', icon: icons.arrowRight, iconEnd: true })}
         </div>
       </div>
     </section>
@@ -146,8 +146,8 @@ export function homePage() {
             src: 'photo',
             width: 1600,
             height: 984,
-            title: 'Open Cut — photo editor',
-            alt: 'The Open Cut photo editor. A layer list shows five layers, the tool rail runs down the left, and a composed thumbnail sits on the canvas with the inspector open on the right.',
+            title: 'Nova Cut — photo editor',
+            alt: 'The Nova Cut photo editor. A layer list shows five layers, the tool rail runs down the left, and a composed thumbnail sits on the canvas with the inspector open on the right.',
             caption: 'A thumbnail composed from the built-in asset library — annotations, shapes, styled text and stickers.',
           })
         )}
@@ -167,8 +167,8 @@ export function homePage() {
             src: 'export',
             width: 1600,
             height: 1042,
-            title: 'Open Cut — export',
-            alt: 'The Open Cut export dialog, with resolution, frame rate, container, codec, quality and bitrate controls and live estimates of the output size and render time.',
+            title: 'Nova Cut — export',
+            alt: 'The Nova Cut export dialog, with resolution, frame rate, container, codec, quality and bitrate controls and live estimates of the output size and render time.',
             caption: `Resolutions to 8K, up to 240 fps, five containers and five codecs. ${
               ffmpeg.bundled ? '' : 'Video export requires FFmpeg — see the download page.'
             }`,
@@ -179,7 +179,7 @@ export function homePage() {
 
     <section class="cta">
       <div class="wrap">
-        <h2>Get Open Cut</h2>
+        <h2>Get Nova Cut</h2>
         <p class="lede">${
           releaseStatus === 'released'
             ? `Version ${esc(version)} for ${esc(win.name)} ${esc(win.arch)}. Free, and free to keep using.`
@@ -195,9 +195,9 @@ export function homePage() {
     </section>`;
 
   return page({
-    title: 'Open Cut — Powerful Editing. Made Open.',
+    title: 'Nova Cut — Powerful Editing. Made Open.',
     description:
-      'Open Cut is a powerful desktop video and photo editor built for creators. Every core editing feature will always be free.',
+      'Nova Cut is a powerful desktop video and photo editor built for creators. Every core editing feature will always be free.',
     path: '/',
     current: '/',
     body,

@@ -3,14 +3,14 @@ import { button, icons } from '../components.mjs';
 
 /**
  * 404. Written into dist/404.html, which most static hosts serve automatically for an unknown
- * path. It wears the full site shell so a wrong URL still looks like Open Cut, and it offers
+ * path. It wears the full site shell so a wrong URL still looks like Nova Cut, and it offers
  * the routes people actually mistype their way toward rather than a lone "go home" link.
  */
 export function page() {
   return shell({
-    title: 'Page not found — Open Cut',
+    title: 'Page not found — Nova Cut',
     description:
-      'That page does not exist. Open Cut is a desktop video and photo editor whose core editing features will always be free.',
+      'That page does not exist. Nova Cut is a desktop video and photo editor whose core editing features will always be free.',
     path: '/404.html',
     body: `
     <section class="section" style="min-height:52vh;display:grid;align-content:center">

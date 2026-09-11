@@ -1,8 +1,8 @@
 {
-  "name": "@opencut/website",
+  "name": "@novacut/website",
   "version": "0.1.0",
   "private": true,
-  "description": "The official Open Cut website. Static, zero-dependency, built from one data source.",
+  "description": "The official Nova Cut website. Static, zero-dependency, built from one data source.",
   "type": "module",
   "scripts": {
     "build": "node build.mjs",

@@ -10,6 +10,8 @@
  * unescaped ampersand in a feature title is a broken page.
  */
 
+import { novaProducts } from '../data/nova.js';
+
 /** HTML-escape. Used on every interpolated string that is not deliberate markup. */
 export const esc = (s) =>
   String(s ?? '')
@@ -70,6 +72,9 @@ export const icons = {
   windows: svg('<path d="M3.5 6.3 10 5.4v6.1H3.5V6.3Z" fill="currentColor" stroke="none"/><path d="M11.3 5.2 20.5 4v7.5h-9.2V5.2Z" fill="currentColor" stroke="none"/><path d="M3.5 12.5H10v6.1l-6.5-.9v-5.2Z" fill="currentColor" stroke="none"/><path d="M11.3 12.5h9.2V20l-9.2-1.2v-6.3Z" fill="currentColor" stroke="none"/>'),
   apple: svg('<path d="M16.3 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.15-2.8.85-3.5.85s-1.8-.83-3-.81c-1.5.02-2.9.9-3.7 2.27-1.6 2.75-.4 6.8 1.1 9 .75 1.1 1.6 2.3 2.8 2.25 1.1-.05 1.5-.72 2.9-.72s1.7.72 2.9.7c1.2-.02 2-1.1 2.7-2.2.85-1.26 1.2-2.48 1.2-2.55-.03-.01-2.3-.88-2.3-3.5Z"/><path d="M14.2 5.4c.6-.75 1-1.8.9-2.85-.87.04-1.93.58-2.56 1.32-.56.65-1.05 1.7-.92 2.7.97.08 1.96-.5 2.58-1.17Z"/>'),
   linux: svg('<path d="M12 2.6c-2.2 0-3.1 1.8-3 4 .05 1.3.1 2.2-.5 3.2-1 1.7-2.4 3.6-2.4 5.6 0 1 .4 1.6 1.1 1.9-.3 1.3.2 2.3 1.2 2.7 1.4.6 3-.3 3.6-.3s2.2.9 3.6.3c1-.4 1.5-1.4 1.2-2.7.7-.3 1.1-.9 1.1-1.9 0-2-1.4-3.9-2.4-5.6-.6-1-.55-1.9-.5-3.2.1-2.2-.8-4-3-4Z"/><path d="M10.4 7.5v.5M13.6 7.5v.5M10.7 10.4c.8.7 1.8.7 2.6 0"/>'),
+  earth: svg('<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3Z"/>'),
+  scissors: svg('<circle cx="6.5" cy="6.5" r="2.5"/><circle cx="6.5" cy="17.5" r="2.5"/><path d="m20 5-13 13"/><path d="M8.4 8.4 20 19"/>'),
+  gamepad: svg('<rect x="2.5" y="7.5" width="19" height="10" rx="4"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="15.3" cy="10.8" r="0.9" fill="currentColor" stroke="none"/><circle cx="17.6" cy="13.1" r="0.9" fill="currentColor" stroke="none"/>'),
 };
 
 /**
@@ -84,7 +89,7 @@ export function shot({ src, width, height, alt, caption, title, eager = false })
     ? ' loading="eager" fetchpriority="high" decoding="async"'
     : ' loading="lazy" decoding="async"';
   return `<figure class="shot">
-      <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><span>${esc(title ?? 'Open Cut')}</span></div>
+      <div class="shot__bar" aria-hidden="true"><i></i><i></i><i></i><span>${esc(title ?? 'Nova Cut')}</span></div>
       <picture>
         <source type="image/webp" srcset="/img/${src}-1000.webp 1000w, /img/${src}-1600.webp 1600w" sizes="(max-width: 1140px) 100vw, 1100px">
         <img src="/img/${src}-1600.png" width="${width}" height="${height}" alt="${esc(alt)}"${loading}>
@@ -160,3 +165,56 @@ export function notice({ tone = 'default', icon = icons.info, title, body, level
  */
 export const reveal = (html, { stagger = false } = {}) =>
   html.replace(/^(\s*<\w+)/, `$1 data-reveal${stagger ? ' data-stagger' : ''}`);
+
+/*
+ * The Nova mark, inlined the same way SYMBOL is in layout.mjs — the switcher is the one place
+ * on the site that has to speak for the family rather than for Nova Cut, so it wears the Nova
+ * disc (assets/favicon.svg over in the Nova repo) instead of the Nova Cut one.
+ */
+const NOVA_MARK = `<svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5.5" fill="#0E1120"/><path fill="#7C5CFF" d="M12 3.1c.52 5.46 3.95 8.89 9.41 9.41-5.46.52-8.89 3.95-9.41 9.41-.52-5.46-3.95-8.89-9.41-9.41C8.05 11.99 11.48 8.56 12 3.1Z"/></svg>`;
+
+/**
+ * The Nova product switcher — a small trigger next to the logo that opens a menu of sibling
+ * products. The trigger itself is labelled "Product Switcher" rather than naming any one
+ * product (this one included) — its job is to announce what it does, not to compete with the
+ * page's own logo for which product you're looking at. Closed and keyboard-inert by default
+ * (`hidden`); site.js owns opening it, so with JavaScript disabled this renders as an inert
+ * button that links nowhere, which is honest since there's nothing for it to do without a
+ * script to open the menu.
+ *
+ * @param {string} current  id of the product currently being viewed, from data/nova.js. Its row
+ *   renders as "you are here" instead of a link, so the switcher never offers to navigate you to
+ *   the page you're already on.
+ * @param {string} [currentLabel]  overrides that row's label text. Needed here because this site
+ *   and the shared product list both call the product "Nova Cut" — accurate for the desktop app,
+ *   not for the page you're actually on, which is the marketing website for it.
+ */
+export function novaSwitcher(current, currentLabel) {
+  const item = (p) => {
+    const isCurrent = p.id === current;
+    const glyph = icons[p.icon] ?? icons.info;
+    const label = isCurrent && currentLabel ? currentLabel : p.label;
+    const body = `<span class="switcher__icon">${glyph}</span><span class="switcher__text"><span class="switcher__label">${esc(label)}</span><span class="switcher__tagline">${esc(isCurrent ? "You're here" : p.tagline)}</span></span>`;
+
+    if (isCurrent) {
+      return `<span class="switcher__item switcher__item--current" role="menuitem" aria-current="true">${body}</span>`;
+    }
+    /* No confirmed URL yet (see data/nova.js) — render disabled rather than link to a guess. */
+    if (!p.url) {
+      return `<span class="switcher__item switcher__item--soon" role="menuitem" aria-disabled="true">${body}<span class="switcher__badge">Soon</span></span>`;
+    }
+    return `<a class="switcher__item" role="menuitem" href="${esc(p.url)}">${body}</a>`;
+  };
+
+  return `<div class="switcher">
+      <button class="switcher__trigger" type="button" id="nova-switcher-trigger" aria-haspopup="menu" aria-expanded="false" aria-controls="nova-switcher-menu">
+        <span class="switcher__mark">${NOVA_MARK}</span>
+        <span class="switcher__trigger-label">Product Switcher</span>
+        ${icons.chevronDown}
+      </button>
+      <div class="switcher__menu" id="nova-switcher-menu" role="menu" aria-labelledby="nova-switcher-trigger" hidden>
+        <p class="switcher__eyebrow">Nova</p>
+        ${novaProducts.map(item).join('')}
+      </div>
+    </div>`;
+}

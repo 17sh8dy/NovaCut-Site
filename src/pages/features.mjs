@@ -34,7 +34,7 @@ function group(g) {
   const image = g.image
     ? `<div class="feature-block__shot">${shot({
         ...g.image,
-        title: `Open Cut — ${g.title.toLowerCase()}`,
+        title: `Nova Cut — ${g.title.toLowerCase()}`,
       })}</div>`
     : '';
 
@@ -118,14 +118,14 @@ export function featuresPage() {
         <h2>Try it yourself</h2>
         <p class="lede">The fastest way to judge an editor is to open it.</p>
         <div class="btn-row">
-          ${button({ href: '/download/', label: 'Download Open Cut', icon: icons.download, large: true })}
+          ${button({ href: '/download/', label: 'Download Nova Cut', icon: icons.download, large: true })}
           ${button({ href: '/help/', label: 'Read the FAQ', variant: 'secondary', large: true })}
         </div>
       </div>
     </section>`;
 
   return page({
-    title: 'Features — Open Cut',
+    title: 'Features — Nova Cut',
     description:
       'Multi-track video editing, 53 GPU effects, 18 transitions, a layer-based photo editor and export to 8K. Every feature listed is confirmed in the running application.',
     path: '/features/',

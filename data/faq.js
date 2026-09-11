@@ -15,41 +15,41 @@
 export const faqGroups = [
   {
     id: 'about-open-cut',
-    title: 'About Open Cut',
+    title: 'About Nova Cut',
     items: [
       {
-        q: 'What is Open Cut?',
+        q: 'What is Nova Cut?',
         body: [
-          'Open Cut is a desktop video and photo editor. It combines a multi-track, non-linear video timeline and a layer-based image editor in one application, built for creators who need to cut a video and design its thumbnail without paying for two subscriptions.',
+          'Nova Cut is a desktop video and photo editor. It combines a multi-track, non-linear video timeline and a layer-based image editor in one application, built for creators who need to cut a video and design its thumbnail without paying for two subscriptions.',
           'It is a native desktop application rather than a website — your media stays on your own machine, and editing does not require an internet connection.',
         ],
       },
       {
-        q: 'Is Open Cut free?',
+        q: 'Is Nova Cut free?',
         body: [
-          'Yes. Open Cut is free to download and use, and it is released under the MIT licence.',
+          'Yes. Nova Cut is free to download and use, and it is released under the MIT licence.',
           'There is no account to create, no trial period, no watermark on your exports, and no feature in the editor that is locked behind a payment.',
         ],
       },
       {
         q: 'Will editing features always be free?',
         body: [
-          '**Yes. Open Cut’s core editing features are intended to remain free.**',
+          '**Yes. Nova Cut’s core editing features are intended to remain free.**',
           'That covers video editing, photo editing, the timeline tools, audio tools, transitions, effects and export — and the improvements made to all of them over time. These are the things an editor *is*, and putting them behind a subscription would defeat the point of the project.',
         ],
       },
       {
-        q: 'Will Open Cut have AI features?',
+        q: 'Will Nova Cut have AI features?',
         body: [
-          'Open Cut has no AI features today, and none are in the current build.',
+          'Nova Cut has no AI features today, and none are in the current build.',
           'It may gain them later. AI is genuinely different from the rest of the editor: a background removal or an upscale can mean running a model on someone else’s hardware, and that carries a real, ongoing cost per use that does not go away.',
           'So if AI-powered features are introduced, they may be offered as **optional paid services**, priced to cover that processing. They would be additions alongside the editor, never a fence around it — the editing features listed above stay free either way.',
         ],
       },
       {
-        q: 'Who makes Open Cut?',
+        q: 'Who makes Nova Cut?',
         body: [
-          'Open Cut is an independent project under active development. It is not owned by a company, and there is no organisation behind it beyond the people writing it.',
+          'Nova Cut is an independent project under active development. It is not owned by a company, and there is no organisation behind it beyond the people writing it.',
         ],
       },
     ],
@@ -59,7 +59,7 @@ export const faqGroups = [
     title: 'Downloading and installing',
     items: [
       {
-        q: 'What platforms does Open Cut support?',
+        q: 'What platforms does Nova Cut support?',
         /** Rendered from data/site.js so it can never contradict the Download page. */
         dynamic: 'platforms',
       },
@@ -74,7 +74,7 @@ export const faqGroups = [
       {
         q: 'What is the difference between the installer and the portable build?',
         body: [
-          'The **installer** lets you choose where Open Cut goes, adds Start menu and desktop shortcuts, and associates `.opencut` project files so double-clicking one opens the editor. It can be removed from Windows’ normal Apps list.',
+          'The **installer** lets you choose where Nova Cut goes, adds Start menu and desktop shortcuts, and associates `.novacut` project files so double-clicking one opens the editor. It can be removed from Windows’ normal Apps list.',
           'The **portable** build is a single executable that runs from wherever you put it, including a USB drive. It does not create shortcuts or file associations. It is the right choice on a machine where you cannot install software.',
           'Both contain the same application.',
         ],
@@ -108,20 +108,20 @@ export const faqGroups = [
       {
         q: 'Is my work saved automatically?',
         body: [
-          'Yes. Open Cut autosaves as you work, and if it closes unexpectedly it offers to restore the session on the next launch — including the timeline, imported media, effects, playhead position, zoom level and selection.',
-          'Autosave is a safety net rather than a replacement for saving: use **Ctrl + S** to write a `.opencut` project file wherever you want it.',
+          'Yes. Nova Cut autosaves as you work, and if it closes unexpectedly it offers to restore the session on the next launch — including the timeline, imported media, effects, playhead position, zoom level and selection.',
+          'Autosave is a safety net rather than a replacement for saving: use **Ctrl + S** to write a `.novacut` project file wherever you want it.',
         ],
       },
       {
-        q: 'Does Open Cut work offline?',
+        q: 'Does Nova Cut work offline?',
         body: [
-          'Yes. Everything happens on your machine. Open Cut does not need an account and does not need a connection to edit or export.',
+          'Yes. Everything happens on your machine. Nova Cut does not need an account and does not need a connection to edit or export.',
         ],
       },
       {
-        q: 'Where does Open Cut store my files?',
+        q: 'Where does Nova Cut store my files?',
         body: [
-          'Projects are saved wherever you choose to save them, as `.opencut` files. Preferences, autosaves and caches live in Open Cut’s own application data folder, which the Storage section of Settings can show you, measure and clear.',
+          'Projects are saved wherever you choose to save them, as `.novacut` files. Preferences, autosaves and caches live in Nova Cut’s own application data folder, which the Storage section of Settings can show you, measure and clear.',
         ],
       },
     ],
@@ -144,7 +144,7 @@ export const faqGroups = [
       {
         q: 'What information helps most when reporting a problem?',
         body: [
-          'The version of Open Cut, your Windows version, and what you were doing when it went wrong — ideally the shortest sequence of steps that reproduces it.',
+          'The version of Nova Cut, your Windows version, and what you were doing when it went wrong — ideally the shortest sequence of steps that reproduces it.',
           'For an export or import problem, whether FFmpeg is installed and reachable on your PATH is almost always the first thing worth checking.',
           'The About section of Settings shows the version and system information you would need to include.',
         ],

@@ -25,7 +25,7 @@ const DYNAMIC = {
     const list = available.map((p) => `**${p.name}** (${p.arch})`).join(' and ');
     return [
       available.length
-        ? `Open Cut currently has a build for ${list}. It requires ${available[0].minimumOs}.`
+        ? `Nova Cut currently has a build for ${list}. It requires ${available[0].minimumOs}.`
         : 'No platform has a published build yet.',
       pending.length
         ? `${pending
@@ -40,7 +40,7 @@ const DYNAMIC = {
 
   ffmpeg() {
     if (ffmpeg.bundled) {
-      return ['No. Everything Open Cut needs ships inside the installer.'];
+      return ['No. Everything Nova Cut needs ships inside the installer.'];
     }
     return [
       `Yes — one thing. ${ffmpeg.summary}`,
@@ -64,7 +64,7 @@ const DYNAMIC = {
     const { issues, email, community } = site.contact;
     /* The same closing advice whichever route exists — worth saying once, not three times. */
     const detail =
-      'Whichever route you use, a useful report has three things in it: your Open Cut version, your Windows version, and the shortest sequence of steps that reproduces the problem. The About section of Settings shows the version and system details to quote.';
+      'Whichever route you use, a useful report has three things in it: your Nova Cut version, your Windows version, and the shortest sequence of steps that reproduces the problem. The About section of Settings shows the version and system details to quote.';
 
     if (issues) {
       return [
@@ -77,7 +77,7 @@ const DYNAMIC = {
     if (community) {
       return [
         `**On [Discord](${community}).** That is where bug reports, questions and feature requests go for now — post one there and it will be seen.`,
-        `There is no public issue tracker yet. Open Cut ${version} ${
+        `There is no public issue tracker yet. Nova Cut ${version} ${
           releaseStatus === 'released' ? 'is a very early release' : 'has not been publicly released yet'
         }, and one will be published alongside it rather than announced here before it exists.`,
         'It is worth checking the [Updates](/updates/) page first — the known issues for the current build are listed there in full, and the most common problems with it are already written down.',
@@ -86,7 +86,7 @@ const DYNAMIC = {
     }
 
     return [
-      `**There is no public bug tracker yet.** Open Cut ${version} ${
+      `**There is no public bug tracker yet.** Nova Cut ${version} ${
         releaseStatus === 'released' ? 'is a very early release' : 'has not been publicly released yet'
       }, and a reporting channel will be published alongside it rather than announced here before it exists.`,
       email
@@ -152,7 +152,7 @@ export function helpPage() {
       <div class="wrap wrap--article">
         <p class="eyebrow">Help</p>
         <h1 style="font-size:var(--t-h1)">Help &amp; FAQ</h1>
-        <p class="lede" style="margin-top:var(--s5);max-width:60ch">Straight answers about what Open Cut is,
+        <p class="lede" style="margin-top:var(--s5);max-width:60ch">Straight answers about what Nova Cut is,
           what it costs, what it needs installed, and what it can’t do yet.</p>
         <nav class="btn-row" style="margin-top:var(--s6)" aria-label="Jump to a section">
           ${faqGroups
@@ -186,15 +186,15 @@ export function helpPage() {
         <h2>Ready to edit?</h2>
         <p class="lede">Free to download, free to keep using.</p>
         <div class="btn-row">
-          ${button({ href: '/download/', label: 'Download Open Cut', icon: icons.download, large: true })}
+          ${button({ href: '/download/', label: 'Download Nova Cut', icon: icons.download, large: true })}
         </div>
       </div>
     </section>`;
 
   return page({
-    title: 'Help & FAQ — Open Cut',
+    title: 'Help & FAQ — Nova Cut',
     description:
-      'Answers about Open Cut: is it free, will editing features stay free, will there be AI features, what platforms are supported, and where to report a bug.',
+      'Answers about Nova Cut: is it free, will editing features stay free, will there be AI features, what platforms are supported, and where to report a bug.',
     path: '/help/',
     current: '/help/',
     body,

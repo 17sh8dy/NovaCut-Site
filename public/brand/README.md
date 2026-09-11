@@ -1,9 +1,9 @@
-# Open Cut brand assets
+# Nova Cut brand assets
 
 ## Where the mark is authored
 
-**`assets/OpenCut.svg` and `assets/OpenCut-small.svg` in the application repository
-(`D:\Dev\OpenCut`) are the single source of truth for every icon Open Cut ships**, and
+**`assets/NovaCut.svg` and `assets/NovaCut-small.svg` in the application repository
+(`D:\Dev\NovaCut`) are the single source of truth for every icon Nova Cut ships**, and
 `npm run icon` there rasterises them into the Windows `.ico`, the macOS `.icns`, the Linux
 icon-theme set and the two in-app logos.
 

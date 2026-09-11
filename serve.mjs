@@ -53,5 +53,5 @@ createServer(async (req, res) => {
     }
   }
 }).listen(PORT, () => {
-  console.log(`Open Cut website: http://localhost:${PORT}`);
+  console.log(`Nova Cut website: http://localhost:${PORT}`);
 });
