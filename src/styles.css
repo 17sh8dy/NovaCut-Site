@@ -857,6 +857,275 @@ a.switcher__item:hover {
   }
 }
 
+/* The dropdown's own footer row — same rhythm as the last stagger delay above it. */
+.switcher__viewall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: var(--s1);
+  padding: 8px var(--s2);
+  border: 0;
+  border-top: 1px solid var(--border);
+  border-radius: 0 0 var(--r-md) var(--r-md);
+  background: none;
+  color: var(--text-muted);
+  font-family: var(--font);
+  font-size: var(--t-tiny);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+
+.switcher__menu[data-open='true'] .switcher__viewall {
+  animation: oc-nav-item 200ms var(--ease) backwards;
+  animation-delay: 130ms;
+}
+
+.switcher__viewall:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.switcher__viewall svg {
+  width: 13px;
+  height: 13px;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.switcher__viewall:hover svg {
+  transform: translateX(2px);
+}
+
+/*
+ * ── All products ───────────────────────────────────────────────────────────────────
+ *
+ * The switcher's own product list again, full-screen and card-sized, opened by
+ * `.switcher__viewall`. Same glass treatment as `.header` (color-mix + backdrop-filter over
+ * this theme's --bg) rather than Online Earth's raw rgba — this site already has a translucent-
+ * surface language of its own, and the point is to feel like a bigger room in the same house,
+ * not a different building. Toggled via [data-open] for the same reason the switcher menu and
+ * mobile nav are: display:none can't transition, so JavaScript takes the panel off [hidden]
+ * before anything can fade — see site.js.
+ */
+.nova-all {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: clamp(28px, 8vh, 96px) var(--s5) var(--s7);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: saturate(160%) blur(28px);
+  -webkit-backdrop-filter: saturate(160%) blur(28px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur) var(--ease), visibility 0s linear var(--dur);
+}
+
+.nova-all[hidden] {
+  display: none;
+}
+
+.nova-all[data-open='true'] {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--dur) var(--ease);
+}
+
+body.nova-all-locked {
+  overflow: hidden;
+}
+
+.nova-all__close {
+  position: fixed;
+  top: clamp(16px, 4vh, 32px);
+  right: clamp(16px, 4vw, 40px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.nova-all__close:hover {
+  background: var(--surface-raised);
+  transform: scale(1.05);
+}
+
+.nova-all__close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.nova-all__inner {
+  width: 100%;
+  max-width: 880px;
+  text-align: center;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: transform var(--dur) var(--ease) 40ms, opacity var(--dur) ease 40ms;
+}
+
+.nova-all[data-open='true'] .nova-all__inner {
+  transform: none;
+  opacity: 1;
+}
+
+.nova-all__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 var(--s3);
+  color: var(--text-faint);
+  font-size: var(--t-tiny);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nova-all__eyebrow svg {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.nova-all__title {
+  margin: 0 0 var(--s2);
+  font-size: var(--t-h2);
+  letter-spacing: -0.02em;
+}
+
+.nova-all__subtitle {
+  max-width: 46ch;
+  margin: 0 auto var(--s6);
+  color: var(--text-muted);
+}
+
+.nova-all__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--s4);
+  text-align: left;
+}
+
+.nova-all__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: var(--s5) var(--s4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+}
+
+.nova-all[data-open='true'] .nova-all__card {
+  animation: oc-card-pop 380ms var(--ease) both;
+}
+
+.nova-all[data-open='true'] .nova-all__card:nth-child(2) { animation-delay: 40ms; }
+.nova-all[data-open='true'] .nova-all__card:nth-child(3) { animation-delay: 80ms; }
+.nova-all[data-open='true'] .nova-all__card:nth-child(4) { animation-delay: 120ms; }
+.nova-all[data-open='true'] .nova-all__card:nth-child(5) { animation-delay: 160ms; }
+
+@keyframes oc-card-pop {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+a.nova-all__card {
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+a.nova-all__card:hover {
+  background: var(--surface-raised);
+  border-color: var(--accent-line);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.nova-all__card--current {
+  cursor: default;
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+
+.nova-all__card--soon {
+  cursor: default;
+  color: var(--text-faint);
+}
+
+.nova-all__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--s3);
+  border-radius: var(--r-md);
+  background: var(--surface-raised);
+  color: var(--text-muted);
+}
+
+.nova-all__card--current .nova-all__icon {
+  color: var(--accent-text);
+  background: var(--bg);
+}
+
+.nova-all__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nova-all__label {
+  font-size: var(--t-small);
+  font-weight: 700;
+}
+
+.nova-all__tagline {
+  color: var(--text-faint);
+  font-size: var(--t-tiny);
+}
+
+.nova-all__card--current .nova-all__tagline {
+  color: var(--accent-text);
+}
+
+.nova-all__badge {
+  position: absolute;
+  top: var(--s3);
+  right: var(--s3);
+  padding: 2px 9px;
+  border-radius: var(--r-full);
+  background: var(--surface-raised);
+  color: var(--text-faint);
+  font-size: var(--t-tiny);
+  font-weight: 600;
+}
+
+@media (max-width: 560px) {
+  .nova-all__grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--s3);
+  }
+}
+
 /* Mobile navigation. The checkbox-free version: a button toggling a class, progressively
    enhanced — with JavaScript off the nav links remain reachable in the footer. */
 .nav-toggle {

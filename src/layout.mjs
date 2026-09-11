@@ -14,7 +14,7 @@
  */
 
 import { site, nav, footerLinks, version } from '../data/site.js';
-import { esc, escJson, icons, novaSwitcher } from './components.mjs';
+import { esc, escJson, icons, novaSwitcher, novaAllProducts } from './components.mjs';
 
 /*
  * The mark, inlined so the header needs no extra request.
@@ -194,6 +194,7 @@ export function page({ title, description, path, body, current, jsonLd }) {
 ${body}
   </main>
   ${footer()}
+  ${novaAllProducts('nova-cut', 'Nova Cut Website')}
   <script src="/site.js" defer></script>
 </body>
 </html>

@@ -125,6 +125,49 @@
         switcherTrigger.focus();
       }
     });
+
+    /* ── All products ──────────────────────────────────────────────────────────── */
+
+    var viewAllBtn = document.getElementById('nova-switcher-viewall');
+    var allProducts = document.getElementById('nova-all');
+
+    if (viewAllBtn && allProducts) {
+      /* Same [hidden] → [data-open] handover as the switcher menu above. */
+      allProducts.hidden = false;
+      allProducts.setAttribute('data-open', 'false');
+
+      var closeBtn = document.getElementById('nova-all-close');
+
+      var setAllProductsOpen = function (isOpen) {
+        allProducts.setAttribute('data-open', String(isOpen));
+        document.body.classList.toggle('nova-all-locked', isOpen);
+      };
+
+      viewAllBtn.addEventListener('click', function () {
+        setSwitcherOpen(false);
+        setAllProductsOpen(true);
+        if (closeBtn) closeBtn.focus();
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+          setAllProductsOpen(false);
+          viewAllBtn.focus();
+        });
+      }
+
+      /* A click on the scrim itself (not a card, not the panel) closes it. */
+      allProducts.addEventListener('click', function (e) {
+        if (e.target === allProducts) setAllProductsOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && allProducts.getAttribute('data-open') === 'true') {
+          setAllProductsOpen(false);
+          viewAllBtn.focus();
+        }
+      });
+    }
   }
 
   /* ── Deep links into a collapsed answer ─────────────────────────────────────────── */

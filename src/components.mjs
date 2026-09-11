@@ -215,6 +215,51 @@ export function novaSwitcher(current, currentLabel) {
       <div class="switcher__menu" id="nova-switcher-menu" role="menu" aria-labelledby="nova-switcher-trigger" hidden>
         <p class="switcher__eyebrow">Nova</p>
         ${novaProducts.map(item).join('')}
+        <button class="switcher__viewall" type="button" id="nova-switcher-viewall" aria-haspopup="dialog" aria-controls="nova-all">
+          <span>View all</span>${icons.arrowRight}
+        </button>
+      </div>
+    </div>`;
+}
+
+/**
+ * The full-screen "All products" view `switcher__viewall` opens — the same product list as the
+ * switcher's dropdown, laid out as a grid of cards instead of a short menu. The dropdown stays
+ * the quick way to jump straight to a sibling product; this is the slower, better-looking one
+ * for actually browsing the family, which is why it exists at all rather than just widening the
+ * menu.
+ *
+ * One instance per page, injected once by layout.mjs — not per-switcher, since there is only
+ * ever one switcher (and therefore one "view all") on a page. `hidden` by default for the same
+ * reason the switcher menu is: without JavaScript there is no way to open it, so it should not
+ * pretend to be reachable.
+ *
+ * @param {string} current  see novaSwitcher's own doc for both parameters.
+ * @param {string} [currentLabel]
+ */
+export function novaAllProducts(current, currentLabel) {
+  const card = (p) => {
+    const isCurrent = p.id === current;
+    const glyph = icons[p.icon] ?? icons.info;
+    const label = isCurrent && currentLabel ? currentLabel : p.label;
+    const body = `<span class="nova-all__icon">${glyph}</span><span class="nova-all__label">${esc(label)}</span><span class="nova-all__tagline">${esc(isCurrent ? "You're here" : p.tagline)}</span>`;
+
+    if (isCurrent) {
+      return `<span class="nova-all__card nova-all__card--current">${body}</span>`;
+    }
+    if (!p.url) {
+      return `<span class="nova-all__card nova-all__card--soon">${body}<span class="nova-all__badge">Soon</span></span>`;
+    }
+    return `<a class="nova-all__card" href="${esc(p.url)}">${body}</a>`;
+  };
+
+  return `<div class="nova-all" id="nova-all" role="dialog" aria-modal="true" aria-labelledby="nova-all-title" hidden>
+      <button class="nova-all__close" type="button" id="nova-all-close" aria-label="Close">${icons.close}</button>
+      <div class="nova-all__inner">
+        <p class="nova-all__eyebrow">${NOVA_MARK}<span>Nova</span></p>
+        <h2 class="nova-all__title" id="nova-all-title">All products</h2>
+        <p class="nova-all__subtitle">Everything Nova makes, in one place.</p>
+        <div class="nova-all__grid">${novaProducts.map(card).join('')}</div>
       </div>
     </div>`;
 }
