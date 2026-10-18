@@ -34,7 +34,7 @@ export const novaProducts = [
     label: 'Replay.GG',
     tagline: 'Record and clip gameplay',
     icon: 'gamepad',
-    url: 'https://replay.gg', // TODO: confirm real domain
+    url: 'https://replay-gg-site.shadylabs.workers.dev/',
   },
   {
     id: 'atlas',
