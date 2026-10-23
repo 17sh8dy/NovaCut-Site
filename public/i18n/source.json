@@ -1,0 +1,2239 @@
+{
+  "site": "novacut",
+  "pages": 8,
+  "strings": [
+    "© 2026 Nova Cut. Released under the MIT licence.",
+    "<1/> Free · MIT licence",
+    "<1/> Version 1.0.0 — first public release in preparation",
+    "<1/> Windows x64",
+    "<1>About</1>",
+    "<1>Discord</1>",
+    "<1>Download</1>",
+    "<1>effect categories</1>",
+    "<1>effects</1>",
+    "<1>Every editing feature is free and is intended to remain free</1> — video editing, photo editing, timeline tools, audio tools, transitions, effects, export, and the improvements made to them.",
+    "<1>Features</1>",
+    "<1>Help &amp; FAQ</1>",
+    "<1>Nova Cut has no AI features today.</1> Nothing in the current build uses AI, and nothing on this site describes an AI feature that exists.",
+    "<1>Nova Cut runs entirely on your computer.</1> Your projects, your media and your exports stay on your own disk. The editor works with no internet connection at all.",
+    "<1>On <2>Discord</2>.</1> That is where bug reports, questions and feature requests go for now — post one there and it will be seen.",
+    "<1>Privacy</1>",
+    "<1>Product Switcher</1> <2/>",
+    "<1>Report a bug</1>",
+    "<1>System requirements</1>",
+    "<1>Terms</1>",
+    "<1>transitions</1>",
+    "<1>Updates</1>",
+    "<1>Yes. Nova Cut’s core editing features are intended to remain free.</1>",
+    "145.2 MB",
+    "145.5 MB",
+    "18 transitions",
+    "18 transitions, all implemented as shaders. A transition window is centred on the cut and clamped so that adding one never shortens the sequence.",
+    "37 capabilities across the video editor, the photo editor and the export pipeline — each one confirmed in the running application before it was written down here. What isn’t built yet is listed at the bottom, separately.",
+    "480p, 720p, 1080p, 1440p, 4K and 8K, at 24, 25, 30, 50, 60, 120, 144 or 240 frames per second.",
+    "53 effects across seven categories",
+    "53 GPU effects across seven categories, each with real parameters that can be keyframed.",
+    "9 September 2026",
+    "A browser for background music and sound effects is stubbed out in the interface and has no content behind it yet.",
+    "A failed export left FFmpeg running with the output file still open, so the part-written file could not be deleted or overwritten.",
+    "A failed save reported nothing at all — no message, no warning — so a save that had not happened looked exactly like one that had.",
+    "A full layer-based image editor in the same application — for thumbnails, banners and social posts.",
+    "A GPU with WebGL 2 support. The preview and the exporter share one GPU compositor.",
+    "A layer-based photo editor: layer tree with groups, 27 blend modes, layer masks, adjustment layers, and export to PNG, JPG and WebP.",
+    "A native Windows application: frameless window with app-drawn chrome, native menus, persisted window geometry, single-instance handling, an unsaved-changes guard on quit, and .novacut file associations.",
+    "A neutral interface that follows your operating system’s light/dark setting by default, with a choosable accent colour for controls.",
+    "A note on AI",
+    "A note on export speed generally: most of the time goes into seeking the source video, so footage with widely spaced keyframes exports several times slower than the same footage with a normal keyframe interval. On this machine the identical project measured 66ms per frame against an 8-second keyframe interval and 19ms against a 1-second one.",
+    "A photo document larger than the preview cap exported at preview resolution rather than document resolution.",
+    "A plain description of what Nova Cut does with your data. It is short because the answer is mostly “nothing”.",
+    "A real encoder pipeline: frames stream from the GPU compositor straight into FFmpeg.",
+    "A real image editor for thumbnails, banners and social posts: a layer tree with groups and 27 blend modes, painted masks, selection tools, brushes, vector shapes and text.",
+    "A real layer tree with groups, per-layer opacity, 27 blend modes, and painted layer masks. Masks apply after the layer’s effects, which is what makes \"add a blur, then paint its mask\" a non-destructive blur brush.",
+    "A real non-linear timeline: multi-track, non-destructive, and undoable all the way down.",
+    "A real Windows application with native menus, window state that persists between sessions, an unsaved-changes guard on quit, and file associations — not a web page in a wrapper.",
+    "A searchable settings window with System, Light and Dark themes and a choosable accent colour, where anything not yet wired up is shown disabled with the reason.",
+    "A thumbnail composed from the built-in asset library — annotations, shapes, styled text and stickers.",
+    "A transition froze the picture for the rest of the export. Rendering a transition asks each clip for frames outside its own range, and that seek was never acknowledged, so the source stopped decoding and every later frame waited out a timeout. One cross dissolve took an eight-second export from 22 seconds to about 190, and left the second half of the video a still image.",
+    "A transition window is centered on the cut and clamped to a third of the shorter clip, so adding one changes how the cut looks without changing how long the sequence is.",
+    "About",
+    "About — Nova Cut",
+    "About 550 MB for the application, plus room for your projects and exports.",
+    "About Nova Cut",
+    "Adjustment layers",
+    "AI is different.",
+    "AI-assisted tools",
+    "All products",
+    "An export could hang forever if FFmpeg was missing or rejected the codec, instead of reporting the failure.",
+    "An NSIS installer and a portable executable for Windows x64, with icons rendered from the project’s single source-of-truth vector logo.",
+    "Answers about Nova Cut: is it free, will editing features stay free, will there be AI features, what platforms are supported, and where to report a bug.",
+    "AppImage and .deb targets are configured, but no Linux build has been produced or tested yet.",
+    "Apply as many effects to a clip as you like and reorder them. Each exposes real parameters, and those parameters can be keyframed over time.",
+    "Applying an odd number of effects flipped the picture upside down. The compositor’s quad sampled top-down while frame buffer textures are bottom-up, so the error cancelled itself at even effect counts and was invisible in casual testing.",
+    "Architecture",
+    "As the MIT licence states, the software is provided “as is”, without warranty of any kind. Nova Cut 1.0.0 is an early version with known issues, listed in full on the <1>Updates</1> page.",
+    "Asset library",
+    "Atlas",
+    "Audio",
+    "Audio effects",
+    "Audio library",
+    "Audio stays in sync through speed changes",
+    "Audio tools",
+    "Audio tracks",
+    "Autosave and crash recovery",
+    "Autosave is a safety net rather than a replacement for saving: use <1>Ctrl + S</1> to write a <2/> project file wherever you want it.",
+    "Autosave stopped for the rest of the session after a single failed write, silently, while the interface went on implying it was running.",
+    "Autosave with crash recovery that restores the timeline, media, effects, playhead, zoom and selection.",
+    "Before you install",
+    "Blur, colour, light, stylise, distort, glitch and layer-style effects — including Gaussian and motion blur, exposure and white balance, glow, vignette, film grain, VHS, glitch, tilt shift, kaleidoscope and chromatic aberration.",
+    "Both contain the same application.",
+    "Brush, eraser, paint bucket and gradient, with pen-pressure support and smoothing. A whole stroke is a single undo step no matter how many points it contains.",
+    "Build date",
+    "Build targets are configured for both, but no build has been produced or tested on either platform.",
+    "Build targets are configured, but no macOS build has been produced or tested yet.",
+    "Builds are not code-signed yet, so Windows SmartScreen shows a warning the first time you run the installer.",
+    "Builds are not code-signed, so Windows SmartScreen warns the first time you run the installer.",
+    "Can I put images or GIFs on the video timeline?",
+    "Cancel now actually stops an export that is running, rather than only closing the window while the render carried on in the background.",
+    "Canvas rotate and flip, rulers, smart guides and snapping in the photo editor.",
+    "Canvas tools",
+    "Captions",
+    "Change a clip’s rate or play it backwards. Speed is applied to picture and sound together, and the timeline length follows.",
+    "Changes",
+    "Changing a clip’s speed retimes its audio with it, and the exported file carries the same mix you heard in the preview.",
+    "Choose <1>More info</1> and then <2>Run anyway</2> to continue. Code signing is a certificate the project does not have yet, not a statement about the file.",
+    "Clip blend modes in video",
+    "Clip speed and reverse",
+    "Clip speed and reverse, applied to picture and sound together.",
+    "Clips snap to the playhead, to the sequence start and to neighbouring clip edges, so cuts land exactly where you mean them to.",
+    "Close",
+    "Colour theme",
+    "Coming soon",
+    "Container and codec matrix",
+    "Creator workflow",
+    "Cross dissolve, fade through, wipe, circle reveal, slide, push, zoom punch, spin, whip pan, impact shake, blur dissolve, flash, glitch, luma burn, pixelize, 3D flip, cube and page turn.",
+    "Cut the video and design its thumbnail without leaving the app — or paying for two of them.",
+    "Dark",
+    "Dark theme",
+    "Dedicated audio tracks alongside your video tracks, each with its own mute, solo and lock.",
+    "Designed for, but not delivered.",
+    "Didn’t find it here?",
+    "Disk space",
+    "Do I need anything else installed?",
+    "Does Nova Cut work offline?",
+    "Does uninstalling delete my projects?",
+    "Download",
+    "Download — Nova Cut",
+    "Download for Windows",
+    "Download Nova Cut",
+    "Download Nova Cut 1.0.0 for Windows. Free desktop video and photo editing, with no account, no watermark and no subscription.",
+    "Downloading and installing",
+    "Downloads become active when version 1.0.0 is published.",
+    "Editing a video and designing its thumbnail are ordinary things to want to do. Somewhere along the way both became rented. You can find yourself paying monthly for the ability to cut a clip, add a title and export a file — and losing that ability the month you stop.",
+    "Editing shouldn’t be locked behind a subscription.",
+    "Edits made while a save was in progress were marked as already saved. Since the quit guard reads that same flag, the window could close without warning and lose them.",
+    "Effects",
+    "Effects and transitions",
+    "Effects that declared parameters but rendered nothing were either implemented or removed, so the effect list no longer contains entries that do nothing.",
+    "EQ, pitch and normalise appear in the audio inspector but are not applied by the audio engine yet.",
+    "EQ, pitch shifting and normalisation are modelled and appear in the inspector, but the audio engine does not apply them yet.",
+    "Every edit is a command with a full undo history. Continuous edits such as dragging a slider coalesce into one step, so undo removes the whole gesture rather than a hundred pixels of it.",
+    "Every editing feature will always be free.",
+    "Every effect and every transition is a real GPU shader — what you see in the preview is what lands in the file.",
+    "Every preference is searchable, and anything not yet wired up is shown disabled with the reason — rather than as a switch that flips and does nothing.",
+    "Every release is written up on the <1>Updates</1> page, including what is new, what improved, what was fixed, and the known issues that are still open at the time of release.",
+    "Everything else on this page — the build details, the system requirements and the prerequisites — is accurate today and will not change when the link goes live.",
+    "Everything in the box.",
+    "Everything Nova makes, in one place.",
+    "Everything that changes in Nova Cut, written down. Each release lists what is new, what improved, what was fixed — and the known issues that were still open when it shipped, because those matter more than the rest of it put together.",
+    "Explore features",
+    "Export",
+    "Export at full document resolution with format, quality and transparency options, or use the one-click PNG export. Exports composite off-screen at document size, so a scaled-down preview never becomes a scaled-down file.",
+    "Export now streams frames from the same GPU compositor the preview uses, so there is no second render path that can disagree with what you were watching.",
+    "Export PNG, JPG and WebP",
+    "Export the whole sequence or a range",
+    "Export to MP4, MOV, MKV, AVI and animated GIF at up to 8K and up to 240 fps, with H.264, H.265, VP9, AV1 and ProRes, quality presets or explicit bitrate, optional hardware encoding, and live size and render-time estimates.",
+    "Exporting from a 4K source costs roughly four times as much per second of output as a 1080p source, because every frame is decoded at full resolution before being scaled down. A 1080p project renders at around three seconds per second of output.",
+    "Exports are about 20% faster. The render loop now reads each finished frame off the GPU asynchronously and starts the next frame’s decode before draining the current one, so work that used to happen one after another overlaps. Measured over repeated runs on the same project: 52.2s to 41.0s, and the resulting file is byte-for-byte identical to the one the previous build produced — this is the same export, done sooner, not a lower-quality one.",
+    "Exports carried no colour information at all, so every player guessed — and they do not all guess alike. Output is now converted and tagged as BT.709, and round-trips within one value of 255 against the source.",
+    "Exports could contain long runs of black frames. The exporter waited a fixed interval for asynchronous seeks and wrote a black frame whenever a decode missed the window — measured at 746 of 1569 frames on one test render. Seeks are now awaited on the decoder’s own events; the same render measured 0 black frames afterwards.",
+    "Fade in and fade out",
+    "Features",
+    "Features — Nova Cut",
+    "FFmpeg ships inside the installer, so importing, thumbnails and export all work on a clean machine with nothing else to install. The bundled build is LGPL-licensed; its licence text is included, and OPENCUT_FFMPEG lets you point Nova Cut at your own build instead.",
+    "File",
+    "First public release",
+    "Fixed",
+    "For an export or import problem, whether FFmpeg is installed and reachable on your PATH is almost always the first thing worth checking.",
+    "Four quality presets or an explicit bitrate, configurable audio bitrate, and an option to use GPU encoding when the machine offers it.",
+    "Frame-accurate timing",
+    "Free to download, free to keep using.",
+    "Full build details, prerequisites and system requirements are on the download page.",
+    "Future editing improvements",
+    "Get Nova Cut",
+    "Get the current build",
+    "Get the latest version of Nova Cut for your desktop. It’s free, there’s no account to create, and there’s no watermark on anything you export.",
+    "Go to downloads",
+    "Graphics",
+    "Hardware-accelerated export always asked for an NVIDIA encoder, so the option failed outright on AMD and Intel machines. It now uses whichever encoder the machine actually has.",
+    "Help",
+    "Help & FAQ — Nova Cut",
+    "Help &amp; FAQ",
+    "How do I find out what changed in a release?",
+    "How it’s built",
+    "If Nova Cut ever gains a feature that sends data anywhere — an optional AI service being the obvious candidate — it will be opt-in, it will say what it sends before it sends it, and this page will be updated before the feature ships rather than after.",
+    "If this changes",
+    "If you would rather not click through a SmartScreen warning, the portable build has the same behaviour — the warning comes from the missing signature, not from the installer format.",
+    "Images export from the photo editor to PNG, JPG and WebP at full document resolution.",
+    "Import video and audio, search what you have imported, and drag it onto the timeline. Thumbnails and durations are read from the files themselves.",
+    "Importing without FFmpeg installed reported success and produced a zero-length clip with invented dimensions. It now says what went wrong and what to do about it.",
+    "Improved",
+    "In the light theme, the success, warning and error colours were the ones tuned for the dark theme and were close to illegible on white — warning text measured 2.0:1 against its background where 4.5:1 is the standard. All three, and the muted label colour, are now tuned for light surfaces.",
+    "Installer",
+    "Is my work saved automatically?",
+    "Is Nova Cut free?",
+    "It is a native desktop application rather than a website — your media stays on your own machine, and editing does not require an internet connection.",
+    "It is worth checking the <1>Updates</1> page first — the known issues for the current build are listed there in full, and the most common problems with it are already written down.",
+    "It may gain them later, and they are genuinely a different kind of thing: removing a background or upscaling a shot can mean running a model on hardware that costs money every single time it runs. That cost does not go away after the download.",
+    "It may gain them later. AI is genuinely different from the rest of the editor: a background removal or an upscale can mean running a model on someone else’s hardware, and that carries a real, ongoing cost per use that does not go away.",
+    "Jump to a section",
+    "Known issues",
+    "Layers, groups and masks",
+    "Layers, masks and selections — built in.",
+    "Lets you choose the install location, adds Start menu and desktop shortcuts, and associates .novacut project files.",
+    "Licence",
+    "Light",
+    "Light theme",
+    "Linux",
+    "Live size and render-time estimates",
+    "macOS",
+    "macOS and Linux are planned. Build targets are configured, but no macOS build has been produced or tested yet. AppImage and .deb targets are configured, but no Linux build has been produced or tested yet. No release date has been set for either.",
+    "macOS and Linux builds",
+    "Match system theme",
+    "Media library",
+    "Menu",
+    "Minimum OS",
+    "MIT — free to use",
+    "More platforms are planned. Nova Cut is built so that the editor itself is platform-agnostic — only the layer that talks to the operating system has to change — but a platform is not supported until there is a build that has been tested on it.",
+    "MP4, MOV, MKV, AVI and animated GIF, with H.264, H.265, VP9, AV1 and ProRes offered only where the container actually supports them.",
+    "Multi-track timeline",
+    "Multi-track video and audio timeline with split, trim, ripple delete, duplicate, snapping, magnetic edges, zoom and per-track mute, solo, lock, hide and rename.",
+    "Multi-track video editing, 53 GPU effects, 18 transitions, a layer-based photo editor and export to 8K. Every feature listed is confirmed in the running application.",
+    "Native desktop application",
+    "New",
+    "New projects are named for the time they were created — \"Nova Cut Video File at 1.42 PM\", or \"Nova Cut Photo File at…\" in the photo editor — instead of every one of them being called Untitled. Renaming works as before and a name you choose is kept.",
+    "No release date has been set for either platform.",
+    "No trial period, no watermark, no feature that stops working when you stop paying.",
+    "No warranty",
+    "No. Everything Nova Cut needs ships inside the installer.",
+    "No. Uninstalling removes the application and leaves your projects, preferences and exports where they are. Your own files are never removed by the uninstaller.",
+    "Non-destructive adjustments that affect the layers beneath them, and which can themselves be masked.",
+    "Not built yet",
+    "Not currently. The video timeline accepts video and audio; still images and GIFs are edited in the photo editor instead.",
+    "Nothing AI-powered exists in Nova Cut today. The architecture has a place for it, and if it arrives it will be optional.",
+    "Nova",
+    "Nova Cut",
+    "Nova Cut — creator workflow",
+    "Nova Cut — effects and transitions",
+    "Nova Cut — export",
+    "Nova Cut — home",
+    "Nova Cut — photo editing",
+    "Nova Cut — photo editor",
+    "Nova Cut — Powerful Editing. Made Open.",
+    "Nova Cut — video editing",
+    "Nova Cut — video editor",
+    "Nova Cut 1.0.0",
+    "Nova Cut 1.0.0 has not been published yet. These notes describe the build as it stands and are kept up to date as it changes.",
+    "Nova Cut can use <1>FFmpeg</1> for media import, thumbnails and video export. FFmpeg is a separate project with its own licence, and it is not included in the current build — you install it yourself. Nova Cut is also built on Electron, Chromium and Node.js, each under its own licence.",
+    "Nova Cut claims no rights over anything you make with it. Your projects, your media and your exports are yours. There is no watermark, no attribution requirement and no restriction on commercial use of what you produce.",
+    "Nova Cut currently has a build for <1>Windows</1> (x64). It requires Windows 10 (64-bit) or later.",
+    "Nova Cut has no AI features today, and none are in the current build.",
+    "Nova Cut has no AI features today. If AI-powered features are introduced in future, they may be offered as optional paid services, because the processing behind them carries an ongoing cost. Such features would be additions; they would not place any existing editing feature behind a payment.",
+    "Nova Cut is a desktop video and photo editor built the other way round. You download it, it runs on your machine, it opens your files, and it keeps working. There is no account, no trial period, no watermark, and no feature in the editor that stops working when you stop paying.",
+    "Nova Cut is a desktop video and photo editor. It combines a multi-track, non-linear video timeline and a layer-based image editor in one application, built for creators who need to cut a video and design its thumbnail without paying for two subscriptions.",
+    "Nova Cut is a native desktop application, not a web page in a wrapper. The preview and the exporter share one GPU compositor, so what you watch is what gets written to the file. Timeline positions are stored as integer ticks rather than floating-point seconds, so thousands of edits never accumulate drift. Every edit is a command with a real undo history behind it.",
+    "Nova Cut is a powerful desktop video and photo editor built for creators who want professional tools without putting essential editing features behind a subscription.",
+    "Nova Cut is a powerful desktop video and photo editor built for creators. Every core editing feature will always be free.",
+    "Nova Cut is an independent project under active development. It is not owned by a company, and there is no organisation behind it beyond the people writing it.",
+    "Nova Cut is an independent project with no published contact channel yet. When there is one, it will be listed on the <1>Help</1> page.",
+    "Nova Cut is built around a simple idea: powerful creative software shouldn’t require a subscription just to reach the basic tools you need.",
+    "Nova Cut is built around a simple idea: powerful creative software shouldn’t require a subscription to reach the basic tools you need. An independent, actively developed desktop editor.",
+    "Nova Cut is early. Version 1.0.0 is its first release, and it has not been published yet. There is one platform with a build, a list of things that are designed for but not delivered, and a set of known issues written down in full rather than smoothed over.",
+    "Nova Cut is free software released under the MIT licence. This page explains what that means in practice; the licence itself is the actual legal text.",
+    "Nova Cut is free software under the MIT licence. Use it for anything, including commercial work. Your projects and exports are yours.",
+    "Nova Cut is released under the <1>MIT licence</1>. In practice that means you may use it for anything, including commercial work, without asking permission and without paying anything. You may copy it, modify it and redistribute it, provided the licence notice travels with it.",
+    "Nova Cut is under active development and improving. It is an independent project released under the MIT licence — not a product of a company, and not something with a roadmap sold in advance.",
+    "Nova Cut runs entirely on your computer. No account, no analytics, no tracking, and no media ever leaves your machine.",
+    "Nova Cut stores preferences, your recent-projects list, autosave snapshots and caches in its own application data folder on your machine. The Privacy section of Settings shows you exactly where that is and can open it, and the Storage section can measure and clear it.",
+    "Nova Cut Website",
+    "Nova Cut-1.0.0-portable.exe",
+    "Nova Cut-1.0.0-x64.exe",
+    "Nova Games",
+    "NSIS installer (.exe)",
+    "One renderer for preview and export",
+    "One-click annotations, shapes, styled text presets and emoji stickers, so a thumbnail can be assembled without drawing anything from scratch.",
+    "Operating system",
+    "Other platforms",
+    "Paint tools",
+    "Per-clip fades in seconds, applied on top of the volume automation rather than instead of it.",
+    "Photo editing",
+    "Photo editor",
+    "Photo paint tools — brush, eraser, paint bucket and gradient — with pen pressure, smoothing, and one undo step per stroke.",
+    "Photo selection tools — rectangle, ellipse, lasso, polygon lasso and magic wand — with boolean combines, feather, expand and invert, stored as geometry so they survive undo.",
+    "Planned",
+    "Platform",
+    "Play/pause, split, undo, redo, delete, ripple delete, duplicate, new, open and save all have shortcuts, and every one of them can be rebound with conflict detection.",
+    "Portable",
+    "Portable executable (.exe)",
+    "Position, scale, rotation and opacity can each be animated with keyframes, using linear, hold, ease or custom bezier interpolation.",
+    "Positions are stored as integer ticks rather than floating-point seconds, so thousands of edits never accumulate drift and cuts stay on exact frame boundaries.",
+    "Powerful editing. Made open.",
+    "Powerful editing. Made open. A desktop video and photo editor whose core editing features will always be free.",
+    "Powerful editing.<1/>Made open.",
+    "Practical advice rather than legal language: keep backups of source media you cannot replace, and save your projects. Nova Cut autosaves and can recover a session after a crash, but no editor should be the only copy of something that matters.",
+    "Primary",
+    "Privacy",
+    "Privacy — Nova Cut",
+    "Product",
+    "Product Switcher",
+    "Project",
+    "Project files",
+    "Projects are saved as .novacut files. Double-clicking one opens it, and an already-running Nova Cut takes it over rather than starting a second copy.",
+    "Projects are saved wherever you choose to save them, as <1/> files. Preferences, autosaves and caches live in Nova Cut’s own application data folder, which the Storage section of Settings can show you, measure and clear.",
+    "Quality, bitrate and hardware acceleration",
+    "Questions",
+    "Questions before you install?",
+    "Read the FAQ",
+    "Read the release notes",
+    "Ready to edit?",
+    "Rebindable keyboard shortcuts",
+    "Rebindable keyboard shortcuts with conflict detection.",
+    "Recommended",
+    "Record and clip gameplay",
+    "Rectangle, ellipse, lasso, polygon lasso and magic wand, with boolean combines, feather, expand and invert. Selections are stored as geometry, so they survive undo and are restored with the edit that used them.",
+    "Rectangles, rounded rectangles, ellipses, triangles, lines, arrows, stars, polygons, hearts, diamonds, chevrons, speech bubbles and callouts, plus editable text with styled presets.",
+    "Release notes",
+    "Release notes for Nova Cut: what is new, what improved, what was fixed, and the known issues still open in each release.",
+    "Render everything, or only the in/out range you marked on the timeline.",
+    "Replay.GG",
+    "Resolutions from 480p to 8K",
+    "Resolutions to 8K, up to 240 fps, five containers and five codecs.",
+    "Rotate the canvas by 90 or 180 degrees, flip it horizontally or vertically, crop, and resize — with rulers, smart guides and snapping.",
+    "Runs without installing. Useful on machines where you cannot install software.",
+    "Scrub the ruler, zoom the timeline from a whole project down to individual frames, and preview at speeds other than realtime.",
+    "Scrubbing, zoom and playback speed",
+    "See everything Nova Cut does",
+    "See the features",
+    "See what’s in it, or read exactly what state it’s in.",
+    "Selection tools",
+    "Set a clip’s level, or keyframe it so the volume moves across the clip. Automation is sampled per frame during playback and during export.",
+    "Settings that tell you the truth",
+    "Size",
+    "Skip to content",
+    "Snapping and magnetic edges",
+    "So if AI-powered features are introduced, they may be offered as <1>optional paid services</1>, priced to cover that processing. They would be additions alongside the editor, never a fence around it — the editing features listed above stay free either way.",
+    "So if AI-powered features arrive, they may be offered as <1>optional paid services</1> priced to cover that processing — additions alongside the editor, never a fence around it. The editing features listed here stay free either way.",
+    "Software you can actually own.",
+    "Soon",
+    "Sound is edited on the same timeline as picture, with automation that follows the clip.",
+    "Split at the playhead, drag either edge of a clip to trim it, duplicate, or ripple delete to close the gap behind you. Trimming is non-destructive: the source media is never modified.",
+    "Split, trim and ripple delete",
+    "Stack video and audio tracks, drag clips between them, and reorder as you go. Tracks can be renamed, muted, soloed, locked and hidden individually.",
+    "Stacked, parameterised effect chains",
+    "Still images and GIFs cannot be placed on the video timeline; they are edited in the photo editor.",
+    "Straight answers about what Nova Cut is, what it costs, what it needs installed, and what it can’t do yet.",
+    "Support",
+    "System",
+    "System requirements",
+    "System, Light and Dark themes",
+    "Terms",
+    "Terms — Nova Cut",
+    "Text clips with 13 styled presets, rasterised into the compositor so they run through the effect chain and transitions like any other clip.",
+    "Text was silently dropped from every export. Titles and captions were drawn as HTML over the preview canvas, and the exporter — which reads pixels back from that canvas — could not see them. Text is now rasterised into the compositor, so preview and export are the same image by construction.",
+    "That covers video editing, photo editing, the timeline tools, audio tools, transitions, effects and export — and the improvements made to all of them over time. These are the things an editor *is*, and putting them behind a subscription would defeat the point of the project.",
+    "That is on purpose. An editor is a tool you trust with hours of work, and the fastest way to lose that trust is to be surprised by something the website could have told you.",
+    "The <1>Download</1> page states the prerequisites before you install anything.",
+    "The <1>Features</1> page marks what is planned separately from what is built.",
+    "The <1>installer</1> lets you choose where Nova Cut goes, adds Start menu and desktop shortcuts, and associates <2/> project files so double-clicking one opens the editor. It can be removed from Windows’ normal Apps list.",
+    "The <1>portable</1> build is a single executable that runs from wherever you put it, including a USB drive. It does not create shortcuts or file associations. It is the right choice on a machine where you cannot install software.",
+    "The <1>Updates</1> page lists the known issues for the current build in full, and the <2>Features</2> page marks what is planned but not built. Between them they cover most \"is it me or the app?\" questions.",
+    "The <1>Updates</1> page lists the known issues for the current build.",
+    "The About section of Settings shows the version and system information you would need to include.",
+    "The application",
+    "The captions panel and the audio library panel are placeholders with no functionality behind them.",
+    "The captions panel exists in the interface but is a placeholder — automatic generation and SRT import are not built yet.",
+    "The core promise",
+    "The editor itself is deliberately separated from the layer that talks to the operating system, which is what makes builds for other platforms a matter of implementing that layer rather than rewriting the application.",
+    "The editor itself is written to be platform-agnostic — only the layer that talks to the operating system differs — but a platform is not listed as supported here until there is a build that has actually been tested on it.",
+    "The export dialog predicts the output size and how long the render will take before you commit to it.",
+    "The fastest way to judge an editor is to open it.",
+    "The first release of Nova Cut: a multi-track video editor and a layer-based photo editor in one desktop application, packaged as a Windows installer with FFmpeg included, so importing and exporting work on a clean machine with nothing else to install. This entry describes the build as it stands; it is written here so the release notes are ready the day the download is.",
+    "The full licence text ships with the application and is the authoritative version. Nothing on this page adds to it or takes anything away from it.",
+    "The help center covers prerequisites, formats, where your files live and what is and isn’t built yet.",
+    "The installer is not code-signed yet",
+    "The interface is English only.",
+    "The interface was rebuilt on a neutral design system. Surfaces are grey and charcoal, colour is reserved for things that are interactive or active, and the brand gradient is limited to the logo.",
+    "The licence",
+    "The Nova Cut export dialog, showing resolution, frame rate, container, codec, quality and bitrate controls with live size and render-time estimates.",
+    "The Nova Cut export dialog, with resolution, frame rate, container, codec, quality and bitrate controls and live estimates of the output size and render time.",
+    "The Nova Cut launcher, offering the video editor and the photo editor, with recent projects below.",
+    "The Nova Cut photo editor: a layer list, the tool rail, and a composed thumbnail on the canvas with the inspector open.",
+    "The Nova Cut photo editor. A layer list shows five layers, the tool rail runs down the left, and a composed thumbnail sits on the canvas with the inspector open on the right.",
+    "The Nova Cut transitions browser, showing the full list of available transitions alongside the timeline.",
+    "The Nova Cut video editor running on Windows.",
+    "The Nova Cut video editor: a multi-track timeline with text clips, a live preview, and the text inspector open on the right.",
+    "The Nova Cut video editor. A multi-track timeline holds several text clips, the preview shows the composited frame, and the inspector on the right edits the selected clip’s text.",
+    "The one honest asterisk is AI. Nova Cut has no AI features today. If it gains them, they may be offered as <1>optional paid services</1>, because removing a background or upscaling a shot can mean running a model on hardware that costs money every time — a cost that keeps arriving long after a download. Anything like that would sit alongside the editor, never in front of it.",
+    "The only thing it stores in your browser is your colour-theme choice, kept in <1/> so the site does not flash the wrong theme on your next visit. It never leaves your browser, and clearing your site data removes it.",
+    "The parts that are not glamorous but decide whether you lose an afternoon of work.",
+    "The photo editor has 27 working blend modes. The video compositor does not read blend modes yet, so a video clip always composites normally.",
+    "The preview and the exporter run the same GPU compositor over the same shaders, so there is no second render path that can quietly disagree with what you were watching.",
+    "The preview and the exporter run the same GPU compositor over the same shaders. There is no separate \"render quality\" path that can disagree with what you were looking at.",
+    "The preview could freeze on the first frame while the timecode kept advancing. Ranged reads of local media were answered with the whole file, which Chromium treats as \"this source cannot seek\", permanently downgrading the video element to a non-seekable stream. Media is now served with correct partial-content responses.",
+    "The version of Nova Cut, your Windows version, and what you were doing when it went wrong — ideally the shortest sequence of steps that reproduces it.",
+    "The Windows build below is real: it has been produced and tested (built 9 September 2026), and the file details are the actual artifacts. What does not exist yet is a public download link, so the buttons on this page are inactive rather than pointing somewhere that would fail.",
+    "There is no account to create, no trial period, no watermark on your exports, and no feature in the editor that is locked behind a payment.",
+    "There is no account, no sign-in and no licence check.",
+    "There is no analytics, usage tracking or crash reporting of any kind. None is collected, and none is sent anywhere.",
+    "There is no auto-updater, so the application does not contact a server to check for versions.",
+    "There is no public issue tracker yet. Nova Cut 1.0.0 has not been publicly released yet, and one will be published alongside it rather than announced here before it exists.",
+    "These are places the architecture leaves room for. None of them exists in the current build, and none of them has a date. They are listed so that nothing above has to be read with a pinch of salt.",
+    "These are what an editor <1>is</1>. They stay part of the free Nova Cut experience, and so do the improvements made to them.",
+    "Third-party software",
+    "This page describes Nova Cut 1.0.0. If the terms change, the change will be described in the release notes for the version it takes effect in.",
+    "This release",
+    "This site is static: pages, stylesheets, one small script and images. It sets no cookies, embeds no trackers, loads no third-party scripts or fonts, and runs no analytics.",
+    "This website",
+    "Timeline tools",
+    "To continue past it, choose <1>More info</1> and then <2>Run anyway</2>. This will stop happening once a code-signing certificate is in place.",
+    "Transform keyframes for position, scale, rotation and opacity, with linear, hold, ease and bezier interpolation.",
+    "Transform with keyframes",
+    "Transitions",
+    "Transitions became real. Previously the interface listed and accepted transitions that the compositor never read; the compositor now renders both clips into separate buffers inside a transition window and blends them with a two-texture shader.",
+    "Transitions that never shorten your edit",
+    "Try it yourself",
+    "Turning on hardware-accelerated export asked for an NVIDIA encoder on machines that had no NVIDIA card, and the export failed outright. Nova Cut previously chose from the encoders FFmpeg was BUILT with, which on a full build is every vendor’s at once; it now tests that an encoder actually opens on this machine before choosing it, and falls back to software when none does.",
+    "Two editors. One application.",
+    "Two things worth knowing, both of which change what your first run looks like.",
+    "Type",
+    "Undo and redo",
+    "Unreleased",
+    "Updates",
+    "Updates — Nova Cut",
+    "Using the editor",
+    "Vector shapes and text",
+    "Vector shapes and text in the photo editor, plus an asset library of annotations, shapes, styled text presets and emoji stickers.",
+    "Version",
+    "Version 1.0.0",
+    "Version 1.0.0 is built and being prepared for its first public release. The download page has the full build details and system requirements.",
+    "Version 1.0.0 is not published yet",
+    "Video clips always composite normally — the video compositor does not read blend modes yet. Blend modes do work in the photo editor.",
+    "Video editing",
+    "Video editing. Photo editing. The timeline tools. Audio tools. Transitions. Effects. Export. And the improvements made to all of them from here on. These are what an editor <1>is</1>, and they stay part of the free Nova Cut experience.",
+    "Video export requires FFmpeg — see the question above.",
+    "Video exports to MP4, MOV, MKV, AVI and animated GIF, using H.264, H.265, VP9, AV1 or ProRes where the container supports the codec. Resolutions run from 480p to 8K, at 24, 25, 30, 50, 60, 120, 144 or 240 frames per second.",
+    "View all",
+    "Volume with automation",
+    "What “always free” actually covers",
+    "What formats can I export?",
+    "What information helps most when reporting a problem?",
+    "What is free, and what might not be",
+    "What is Nova Cut?",
+    "What is the difference between the installer and the portable build?",
+    "What it isn’t",
+    "What platforms does Nova Cut support?",
+    "What you preview is what you get.",
+    "What’s inside",
+    "When an export finishes, Nova Cut opens the folder it was written to with the file selected. Only on success — a failed or cancelled export opens nothing.",
+    "Where can I report a bug?",
+    "Where does Nova Cut store my files?",
+    "Where it stands",
+    "Whichever route you use, a useful report has three things in it: your Nova Cut version, your Windows version, and the shortest sequence of steps that reproduces the problem. The About section of Settings shows the version and system details to quote.",
+    "Who makes Nova Cut?",
+    "Whoever hosts this site may keep ordinary server access logs, as essentially every web server does. That is outside what this project controls, and this page will not pretend otherwise.",
+    "Why does Windows warn me about the installer?",
+    "Will editing features always be free?",
+    "Will Nova Cut have AI features?",
+    "Windows",
+    "Windows 10 (64-bit) or later",
+    "Windows x64",
+    "Windows x64 is the only platform with a build. macOS and Linux targets are configured but untested.",
+    "Work is saved automatically as you go, and if the application closes unexpectedly Nova Cut offers to restore the session — timeline, media, effects, playhead, zoom and selection.",
+    "x64",
+    "x64 · v1.0.0",
+    "Yes. Everything happens on your machine. Nova Cut does not need an account and does not need a connection to edit or export.",
+    "Yes. Nova Cut autosaves as you work, and if it closes unexpectedly it offers to restore the session on the next launch — including the timeline, imported media, effects, playhead position, zoom level and selection.",
+    "Yes. Nova Cut is free to download and use, and it is released under the MIT licence.",
+    "You're here",
+    "Your desktop assistant",
+    "Your media is never uploaded. Import, editing, preview and export all happen locally.",
+    "Your work is yours"
+  ],
+  "where": {
+    "© 2026 Nova Cut. Released under the MIT licence.": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1/> Free · MIT licence": [
+      "/"
+    ],
+    "<1/> Version 1.0.0 — first public release in preparation": [
+      "/"
+    ],
+    "<1/> Windows x64": [
+      "/"
+    ],
+    "<1>About</1>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>Discord</1>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>Download</1>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>effect categories</1>": [
+      "/features/"
+    ],
+    "<1>effects</1>": [
+      "/features/"
+    ],
+    "<1>Every editing feature is free and is intended to remain free</1> — video editing, photo editing, timeline tools, audio tools, transitions, effects, export, and the improvements made to them.": [
+      "/terms/"
+    ],
+    "<1>Features</1>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>Help &amp; FAQ</1>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>Nova Cut has no AI features today.</1> Nothing in the current build uses AI, and nothing on this site describes an AI feature that exists.": [
+      "/"
+    ],
+    "<1>Nova Cut runs entirely on your computer.</1> Your projects, your media and your exports stay on your own disk. The editor works with no internet connection at all.": [
+      "/privacy/"
+    ],
+    "<1>On <2>Discord</2>.</1> That is where bug reports, questions and feature requests go for now — post one there and it will be seen.": [
+      "/help/"
+    ],
+    "<1>Privacy</1>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>Product Switcher</1> <2/>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>Report a bug</1>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>System requirements</1>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>Terms</1>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>transitions</1>": [
+      "/features/"
+    ],
+    "<1>Updates</1>": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "<1>Yes. Nova Cut’s core editing features are intended to remain free.</1>": [
+      "/help/"
+    ],
+    "145.2 MB": [
+      "/download/"
+    ],
+    "145.5 MB": [
+      "/download/"
+    ],
+    "18 transitions": [
+      "/",
+      "/features/"
+    ],
+    "18 transitions, all implemented as shaders. A transition window is centred on the cut and clamped so that adding one never shortens the sequence.": [
+      "/updates/"
+    ],
+    "37 capabilities across the video editor, the photo editor and the export pipeline — each one confirmed in the running application before it was written down here. What isn’t built yet is listed at the bottom, separately.": [
+      "/features/"
+    ],
+    "480p, 720p, 1080p, 1440p, 4K and 8K, at 24, 25, 30, 50, 60, 120, 144 or 240 frames per second.": [
+      "/features/"
+    ],
+    "53 effects across seven categories": [
+      "/",
+      "/features/"
+    ],
+    "53 GPU effects across seven categories, each with real parameters that can be keyframed.": [
+      "/updates/"
+    ],
+    "9 September 2026": [
+      "/download/"
+    ],
+    "A browser for background music and sound effects is stubbed out in the interface and has no content behind it yet.": [
+      "/features/"
+    ],
+    "A failed export left FFmpeg running with the output file still open, so the part-written file could not be deleted or overwritten.": [
+      "/updates/"
+    ],
+    "A failed save reported nothing at all — no message, no warning — so a save that had not happened looked exactly like one that had.": [
+      "/updates/"
+    ],
+    "A full layer-based image editor in the same application — for thumbnails, banners and social posts.": [
+      "/",
+      "/features/"
+    ],
+    "A GPU with WebGL 2 support. The preview and the exporter share one GPU compositor.": [
+      "/download/"
+    ],
+    "A layer-based photo editor: layer tree with groups, 27 blend modes, layer masks, adjustment layers, and export to PNG, JPG and WebP.": [
+      "/updates/"
+    ],
+    "A native Windows application: frameless window with app-drawn chrome, native menus, persisted window geometry, single-instance handling, an unsaved-changes guard on quit, and .novacut file associations.": [
+      "/updates/"
+    ],
+    "A neutral interface that follows your operating system’s light/dark setting by default, with a choosable accent colour for controls.": [
+      "/features/"
+    ],
+    "A note on AI": [
+      "/"
+    ],
+    "A note on export speed generally: most of the time goes into seeking the source video, so footage with widely spaced keyframes exports several times slower than the same footage with a normal keyframe interval. On this machine the identical project measured 66ms per frame against an 8-second keyframe interval and 19ms against a 1-second one.": [
+      "/updates/"
+    ],
+    "A photo document larger than the preview cap exported at preview resolution rather than document resolution.": [
+      "/updates/"
+    ],
+    "A plain description of what Nova Cut does with your data. It is short because the answer is mostly “nothing”.": [
+      "/privacy/"
+    ],
+    "A real encoder pipeline: frames stream from the GPU compositor straight into FFmpeg.": [
+      "/features/"
+    ],
+    "A real image editor for thumbnails, banners and social posts: a layer tree with groups and 27 blend modes, painted masks, selection tools, brushes, vector shapes and text.": [
+      "/"
+    ],
+    "A real layer tree with groups, per-layer opacity, 27 blend modes, and painted layer masks. Masks apply after the layer’s effects, which is what makes \"add a blur, then paint its mask\" a non-destructive blur brush.": [
+      "/features/"
+    ],
+    "A real non-linear timeline: multi-track, non-destructive, and undoable all the way down.": [
+      "/",
+      "/features/"
+    ],
+    "A real Windows application with native menus, window state that persists between sessions, an unsaved-changes guard on quit, and file associations — not a web page in a wrapper.": [
+      "/features/"
+    ],
+    "A searchable settings window with System, Light and Dark themes and a choosable accent colour, where anything not yet wired up is shown disabled with the reason.": [
+      "/updates/"
+    ],
+    "A thumbnail composed from the built-in asset library — annotations, shapes, styled text and stickers.": [
+      "/"
+    ],
+    "A transition froze the picture for the rest of the export. Rendering a transition asks each clip for frames outside its own range, and that seek was never acknowledged, so the source stopped decoding and every later frame waited out a timeout. One cross dissolve took an eight-second export from 22 seconds to about 190, and left the second half of the video a still image.": [
+      "/updates/"
+    ],
+    "A transition window is centered on the cut and clamped to a third of the shorter clip, so adding one changes how the cut looks without changing how long the sequence is.": [
+      "/features/"
+    ],
+    "About": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "About — Nova Cut": [
+      "/about/"
+    ],
+    "About 550 MB for the application, plus room for your projects and exports.": [
+      "/download/"
+    ],
+    "About Nova Cut": [
+      "/help/"
+    ],
+    "Adjustment layers": [
+      "/features/"
+    ],
+    "AI is different.": [
+      "/"
+    ],
+    "AI-assisted tools": [
+      "/features/"
+    ],
+    "All products": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "An export could hang forever if FFmpeg was missing or rejected the codec, instead of reporting the failure.": [
+      "/updates/"
+    ],
+    "An NSIS installer and a portable executable for Windows x64, with icons rendered from the project’s single source-of-truth vector logo.": [
+      "/updates/"
+    ],
+    "Answers about Nova Cut: is it free, will editing features stay free, will there be AI features, what platforms are supported, and where to report a bug.": [
+      "/help/"
+    ],
+    "AppImage and .deb targets are configured, but no Linux build has been produced or tested yet.": [
+      "/download/"
+    ],
+    "Apply as many effects to a clip as you like and reorder them. Each exposes real parameters, and those parameters can be keyframed over time.": [
+      "/features/"
+    ],
+    "Applying an odd number of effects flipped the picture upside down. The compositor’s quad sampled top-down while frame buffer textures are bottom-up, so the error cancelled itself at even effect counts and was invisible in casual testing.": [
+      "/updates/"
+    ],
+    "Architecture": [
+      "/download/"
+    ],
+    "As the MIT licence states, the software is provided “as is”, without warranty of any kind. Nova Cut 1.0.0 is an early version with known issues, listed in full on the <1>Updates</1> page.": [
+      "/terms/"
+    ],
+    "Asset library": [
+      "/features/"
+    ],
+    "Atlas": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Audio": [
+      "/features/"
+    ],
+    "Audio effects": [
+      "/features/"
+    ],
+    "Audio library": [
+      "/features/"
+    ],
+    "Audio stays in sync through speed changes": [
+      "/features/"
+    ],
+    "Audio tools": [
+      "/"
+    ],
+    "Audio tracks": [
+      "/features/"
+    ],
+    "Autosave and crash recovery": [
+      "/features/"
+    ],
+    "Autosave is a safety net rather than a replacement for saving: use <1>Ctrl + S</1> to write a <2/> project file wherever you want it.": [
+      "/help/"
+    ],
+    "Autosave stopped for the rest of the session after a single failed write, silently, while the interface went on implying it was running.": [
+      "/updates/"
+    ],
+    "Autosave with crash recovery that restores the timeline, media, effects, playhead, zoom and selection.": [
+      "/updates/"
+    ],
+    "Before you install": [
+      "/download/"
+    ],
+    "Blur, colour, light, stylise, distort, glitch and layer-style effects — including Gaussian and motion blur, exposure and white balance, glow, vignette, film grain, VHS, glitch, tilt shift, kaleidoscope and chromatic aberration.": [
+      "/features/"
+    ],
+    "Both contain the same application.": [
+      "/help/"
+    ],
+    "Brush, eraser, paint bucket and gradient, with pen-pressure support and smoothing. A whole stroke is a single undo step no matter how many points it contains.": [
+      "/features/"
+    ],
+    "Build date": [
+      "/download/"
+    ],
+    "Build targets are configured for both, but no build has been produced or tested on either platform.": [
+      "/features/"
+    ],
+    "Build targets are configured, but no macOS build has been produced or tested yet.": [
+      "/download/"
+    ],
+    "Builds are not code-signed yet, so Windows SmartScreen shows a warning the first time you run the installer.": [
+      "/download/",
+      "/help/"
+    ],
+    "Builds are not code-signed, so Windows SmartScreen warns the first time you run the installer.": [
+      "/updates/"
+    ],
+    "Can I put images or GIFs on the video timeline?": [
+      "/help/"
+    ],
+    "Cancel now actually stops an export that is running, rather than only closing the window while the render carried on in the background.": [
+      "/updates/"
+    ],
+    "Canvas rotate and flip, rulers, smart guides and snapping in the photo editor.": [
+      "/updates/"
+    ],
+    "Canvas tools": [
+      "/features/"
+    ],
+    "Captions": [
+      "/features/"
+    ],
+    "Change a clip’s rate or play it backwards. Speed is applied to picture and sound together, and the timeline length follows.": [
+      "/features/"
+    ],
+    "Changes": [
+      "/terms/"
+    ],
+    "Changing a clip’s speed retimes its audio with it, and the exported file carries the same mix you heard in the preview.": [
+      "/features/"
+    ],
+    "Choose <1>More info</1> and then <2>Run anyway</2> to continue. Code signing is a certificate the project does not have yet, not a statement about the file.": [
+      "/help/"
+    ],
+    "Clip blend modes in video": [
+      "/features/"
+    ],
+    "Clip speed and reverse": [
+      "/features/"
+    ],
+    "Clip speed and reverse, applied to picture and sound together.": [
+      "/updates/"
+    ],
+    "Clips snap to the playhead, to the sequence start and to neighbouring clip edges, so cuts land exactly where you mean them to.": [
+      "/features/"
+    ],
+    "Close": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Colour theme": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Coming soon": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Container and codec matrix": [
+      "/features/"
+    ],
+    "Creator workflow": [
+      "/features/"
+    ],
+    "Cross dissolve, fade through, wipe, circle reveal, slide, push, zoom punch, spin, whip pan, impact shake, blur dissolve, flash, glitch, luma burn, pixelize, 3D flip, cube and page turn.": [
+      "/features/"
+    ],
+    "Cut the video and design its thumbnail without leaving the app — or paying for two of them.": [
+      "/"
+    ],
+    "Dark": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Dark theme": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Dedicated audio tracks alongside your video tracks, each with its own mute, solo and lock.": [
+      "/features/"
+    ],
+    "Designed for, but not delivered.": [
+      "/features/"
+    ],
+    "Didn’t find it here?": [
+      "/help/"
+    ],
+    "Disk space": [
+      "/download/"
+    ],
+    "Do I need anything else installed?": [
+      "/help/"
+    ],
+    "Does Nova Cut work offline?": [
+      "/help/"
+    ],
+    "Does uninstalling delete my projects?": [
+      "/help/"
+    ],
+    "Download": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Download — Nova Cut": [
+      "/download/"
+    ],
+    "Download for Windows": [
+      "/download/"
+    ],
+    "Download Nova Cut": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/updates/"
+    ],
+    "Download Nova Cut 1.0.0 for Windows. Free desktop video and photo editing, with no account, no watermark and no subscription.": [
+      "/download/"
+    ],
+    "Downloading and installing": [
+      "/help/"
+    ],
+    "Downloads become active when version 1.0.0 is published.": [
+      "/download/"
+    ],
+    "Editing a video and designing its thumbnail are ordinary things to want to do. Somewhere along the way both became rented. You can find yourself paying monthly for the ability to cut a clip, add a title and export a file — and losing that ability the month you stop.": [
+      "/about/"
+    ],
+    "Editing shouldn’t be locked behind a subscription.": [
+      "/"
+    ],
+    "Edits made while a save was in progress were marked as already saved. Since the quit guard reads that same flag, the window could close without warning and lose them.": [
+      "/updates/"
+    ],
+    "Effects": [
+      "/"
+    ],
+    "Effects and transitions": [
+      "/",
+      "/features/"
+    ],
+    "Effects that declared parameters but rendered nothing were either implemented or removed, so the effect list no longer contains entries that do nothing.": [
+      "/updates/"
+    ],
+    "EQ, pitch and normalise appear in the audio inspector but are not applied by the audio engine yet.": [
+      "/updates/"
+    ],
+    "EQ, pitch shifting and normalisation are modelled and appear in the inspector, but the audio engine does not apply them yet.": [
+      "/features/"
+    ],
+    "Every edit is a command with a full undo history. Continuous edits such as dragging a slider coalesce into one step, so undo removes the whole gesture rather than a hundred pixels of it.": [
+      "/features/"
+    ],
+    "Every editing feature will always be free.": [
+      "/"
+    ],
+    "Every effect and every transition is a real GPU shader — what you see in the preview is what lands in the file.": [
+      "/",
+      "/features/"
+    ],
+    "Every preference is searchable, and anything not yet wired up is shown disabled with the reason — rather than as a switch that flips and does nothing.": [
+      "/features/"
+    ],
+    "Every release is written up on the <1>Updates</1> page, including what is new, what improved, what was fixed, and the known issues that are still open at the time of release.": [
+      "/help/"
+    ],
+    "Everything else on this page — the build details, the system requirements and the prerequisites — is accurate today and will not change when the link goes live.": [
+      "/download/"
+    ],
+    "Everything in the box.": [
+      "/features/"
+    ],
+    "Everything Nova makes, in one place.": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Everything that changes in Nova Cut, written down. Each release lists what is new, what improved, what was fixed — and the known issues that were still open when it shipped, because those matter more than the rest of it put together.": [
+      "/updates/"
+    ],
+    "Explore features": [
+      "/"
+    ],
+    "Export": [
+      "/",
+      "/features/"
+    ],
+    "Export at full document resolution with format, quality and transparency options, or use the one-click PNG export. Exports composite off-screen at document size, so a scaled-down preview never becomes a scaled-down file.": [
+      "/features/"
+    ],
+    "Export now streams frames from the same GPU compositor the preview uses, so there is no second render path that can disagree with what you were watching.": [
+      "/updates/"
+    ],
+    "Export PNG, JPG and WebP": [
+      "/features/"
+    ],
+    "Export the whole sequence or a range": [
+      "/features/"
+    ],
+    "Export to MP4, MOV, MKV, AVI and animated GIF at up to 8K and up to 240 fps, with H.264, H.265, VP9, AV1 and ProRes, quality presets or explicit bitrate, optional hardware encoding, and live size and render-time estimates.": [
+      "/updates/"
+    ],
+    "Exporting from a 4K source costs roughly four times as much per second of output as a 1080p source, because every frame is decoded at full resolution before being scaled down. A 1080p project renders at around three seconds per second of output.": [
+      "/updates/"
+    ],
+    "Exports are about 20% faster. The render loop now reads each finished frame off the GPU asynchronously and starts the next frame’s decode before draining the current one, so work that used to happen one after another overlaps. Measured over repeated runs on the same project: 52.2s to 41.0s, and the resulting file is byte-for-byte identical to the one the previous build produced — this is the same export, done sooner, not a lower-quality one.": [
+      "/updates/"
+    ],
+    "Exports carried no colour information at all, so every player guessed — and they do not all guess alike. Output is now converted and tagged as BT.709, and round-trips within one value of 255 against the source.": [
+      "/updates/"
+    ],
+    "Exports could contain long runs of black frames. The exporter waited a fixed interval for asynchronous seeks and wrote a black frame whenever a decode missed the window — measured at 746 of 1569 frames on one test render. Seeks are now awaited on the decoder’s own events; the same render measured 0 black frames afterwards.": [
+      "/updates/"
+    ],
+    "Fade in and fade out": [
+      "/features/"
+    ],
+    "Features": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Features — Nova Cut": [
+      "/features/"
+    ],
+    "FFmpeg ships inside the installer, so importing, thumbnails and export all work on a clean machine with nothing else to install. The bundled build is LGPL-licensed; its licence text is included, and OPENCUT_FFMPEG lets you point Nova Cut at your own build instead.": [
+      "/updates/"
+    ],
+    "File": [
+      "/download/"
+    ],
+    "First public release": [
+      "/updates/"
+    ],
+    "Fixed": [
+      "/updates/"
+    ],
+    "For an export or import problem, whether FFmpeg is installed and reachable on your PATH is almost always the first thing worth checking.": [
+      "/help/"
+    ],
+    "Four quality presets or an explicit bitrate, configurable audio bitrate, and an option to use GPU encoding when the machine offers it.": [
+      "/features/"
+    ],
+    "Frame-accurate timing": [
+      "/features/"
+    ],
+    "Free to download, free to keep using.": [
+      "/help/"
+    ],
+    "Full build details, prerequisites and system requirements are on the download page.": [
+      "/updates/"
+    ],
+    "Future editing improvements": [
+      "/"
+    ],
+    "Get Nova Cut": [
+      "/"
+    ],
+    "Get the current build": [
+      "/updates/"
+    ],
+    "Get the latest version of Nova Cut for your desktop. It’s free, there’s no account to create, and there’s no watermark on anything you export.": [
+      "/download/"
+    ],
+    "Go to downloads": [
+      "/"
+    ],
+    "Graphics": [
+      "/download/"
+    ],
+    "Hardware-accelerated export always asked for an NVIDIA encoder, so the option failed outright on AMD and Intel machines. It now uses whichever encoder the machine actually has.": [
+      "/updates/"
+    ],
+    "Help": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Help & FAQ — Nova Cut": [
+      "/help/"
+    ],
+    "Help &amp; FAQ": [
+      "/download/",
+      "/help/"
+    ],
+    "How do I find out what changed in a release?": [
+      "/help/"
+    ],
+    "How it’s built": [
+      "/about/"
+    ],
+    "If Nova Cut ever gains a feature that sends data anywhere — an optional AI service being the obvious candidate — it will be opt-in, it will say what it sends before it sends it, and this page will be updated before the feature ships rather than after.": [
+      "/privacy/"
+    ],
+    "If this changes": [
+      "/privacy/"
+    ],
+    "If you would rather not click through a SmartScreen warning, the portable build has the same behaviour — the warning comes from the missing signature, not from the installer format.": [
+      "/help/"
+    ],
+    "Images export from the photo editor to PNG, JPG and WebP at full document resolution.": [
+      "/help/"
+    ],
+    "Import video and audio, search what you have imported, and drag it onto the timeline. Thumbnails and durations are read from the files themselves.": [
+      "/features/"
+    ],
+    "Importing without FFmpeg installed reported success and produced a zero-length clip with invented dimensions. It now says what went wrong and what to do about it.": [
+      "/updates/"
+    ],
+    "Improved": [
+      "/updates/"
+    ],
+    "In the light theme, the success, warning and error colours were the ones tuned for the dark theme and were close to illegible on white — warning text measured 2.0:1 against its background where 4.5:1 is the standard. All three, and the muted label colour, are now tuned for light surfaces.": [
+      "/updates/"
+    ],
+    "Installer": [
+      "/download/"
+    ],
+    "Is my work saved automatically?": [
+      "/help/"
+    ],
+    "Is Nova Cut free?": [
+      "/help/"
+    ],
+    "It is a native desktop application rather than a website — your media stays on your own machine, and editing does not require an internet connection.": [
+      "/help/"
+    ],
+    "It is worth checking the <1>Updates</1> page first — the known issues for the current build are listed there in full, and the most common problems with it are already written down.": [
+      "/help/"
+    ],
+    "It may gain them later, and they are genuinely a different kind of thing: removing a background or upscaling a shot can mean running a model on hardware that costs money every single time it runs. That cost does not go away after the download.": [
+      "/"
+    ],
+    "It may gain them later. AI is genuinely different from the rest of the editor: a background removal or an upscale can mean running a model on someone else’s hardware, and that carries a real, ongoing cost per use that does not go away.": [
+      "/help/"
+    ],
+    "Jump to a section": [
+      "/features/",
+      "/help/"
+    ],
+    "Known issues": [
+      "/updates/"
+    ],
+    "Layers, groups and masks": [
+      "/",
+      "/features/"
+    ],
+    "Layers, masks and selections — built in.": [
+      "/"
+    ],
+    "Lets you choose the install location, adds Start menu and desktop shortcuts, and associates .novacut project files.": [
+      "/download/"
+    ],
+    "Licence": [
+      "/download/"
+    ],
+    "Light": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Light theme": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Linux": [
+      "/download/"
+    ],
+    "Live size and render-time estimates": [
+      "/features/"
+    ],
+    "macOS": [
+      "/download/"
+    ],
+    "macOS and Linux are planned. Build targets are configured, but no macOS build has been produced or tested yet. AppImage and .deb targets are configured, but no Linux build has been produced or tested yet. No release date has been set for either.": [
+      "/help/"
+    ],
+    "macOS and Linux builds": [
+      "/features/"
+    ],
+    "Match system theme": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Media library": [
+      "/features/"
+    ],
+    "Menu": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Minimum OS": [
+      "/download/"
+    ],
+    "MIT — free to use": [
+      "/download/"
+    ],
+    "More platforms are planned. Nova Cut is built so that the editor itself is platform-agnostic — only the layer that talks to the operating system has to change — but a platform is not supported until there is a build that has been tested on it.": [
+      "/download/"
+    ],
+    "MP4, MOV, MKV, AVI and animated GIF, with H.264, H.265, VP9, AV1 and ProRes offered only where the container actually supports them.": [
+      "/features/"
+    ],
+    "Multi-track timeline": [
+      "/",
+      "/features/"
+    ],
+    "Multi-track video and audio timeline with split, trim, ripple delete, duplicate, snapping, magnetic edges, zoom and per-track mute, solo, lock, hide and rename.": [
+      "/updates/"
+    ],
+    "Multi-track video editing, 53 GPU effects, 18 transitions, a layer-based photo editor and export to 8K. Every feature listed is confirmed in the running application.": [
+      "/features/"
+    ],
+    "Native desktop application": [
+      "/features/"
+    ],
+    "New": [
+      "/updates/"
+    ],
+    "New projects are named for the time they were created — \"Nova Cut Video File at 1.42 PM\", or \"Nova Cut Photo File at…\" in the photo editor — instead of every one of them being called Untitled. Renaming works as before and a name you choose is kept.": [
+      "/updates/"
+    ],
+    "No release date has been set for either platform.": [
+      "/download/"
+    ],
+    "No trial period, no watermark, no feature that stops working when you stop paying.": [
+      "/"
+    ],
+    "No warranty": [
+      "/terms/"
+    ],
+    "No. Everything Nova Cut needs ships inside the installer.": [
+      "/help/"
+    ],
+    "No. Uninstalling removes the application and leaves your projects, preferences and exports where they are. Your own files are never removed by the uninstaller.": [
+      "/help/"
+    ],
+    "Non-destructive adjustments that affect the layers beneath them, and which can themselves be masked.": [
+      "/features/"
+    ],
+    "Not built yet": [
+      "/features/"
+    ],
+    "Not currently. The video timeline accepts video and audio; still images and GIFs are edited in the photo editor instead.": [
+      "/help/"
+    ],
+    "Nothing AI-powered exists in Nova Cut today. The architecture has a place for it, and if it arrives it will be optional.": [
+      "/features/"
+    ],
+    "Nova": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Nova Cut": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Nova Cut — creator workflow": [
+      "/features/"
+    ],
+    "Nova Cut — effects and transitions": [
+      "/features/"
+    ],
+    "Nova Cut — export": [
+      "/",
+      "/features/"
+    ],
+    "Nova Cut — home": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Nova Cut — photo editing": [
+      "/features/"
+    ],
+    "Nova Cut — photo editor": [
+      "/"
+    ],
+    "Nova Cut — Powerful Editing. Made Open.": [
+      "/"
+    ],
+    "Nova Cut — video editing": [
+      "/features/"
+    ],
+    "Nova Cut — video editor": [
+      "/"
+    ],
+    "Nova Cut 1.0.0": [
+      "/updates/"
+    ],
+    "Nova Cut 1.0.0 has not been published yet. These notes describe the build as it stands and are kept up to date as it changes.": [
+      "/updates/"
+    ],
+    "Nova Cut can use <1>FFmpeg</1> for media import, thumbnails and video export. FFmpeg is a separate project with its own licence, and it is not included in the current build — you install it yourself. Nova Cut is also built on Electron, Chromium and Node.js, each under its own licence.": [
+      "/terms/"
+    ],
+    "Nova Cut claims no rights over anything you make with it. Your projects, your media and your exports are yours. There is no watermark, no attribution requirement and no restriction on commercial use of what you produce.": [
+      "/terms/"
+    ],
+    "Nova Cut currently has a build for <1>Windows</1> (x64). It requires Windows 10 (64-bit) or later.": [
+      "/help/"
+    ],
+    "Nova Cut has no AI features today, and none are in the current build.": [
+      "/help/"
+    ],
+    "Nova Cut has no AI features today. If AI-powered features are introduced in future, they may be offered as optional paid services, because the processing behind them carries an ongoing cost. Such features would be additions; they would not place any existing editing feature behind a payment.": [
+      "/terms/"
+    ],
+    "Nova Cut is a desktop video and photo editor built the other way round. You download it, it runs on your machine, it opens your files, and it keeps working. There is no account, no trial period, no watermark, and no feature in the editor that stops working when you stop paying.": [
+      "/about/"
+    ],
+    "Nova Cut is a desktop video and photo editor. It combines a multi-track, non-linear video timeline and a layer-based image editor in one application, built for creators who need to cut a video and design its thumbnail without paying for two subscriptions.": [
+      "/help/"
+    ],
+    "Nova Cut is a native desktop application, not a web page in a wrapper. The preview and the exporter share one GPU compositor, so what you watch is what gets written to the file. Timeline positions are stored as integer ticks rather than floating-point seconds, so thousands of edits never accumulate drift. Every edit is a command with a real undo history behind it.": [
+      "/about/"
+    ],
+    "Nova Cut is a powerful desktop video and photo editor built for creators who want professional tools without putting essential editing features behind a subscription.": [
+      "/"
+    ],
+    "Nova Cut is a powerful desktop video and photo editor built for creators. Every core editing feature will always be free.": [
+      "/"
+    ],
+    "Nova Cut is an independent project under active development. It is not owned by a company, and there is no organisation behind it beyond the people writing it.": [
+      "/help/"
+    ],
+    "Nova Cut is an independent project with no published contact channel yet. When there is one, it will be listed on the <1>Help</1> page.": [
+      "/privacy/"
+    ],
+    "Nova Cut is built around a simple idea: powerful creative software shouldn’t require a subscription just to reach the basic tools you need.": [
+      "/about/"
+    ],
+    "Nova Cut is built around a simple idea: powerful creative software shouldn’t require a subscription to reach the basic tools you need. An independent, actively developed desktop editor.": [
+      "/about/"
+    ],
+    "Nova Cut is early. Version 1.0.0 is its first release, and it has not been published yet. There is one platform with a build, a list of things that are designed for but not delivered, and a set of known issues written down in full rather than smoothed over.": [
+      "/about/"
+    ],
+    "Nova Cut is free software released under the MIT licence. This page explains what that means in practice; the licence itself is the actual legal text.": [
+      "/terms/"
+    ],
+    "Nova Cut is free software under the MIT licence. Use it for anything, including commercial work. Your projects and exports are yours.": [
+      "/terms/"
+    ],
+    "Nova Cut is released under the <1>MIT licence</1>. In practice that means you may use it for anything, including commercial work, without asking permission and without paying anything. You may copy it, modify it and redistribute it, provided the licence notice travels with it.": [
+      "/terms/"
+    ],
+    "Nova Cut is under active development and improving. It is an independent project released under the MIT licence — not a product of a company, and not something with a roadmap sold in advance.": [
+      "/about/"
+    ],
+    "Nova Cut runs entirely on your computer. No account, no analytics, no tracking, and no media ever leaves your machine.": [
+      "/privacy/"
+    ],
+    "Nova Cut stores preferences, your recent-projects list, autosave snapshots and caches in its own application data folder on your machine. The Privacy section of Settings shows you exactly where that is and can open it, and the Storage section can measure and clear it.": [
+      "/privacy/"
+    ],
+    "Nova Cut Website": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Nova Cut-1.0.0-portable.exe": [
+      "/download/"
+    ],
+    "Nova Cut-1.0.0-x64.exe": [
+      "/download/"
+    ],
+    "Nova Games": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "NSIS installer (.exe)": [
+      "/download/"
+    ],
+    "One renderer for preview and export": [
+      "/features/"
+    ],
+    "One-click annotations, shapes, styled text presets and emoji stickers, so a thumbnail can be assembled without drawing anything from scratch.": [
+      "/features/"
+    ],
+    "Operating system": [
+      "/download/"
+    ],
+    "Other platforms": [
+      "/download/"
+    ],
+    "Paint tools": [
+      "/",
+      "/features/"
+    ],
+    "Per-clip fades in seconds, applied on top of the volume automation rather than instead of it.": [
+      "/features/"
+    ],
+    "Photo editing": [
+      "/",
+      "/features/"
+    ],
+    "Photo editor": [
+      "/"
+    ],
+    "Photo paint tools — brush, eraser, paint bucket and gradient — with pen pressure, smoothing, and one undo step per stroke.": [
+      "/updates/"
+    ],
+    "Photo selection tools — rectangle, ellipse, lasso, polygon lasso and magic wand — with boolean combines, feather, expand and invert, stored as geometry so they survive undo.": [
+      "/updates/"
+    ],
+    "Planned": [
+      "/download/",
+      "/features/"
+    ],
+    "Platform": [
+      "/download/"
+    ],
+    "Play/pause, split, undo, redo, delete, ripple delete, duplicate, new, open and save all have shortcuts, and every one of them can be rebound with conflict detection.": [
+      "/features/"
+    ],
+    "Portable": [
+      "/download/"
+    ],
+    "Portable executable (.exe)": [
+      "/download/"
+    ],
+    "Position, scale, rotation and opacity can each be animated with keyframes, using linear, hold, ease or custom bezier interpolation.": [
+      "/features/"
+    ],
+    "Positions are stored as integer ticks rather than floating-point seconds, so thousands of edits never accumulate drift and cuts stay on exact frame boundaries.": [
+      "/features/"
+    ],
+    "Powerful editing. Made open.": [
+      "/about/"
+    ],
+    "Powerful editing. Made open. A desktop video and photo editor whose core editing features will always be free.": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Powerful editing.<1/>Made open.": [
+      "/"
+    ],
+    "Practical advice rather than legal language: keep backups of source media you cannot replace, and save your projects. Nova Cut autosaves and can recover a session after a crash, but no editor should be the only copy of something that matters.": [
+      "/terms/"
+    ],
+    "Primary": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Privacy": [
+      "/privacy/"
+    ],
+    "Privacy — Nova Cut": [
+      "/privacy/"
+    ],
+    "Product": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Product Switcher": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Project": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Project files": [
+      "/features/"
+    ],
+    "Projects are saved as .novacut files. Double-clicking one opens it, and an already-running Nova Cut takes it over rather than starting a second copy.": [
+      "/features/"
+    ],
+    "Projects are saved wherever you choose to save them, as <1/> files. Preferences, autosaves and caches live in Nova Cut’s own application data folder, which the Storage section of Settings can show you, measure and clear.": [
+      "/help/"
+    ],
+    "Quality, bitrate and hardware acceleration": [
+      "/features/"
+    ],
+    "Questions": [
+      "/privacy/"
+    ],
+    "Questions before you install?": [
+      "/download/"
+    ],
+    "Read the FAQ": [
+      "/features/"
+    ],
+    "Read the release notes": [
+      "/",
+      "/about/"
+    ],
+    "Ready to edit?": [
+      "/help/"
+    ],
+    "Rebindable keyboard shortcuts": [
+      "/features/"
+    ],
+    "Rebindable keyboard shortcuts with conflict detection.": [
+      "/updates/"
+    ],
+    "Recommended": [
+      "/download/"
+    ],
+    "Record and clip gameplay": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Rectangle, ellipse, lasso, polygon lasso and magic wand, with boolean combines, feather, expand and invert. Selections are stored as geometry, so they survive undo and are restored with the edit that used them.": [
+      "/features/"
+    ],
+    "Rectangles, rounded rectangles, ellipses, triangles, lines, arrows, stars, polygons, hearts, diamonds, chevrons, speech bubbles and callouts, plus editable text with styled presets.": [
+      "/features/"
+    ],
+    "Release notes": [
+      "/download/",
+      "/updates/"
+    ],
+    "Release notes for Nova Cut: what is new, what improved, what was fixed, and the known issues still open in each release.": [
+      "/updates/"
+    ],
+    "Render everything, or only the in/out range you marked on the timeline.": [
+      "/features/"
+    ],
+    "Replay.GG": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Resolutions from 480p to 8K": [
+      "/features/"
+    ],
+    "Resolutions to 8K, up to 240 fps, five containers and five codecs.": [
+      "/"
+    ],
+    "Rotate the canvas by 90 or 180 degrees, flip it horizontally or vertically, crop, and resize — with rulers, smart guides and snapping.": [
+      "/features/"
+    ],
+    "Runs without installing. Useful on machines where you cannot install software.": [
+      "/download/"
+    ],
+    "Scrub the ruler, zoom the timeline from a whole project down to individual frames, and preview at speeds other than realtime.": [
+      "/features/"
+    ],
+    "Scrubbing, zoom and playback speed": [
+      "/features/"
+    ],
+    "See everything Nova Cut does": [
+      "/"
+    ],
+    "See the features": [
+      "/download/"
+    ],
+    "See what’s in it, or read exactly what state it’s in.": [
+      "/about/"
+    ],
+    "Selection tools": [
+      "/",
+      "/features/"
+    ],
+    "Set a clip’s level, or keyframe it so the volume moves across the clip. Automation is sampled per frame during playback and during export.": [
+      "/features/"
+    ],
+    "Settings that tell you the truth": [
+      "/features/"
+    ],
+    "Size": [
+      "/download/"
+    ],
+    "Skip to content": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Snapping and magnetic edges": [
+      "/",
+      "/features/"
+    ],
+    "So if AI-powered features are introduced, they may be offered as <1>optional paid services</1>, priced to cover that processing. They would be additions alongside the editor, never a fence around it — the editing features listed above stay free either way.": [
+      "/help/"
+    ],
+    "So if AI-powered features arrive, they may be offered as <1>optional paid services</1> priced to cover that processing — additions alongside the editor, never a fence around it. The editing features listed here stay free either way.": [
+      "/"
+    ],
+    "Software you can actually own.": [
+      "/about/"
+    ],
+    "Soon": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Sound is edited on the same timeline as picture, with automation that follows the clip.": [
+      "/features/"
+    ],
+    "Split at the playhead, drag either edge of a clip to trim it, duplicate, or ripple delete to close the gap behind you. Trimming is non-destructive: the source media is never modified.": [
+      "/features/"
+    ],
+    "Split, trim and ripple delete": [
+      "/",
+      "/features/"
+    ],
+    "Stack video and audio tracks, drag clips between them, and reorder as you go. Tracks can be renamed, muted, soloed, locked and hidden individually.": [
+      "/features/"
+    ],
+    "Stacked, parameterised effect chains": [
+      "/",
+      "/features/"
+    ],
+    "Still images and GIFs cannot be placed on the video timeline; they are edited in the photo editor.": [
+      "/updates/"
+    ],
+    "Straight answers about what Nova Cut is, what it costs, what it needs installed, and what it can’t do yet.": [
+      "/help/"
+    ],
+    "Support": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "System": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "System requirements": [
+      "/download/"
+    ],
+    "System, Light and Dark themes": [
+      "/features/"
+    ],
+    "Terms": [
+      "/terms/"
+    ],
+    "Terms — Nova Cut": [
+      "/terms/"
+    ],
+    "Text clips with 13 styled presets, rasterised into the compositor so they run through the effect chain and transitions like any other clip.": [
+      "/updates/"
+    ],
+    "Text was silently dropped from every export. Titles and captions were drawn as HTML over the preview canvas, and the exporter — which reads pixels back from that canvas — could not see them. Text is now rasterised into the compositor, so preview and export are the same image by construction.": [
+      "/updates/"
+    ],
+    "That covers video editing, photo editing, the timeline tools, audio tools, transitions, effects and export — and the improvements made to all of them over time. These are the things an editor *is*, and putting them behind a subscription would defeat the point of the project.": [
+      "/help/"
+    ],
+    "That is on purpose. An editor is a tool you trust with hours of work, and the fastest way to lose that trust is to be surprised by something the website could have told you.": [
+      "/about/"
+    ],
+    "The <1>Download</1> page states the prerequisites before you install anything.": [
+      "/about/"
+    ],
+    "The <1>Features</1> page marks what is planned separately from what is built.": [
+      "/about/"
+    ],
+    "The <1>installer</1> lets you choose where Nova Cut goes, adds Start menu and desktop shortcuts, and associates <2/> project files so double-clicking one opens the editor. It can be removed from Windows’ normal Apps list.": [
+      "/help/"
+    ],
+    "The <1>portable</1> build is a single executable that runs from wherever you put it, including a USB drive. It does not create shortcuts or file associations. It is the right choice on a machine where you cannot install software.": [
+      "/help/"
+    ],
+    "The <1>Updates</1> page lists the known issues for the current build in full, and the <2>Features</2> page marks what is planned but not built. Between them they cover most \"is it me or the app?\" questions.": [
+      "/help/"
+    ],
+    "The <1>Updates</1> page lists the known issues for the current build.": [
+      "/about/"
+    ],
+    "The About section of Settings shows the version and system information you would need to include.": [
+      "/help/"
+    ],
+    "The application": [
+      "/privacy/"
+    ],
+    "The captions panel and the audio library panel are placeholders with no functionality behind them.": [
+      "/updates/"
+    ],
+    "The captions panel exists in the interface but is a placeholder — automatic generation and SRT import are not built yet.": [
+      "/features/"
+    ],
+    "The core promise": [
+      "/"
+    ],
+    "The editor itself is deliberately separated from the layer that talks to the operating system, which is what makes builds for other platforms a matter of implementing that layer rather than rewriting the application.": [
+      "/about/"
+    ],
+    "The editor itself is written to be platform-agnostic — only the layer that talks to the operating system differs — but a platform is not listed as supported here until there is a build that has actually been tested on it.": [
+      "/help/"
+    ],
+    "The export dialog predicts the output size and how long the render will take before you commit to it.": [
+      "/features/"
+    ],
+    "The fastest way to judge an editor is to open it.": [
+      "/features/"
+    ],
+    "The first release of Nova Cut: a multi-track video editor and a layer-based photo editor in one desktop application, packaged as a Windows installer with FFmpeg included, so importing and exporting work on a clean machine with nothing else to install. This entry describes the build as it stands; it is written here so the release notes are ready the day the download is.": [
+      "/updates/"
+    ],
+    "The full licence text ships with the application and is the authoritative version. Nothing on this page adds to it or takes anything away from it.": [
+      "/terms/"
+    ],
+    "The help center covers prerequisites, formats, where your files live and what is and isn’t built yet.": [
+      "/download/"
+    ],
+    "The installer is not code-signed yet": [
+      "/download/"
+    ],
+    "The interface is English only.": [
+      "/updates/"
+    ],
+    "The interface was rebuilt on a neutral design system. Surfaces are grey and charcoal, colour is reserved for things that are interactive or active, and the brand gradient is limited to the logo.": [
+      "/updates/"
+    ],
+    "The licence": [
+      "/terms/"
+    ],
+    "The Nova Cut export dialog, showing resolution, frame rate, container, codec, quality and bitrate controls with live size and render-time estimates.": [
+      "/features/"
+    ],
+    "The Nova Cut export dialog, with resolution, frame rate, container, codec, quality and bitrate controls and live estimates of the output size and render time.": [
+      "/"
+    ],
+    "The Nova Cut launcher, offering the video editor and the photo editor, with recent projects below.": [
+      "/features/"
+    ],
+    "The Nova Cut photo editor: a layer list, the tool rail, and a composed thumbnail on the canvas with the inspector open.": [
+      "/features/"
+    ],
+    "The Nova Cut photo editor. A layer list shows five layers, the tool rail runs down the left, and a composed thumbnail sits on the canvas with the inspector open on the right.": [
+      "/"
+    ],
+    "The Nova Cut transitions browser, showing the full list of available transitions alongside the timeline.": [
+      "/features/"
+    ],
+    "The Nova Cut video editor running on Windows.": [
+      "/"
+    ],
+    "The Nova Cut video editor: a multi-track timeline with text clips, a live preview, and the text inspector open on the right.": [
+      "/features/"
+    ],
+    "The Nova Cut video editor. A multi-track timeline holds several text clips, the preview shows the composited frame, and the inspector on the right edits the selected clip’s text.": [
+      "/"
+    ],
+    "The one honest asterisk is AI. Nova Cut has no AI features today. If it gains them, they may be offered as <1>optional paid services</1>, because removing a background or upscaling a shot can mean running a model on hardware that costs money every time — a cost that keeps arriving long after a download. Anything like that would sit alongside the editor, never in front of it.": [
+      "/about/"
+    ],
+    "The only thing it stores in your browser is your colour-theme choice, kept in <1/> so the site does not flash the wrong theme on your next visit. It never leaves your browser, and clearing your site data removes it.": [
+      "/privacy/"
+    ],
+    "The parts that are not glamorous but decide whether you lose an afternoon of work.": [
+      "/features/"
+    ],
+    "The photo editor has 27 working blend modes. The video compositor does not read blend modes yet, so a video clip always composites normally.": [
+      "/features/"
+    ],
+    "The preview and the exporter run the same GPU compositor over the same shaders, so there is no second render path that can quietly disagree with what you were watching.": [
+      "/"
+    ],
+    "The preview and the exporter run the same GPU compositor over the same shaders. There is no separate \"render quality\" path that can disagree with what you were looking at.": [
+      "/features/"
+    ],
+    "The preview could freeze on the first frame while the timecode kept advancing. Ranged reads of local media were answered with the whole file, which Chromium treats as \"this source cannot seek\", permanently downgrading the video element to a non-seekable stream. Media is now served with correct partial-content responses.": [
+      "/updates/"
+    ],
+    "The version of Nova Cut, your Windows version, and what you were doing when it went wrong — ideally the shortest sequence of steps that reproduces it.": [
+      "/help/"
+    ],
+    "The Windows build below is real: it has been produced and tested (built 9 September 2026), and the file details are the actual artifacts. What does not exist yet is a public download link, so the buttons on this page are inactive rather than pointing somewhere that would fail.": [
+      "/download/"
+    ],
+    "There is no account to create, no trial period, no watermark on your exports, and no feature in the editor that is locked behind a payment.": [
+      "/help/"
+    ],
+    "There is no account, no sign-in and no licence check.": [
+      "/privacy/"
+    ],
+    "There is no analytics, usage tracking or crash reporting of any kind. None is collected, and none is sent anywhere.": [
+      "/privacy/"
+    ],
+    "There is no auto-updater, so the application does not contact a server to check for versions.": [
+      "/privacy/"
+    ],
+    "There is no public issue tracker yet. Nova Cut 1.0.0 has not been publicly released yet, and one will be published alongside it rather than announced here before it exists.": [
+      "/help/"
+    ],
+    "These are places the architecture leaves room for. None of them exists in the current build, and none of them has a date. They are listed so that nothing above has to be read with a pinch of salt.": [
+      "/features/"
+    ],
+    "These are what an editor <1>is</1>. They stay part of the free Nova Cut experience, and so do the improvements made to them.": [
+      "/"
+    ],
+    "Third-party software": [
+      "/terms/"
+    ],
+    "This page describes Nova Cut 1.0.0. If the terms change, the change will be described in the release notes for the version it takes effect in.": [
+      "/terms/"
+    ],
+    "This release": [
+      "/download/"
+    ],
+    "This site is static: pages, stylesheets, one small script and images. It sets no cookies, embeds no trackers, loads no third-party scripts or fonts, and runs no analytics.": [
+      "/privacy/"
+    ],
+    "This website": [
+      "/privacy/"
+    ],
+    "Timeline tools": [
+      "/"
+    ],
+    "To continue past it, choose <1>More info</1> and then <2>Run anyway</2>. This will stop happening once a code-signing certificate is in place.": [
+      "/download/"
+    ],
+    "Transform keyframes for position, scale, rotation and opacity, with linear, hold, ease and bezier interpolation.": [
+      "/updates/"
+    ],
+    "Transform with keyframes": [
+      "/features/"
+    ],
+    "Transitions": [
+      "/"
+    ],
+    "Transitions became real. Previously the interface listed and accepted transitions that the compositor never read; the compositor now renders both clips into separate buffers inside a transition window and blends them with a two-texture shader.": [
+      "/updates/"
+    ],
+    "Transitions that never shorten your edit": [
+      "/features/"
+    ],
+    "Try it yourself": [
+      "/features/"
+    ],
+    "Turning on hardware-accelerated export asked for an NVIDIA encoder on machines that had no NVIDIA card, and the export failed outright. Nova Cut previously chose from the encoders FFmpeg was BUILT with, which on a full build is every vendor’s at once; it now tests that an encoder actually opens on this machine before choosing it, and falls back to software when none does.": [
+      "/updates/"
+    ],
+    "Two editors. One application.": [
+      "/"
+    ],
+    "Two things worth knowing, both of which change what your first run looks like.": [
+      "/download/"
+    ],
+    "Type": [
+      "/download/"
+    ],
+    "Undo and redo": [
+      "/features/"
+    ],
+    "Unreleased": [
+      "/updates/"
+    ],
+    "Updates": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Updates — Nova Cut": [
+      "/updates/"
+    ],
+    "Using the editor": [
+      "/help/"
+    ],
+    "Vector shapes and text": [
+      "/features/"
+    ],
+    "Vector shapes and text in the photo editor, plus an asset library of annotations, shapes, styled text presets and emoji stickers.": [
+      "/updates/"
+    ],
+    "Version": [
+      "/download/"
+    ],
+    "Version 1.0.0": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Version 1.0.0 is built and being prepared for its first public release. The download page has the full build details and system requirements.": [
+      "/"
+    ],
+    "Version 1.0.0 is not published yet": [
+      "/download/"
+    ],
+    "Video clips always composite normally — the video compositor does not read blend modes yet. Blend modes do work in the photo editor.": [
+      "/updates/"
+    ],
+    "Video editing": [
+      "/",
+      "/features/"
+    ],
+    "Video editing. Photo editing. The timeline tools. Audio tools. Transitions. Effects. Export. And the improvements made to all of them from here on. These are what an editor <1>is</1>, and they stay part of the free Nova Cut experience.": [
+      "/about/"
+    ],
+    "Video export requires FFmpeg — see the question above.": [
+      "/help/"
+    ],
+    "Video exports to MP4, MOV, MKV, AVI and animated GIF, using H.264, H.265, VP9, AV1 or ProRes where the container supports the codec. Resolutions run from 480p to 8K, at 24, 25, 30, 50, 60, 120, 144 or 240 frames per second.": [
+      "/help/"
+    ],
+    "View all": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Volume with automation": [
+      "/features/"
+    ],
+    "What “always free” actually covers": [
+      "/about/"
+    ],
+    "What formats can I export?": [
+      "/help/"
+    ],
+    "What information helps most when reporting a problem?": [
+      "/help/"
+    ],
+    "What is free, and what might not be": [
+      "/terms/"
+    ],
+    "What is Nova Cut?": [
+      "/help/"
+    ],
+    "What is the difference between the installer and the portable build?": [
+      "/help/"
+    ],
+    "What it isn’t": [
+      "/about/"
+    ],
+    "What platforms does Nova Cut support?": [
+      "/help/"
+    ],
+    "What you preview is what you get.": [
+      "/"
+    ],
+    "What’s inside": [
+      "/"
+    ],
+    "When an export finishes, Nova Cut opens the folder it was written to with the file selected. Only on success — a failed or cancelled export opens nothing.": [
+      "/updates/"
+    ],
+    "Where can I report a bug?": [
+      "/help/"
+    ],
+    "Where does Nova Cut store my files?": [
+      "/help/"
+    ],
+    "Where it stands": [
+      "/about/"
+    ],
+    "Whichever route you use, a useful report has three things in it: your Nova Cut version, your Windows version, and the shortest sequence of steps that reproduces the problem. The About section of Settings shows the version and system details to quote.": [
+      "/help/"
+    ],
+    "Who makes Nova Cut?": [
+      "/help/"
+    ],
+    "Whoever hosts this site may keep ordinary server access logs, as essentially every web server does. That is outside what this project controls, and this page will not pretend otherwise.": [
+      "/privacy/"
+    ],
+    "Why does Windows warn me about the installer?": [
+      "/help/"
+    ],
+    "Will editing features always be free?": [
+      "/help/"
+    ],
+    "Will Nova Cut have AI features?": [
+      "/help/"
+    ],
+    "Windows": [
+      "/download/"
+    ],
+    "Windows 10 (64-bit) or later": [
+      "/download/"
+    ],
+    "Windows x64": [
+      "/download/"
+    ],
+    "Windows x64 is the only platform with a build. macOS and Linux targets are configured but untested.": [
+      "/updates/"
+    ],
+    "Work is saved automatically as you go, and if the application closes unexpectedly Nova Cut offers to restore the session — timeline, media, effects, playhead, zoom and selection.": [
+      "/features/"
+    ],
+    "x64": [
+      "/download/"
+    ],
+    "x64 · v1.0.0": [
+      "/download/"
+    ],
+    "Yes. Everything happens on your machine. Nova Cut does not need an account and does not need a connection to edit or export.": [
+      "/help/"
+    ],
+    "Yes. Nova Cut autosaves as you work, and if it closes unexpectedly it offers to restore the session on the next launch — including the timeline, imported media, effects, playhead position, zoom level and selection.": [
+      "/help/"
+    ],
+    "Yes. Nova Cut is free to download and use, and it is released under the MIT licence.": [
+      "/help/"
+    ],
+    "You're here": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Your desktop assistant": [
+      "/",
+      "/about/",
+      "/download/",
+      "/features/",
+      "/help/",
+      "/privacy/",
+      "/terms/",
+      "/updates/"
+    ],
+    "Your media is never uploaded. Import, editing, preview and export all happen locally.": [
+      "/privacy/"
+    ],
+    "Your work is yours": [
+      "/terms/"
+    ]
+  }
+}

@@ -65,6 +65,7 @@ function header(current) {
       </button>
       <nav class="nav" id="site-nav" aria-label="Primary">${nav.map(link).join('')}</nav>
       <div class="header__actions">
+        <span class="nova-lang-slot" data-nova-lang-slot data-compact></span>
         <div class="theme" role="group" aria-label="Colour theme">
           <button type="button" data-theme-set="system" aria-pressed="false" aria-label="Match system theme" title="System">${icons.monitor}</button>
           <button type="button" data-theme-set="light" aria-pressed="false" aria-label="Light theme" title="Light">${icons.sun}</button>
@@ -188,6 +189,8 @@ export function page({ title, description, path, body, current, jsonLd }) {
   <link rel="icon" href="/brand/icon-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <script src="/nova-i18n-boot.js"></script>
+  <link rel="stylesheet" href="/nova-i18n.css">
   <link rel="stylesheet" href="/styles.css">
 
   <script>${THEME_SCRIPT}</script>
@@ -201,6 +204,7 @@ ${body}
   </main>
   ${footer()}
   ${novaAllProducts('nova-cut-site')}
+  <script src="/nova-i18n.js" data-base="/i18n/" defer></script>
   <script src="/site.js" defer></script>
 </body>
 </html>
