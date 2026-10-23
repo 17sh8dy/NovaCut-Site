@@ -21,15 +21,22 @@ export const releases = [
   {
     version: '1.0.0',
     name: 'First public release',
-    status: 'unreleased',
-    date: null,
+    status: 'released',
+    date: '2026-10-22',
     summary:
       'The first release of Nova Cut: a multi-track video editor and a layer-based photo editor in one desktop ' +
       'application, packaged as a Windows installer with FFmpeg included, so importing and exporting work on a clean ' +
-      'machine with nothing else to install. This entry describes the build as it stands; it is written here so the ' +
-      'release notes are ready the day the download is.',
+      'machine with nothing else to install.',
     sections: {
       new: [
+        'A library of 125 GL transitions, searchable in a new browser panel with previews, each with adjustable settings. Texture-based transitions come with eight built-in maps.',
+        'Auto Ripple: when you delete or trim a clip, the clips after it close the gap on their own.',
+        'Grab a title in the preview and drag it anywhere in the frame. It snaps to the centre lines, one drag is one undo step, and an animated position gets a keyframe at the playhead.',
+        'Clips no longer override each other. Drop or drag one onto occupied time and it moves to the nearest free track, or to a new one; a "Drop here for a new track" strip appears while you drag. Media dropped on the wrong kind of lane is sent to the right kind.',
+        'Select several clips and drag them together as a group, keeping their spacing.',
+        'A Preview quality setting that lowers the preview resolution while playing, for smoother playback on slower machines.',
+        'Nova Cut checks GitHub for a newer version and asks before downloading or installing anything. You can turn this off in Settings.',
+        'The remove-from-project confirmation has a "Do not show again" checkbox.',
         'A new logo, the Nova Mark: an angular N built from three planes on a dark navy tile. In Settings → Appearance, Logo style switches the mark inside the app between Nova (cyan, blue and purple), Purple and Monochrome. The taskbar and installer icon always use the Nova colours.',
         'A redesigned Home screen. Video Editor, Photo Editor and AI Tools are large cards with a preview of each, under a new "Create something extraordinary." header with a New Project button. Recent Projects shows larger cards with their last-edited date and a View All link once there are more than six.',
         'Still images (JPG, PNG and other non-GIF formats) now go straight onto the video timeline. They start at five seconds and can be stretched to any length, and importing a mix of video and images opens everything in the video editor.',
@@ -68,6 +75,8 @@ export const releases = [
         'A note on export speed generally: most of the time goes into seeking the source video, so footage with widely spaced keyframes exports several times slower than the same footage with a normal keyframe interval. On this machine the identical project measured 66ms per frame against an 8-second keyframe interval and 19ms against a 1-second one.',
       ],
       fixed: [
+        'Playback above 2x speed was a slideshow at about one frame per second. It is smooth now (audio is silent above 2x).',
+        'Autosave did not start again if you switched it on in Settings after launching with it off.',
         'Turning on hardware-accelerated export asked for an NVIDIA encoder on machines that had no NVIDIA card, and the export failed outright. Nova Cut previously chose from the encoders FFmpeg was BUILT with, which on a full build is every vendor’s at once; it now tests that an encoder actually opens on this machine before choosing it, and falls back to software when none does.',
         'In the light theme, the success, warning and error colours were the ones tuned for the dark theme and were close to illegible on white — warning text measured 2.0:1 against its background where 4.5:1 is the standard. All three, and the muted label colour, are now tuned for light surfaces.',
         'A transition froze the picture for the rest of the export. Rendering a transition asks each clip for frames outside its own range, and that seek was never acknowledged, so the source stopped decoding and every later frame waited out a timeout. One cross dissolve took an eight-second export from 22 seconds to about 190, and left the second half of the video a still image.',

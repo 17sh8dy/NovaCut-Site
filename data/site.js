@@ -63,18 +63,18 @@ export const site = {
  *                to a public URL. Download buttons render disabled with an explanation.
  * 'released'   — the URLs below are live. Download buttons become real links.
  */
-export const releaseStatus = 'unreleased';
+export const releaseStatus = 'released';
 
 export const version = '1.0.0';
 
 /** ISO date, or null while unreleased. Never guess this. */
-export const releaseDate = null;
+export const releaseDate = '2026-10-22';
 
 /**
  * The date the current Windows artifacts were produced locally. This is a BUILD date, not a
  * release date, and every surface that shows it labels it as such.
  */
-export const buildDate = '2026-09-09';
+export const buildDate = '2026-10-22';
 
 export const platforms = {
   windows: {
@@ -90,9 +90,9 @@ export const platforms = {
         format: 'NSIS installer (.exe)',
         filename: 'Nova Cut-1.0.0-x64.exe',
         /** Exact byte size of the produced artifact. */
-        sizeBytes: 152530294,
+        sizeBytes: 156727489,
         /** null while unreleased — the button renders disabled rather than 404ing. */
-        url: null,
+        url: 'https://github.com/17sh8dy/NovaCut/releases/download/v1.0.0/Nova-Cut-1.0.0-x64.exe',
         recommended: true,
         note: 'Lets you choose the install location, adds Start menu and desktop shortcuts, and associates .novacut project files.',
       },
@@ -101,8 +101,8 @@ export const platforms = {
         label: 'Portable',
         format: 'Portable executable (.exe)',
         filename: 'Nova Cut-1.0.0-portable.exe',
-        sizeBytes: 152302337,
-        url: null,
+        sizeBytes: 156436922,
+        url: 'https://github.com/17sh8dy/NovaCut/releases/download/v1.0.0/Nova-Cut-1.0.0-portable.exe',
         recommended: false,
         note: 'Runs without installing. Useful on machines where you cannot install software.',
       },
