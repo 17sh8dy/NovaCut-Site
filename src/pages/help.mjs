@@ -4,7 +4,7 @@ import { page } from '../layout.mjs';
 import { button, icons, notice, esc, inline, reveal } from '../components.mjs';
 
 /**
- * The help centre.
+ * The help center.
  *
  * Four answers are marked `dynamic` in data/faq.js and are composed here from data/site.js
  * instead of being written out. That is deliberate: "what platforms are supported", "what else

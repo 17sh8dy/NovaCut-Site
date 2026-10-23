@@ -2308,3 +2308,146 @@ a.nova-all__card:hover {
     color: #000;
   }
 }
+
+/* ── Switcher groups ───────────────────────────────────────────────────────────────── */
+.switcher__menu {
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+}
+.switcher__eyebrow--group {
+  margin-top: var(--s3);
+}
+.switcher__eyebrow--group:first-of-type {
+  margin-top: 2px;
+}
+.nova-all__group {
+  margin: var(--s6) 0 var(--s3);
+  text-align: left;
+  color: var(--text-faint);
+  font-size: var(--t-tiny);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.nova-all__group:first-of-type {
+  margin-top: 0;
+}
+
+/* ── More motion ───────────────────────────────────────────────────────────────────── */
+
+/* A thin progress rule under the header that fills as the page scrolls. Pure CSS where the
+   browser supports scroll-driven animation; site.js sets --scroll for the rest. */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 2px;
+  transform-origin: 0 50%;
+  transform: scaleX(var(--scroll, 0));
+  background: linear-gradient(90deg, var(--brand-sky), var(--accent));
+  pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    transform: scaleX(0);
+    animation: oc-progress linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+@keyframes oc-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Section headings draw a short accent rule once they scroll into view. */
+.js .section-head h2 {
+  position: relative;
+}
+.js .section-head h2::after {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin-top: var(--s3);
+  border-radius: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 640ms var(--ease) 180ms;
+}
+.js [data-reveal='shown'] .section-head h2::after,
+.js .section-head[data-reveal='shown'] h2::after,
+.js .section-head h2[data-reveal='shown']::after {
+  transform: scaleX(1);
+}
+.section-head[style*='text-align:center'] h2::after,
+.section-head--center h2::after {
+  margin-inline: auto;
+  transform-origin: 50% 50%;
+}
+
+/* Cards and buttons answer the pointer. */
+.card,
+.feature,
+.dl-card,
+.dl-build {
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease), border-color 220ms var(--ease);
+}
+.card:hover,
+.feature:hover,
+.dl-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.5);
+}
+.btn {
+  transition: transform 160ms var(--ease), background-color 160ms var(--ease), border-color 160ms var(--ease), box-shadow 160ms var(--ease);
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: none;
+}
+
+/* The hero eases in on load instead of appearing. */
+.js .hero__inner > * {
+  animation: oc-rise 560ms var(--ease) both;
+}
+.js .hero__inner > *:nth-child(1) { animation-delay: 40ms; }
+.js .hero__inner > *:nth-child(2) { animation-delay: 110ms; }
+.js .hero__inner > *:nth-child(3) { animation-delay: 180ms; }
+.js .hero__inner > *:nth-child(4) { animation-delay: 250ms; }
+.js .hero__inner > *:nth-child(5) { animation-delay: 320ms; }
+
+/* The hero screenshot drifts slightly against the scroll. site.js drives --parallax. */
+.hero__shot {
+  transform: translateY(calc(var(--parallax, 0) * -1px));
+  will-change: transform;
+}
+
+/* The logo tilts a touch on hover. */
+.logo svg {
+  transition: transform 260ms var(--ease);
+}
+.logo:hover svg {
+  transform: rotate(-6deg) scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress,
+  .js .hero__inner > *,
+  .hero__shot,
+  .logo:hover svg,
+  .card:hover,
+  .feature:hover,
+  .dl-card:hover,
+  .btn:hover {
+    animation: none !important;
+    transform: none !important;
+  }
+  .js .section-head h2::after {
+    transform: scaleX(1);
+    transition: none;
+  }
+}

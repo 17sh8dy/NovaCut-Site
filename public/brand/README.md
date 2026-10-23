@@ -19,56 +19,25 @@ two repositories would drift with nothing to say which one is right.
 
 ## The mark
 
-A rounded square in the brand blue holding two overlapping translucent frames — one tilted 12°
-behind the other — with a white play triangle at the centre and two corner brackets marking
-opposite corners.
-
-It reads as the thing the product does: **frames** stacked on a **timeline**, a **play** control,
-and framing **brackets** from a viewfinder. It is deliberately not a pair of scissors.
-
-On a 1024 viewBox: the body is edge-to-edge with a corner radius of 228; the artwork sits in a
-group translated to (512, 520); the back frame is 480×320 at radius 40 rotated −12° at 35%
-opacity, the front frame 512×352 at radius 40 at 25%; the triangle spans (−56,−56) → (−56,56) →
-(64,0); the brackets are 12px round-capped strokes at (−200,−136) and (200,104).
+The **Nova Mark**: an angular N built from three planes, a blue diagonal slab, a purple lower-left
+stem and a detached violet upper-right segment, on a dark navy rounded square (corner radius 228 on
+a 1024 viewBox). Full geometry, colour variants and the generator live in the application repository
+at `assets/brand/nova-mark/` (see its README); the files here are copies of its **default** variant.
 
 ## Two drawings, not one
 
-`symbol-small.svg` is a **separate, simplified drawing** for small sizes: one frame at full
-opacity, a knocked-out triangle, no brackets, no rotation.
-
-It exists because the full artwork does not survive being shrunk. At 16px the 25% and 35%
-opacities converge on the background, the 12px bracket strokes fall below one pixel, and the
-triangle merges into the frame behind it — the icon becomes a plain blue square. That was
-rendered and compared before this was written, not assumed.
-
-The threshold is **32px**: at or below it, use the simplified drawing. The application applies
-this in `scripts/make-icons.cjs` (16/24/32) and again in CSS for the 22px title-bar mark; the
-website applies it for the 26px header and footer mark. Anything at 48px or larger takes the
-full artwork.
-
-This is ordinary practice, and the reason `.ico` is a multi-image format in the first place: an
-icon is not one drawing scaled, it is a family drawn per size.
+`symbol-small.svg` is a separate drawing for **32px and below**: the same shapes with a wider channel
+between the planes, the glyph slightly larger and no edge hairline, so the detail survives at 16px.
+The website's 26px header and footer mark inline it, and `favicon.svg` is the same file. Anything at
+48px or larger uses `symbol.svg`.
 
 ## The colour
 
-The mark is a **single flat blue**, `#0A84FF`.
+Cyan to blue to indigo down the slab (`#17C3FF`, `#2F7DFF`, `#4B2EFF`), violet for the two detached
+planes (`#A87DFF` to `#6A48F7`, `#B58BFF` to `#8458F8`), on a `#0A0E22` to `#0F1531` tile.
 
-`--brand-deep` and `--brand-sky` in the stylesheets are a shade and a tint of it at the same hue
-(210°). They are **not in the artwork** — they exist only to give large brand type and the 2px
-page rule somewhere to travel, and nothing meant to match the icon may use them.
-
-| Token | Value | In the artwork? |
-| --- | --- | --- |
-| `--brand-blue` | `#0A84FF` | **Yes — this is the mark** |
-| `--brand-deep` | `#0059B3` | No, a shade for gradients only |
-| `--brand-sky` | `#70B8FF` | No, a tint for gradients only |
-
-The frames and triangle are white, at 25% / 35% / 100% opacity.
-
-**The brand is not the accent, and here they are different values.** The UI accent is `#1565FF`,
-not the mark's `#0A84FF`, because the mark's blue measures **3.65:1** under white text — below
-the 4.5:1 a button label needs. They were the same value until the logo changed. Never apply an
-accent colour to a brand asset, and never assume the two should match: check the contrast first.
+The site's UI accent (`#1565FF`) and `--brand-*` tokens predate this mark and are **not** its
+colours; they are left alone on purpose. Never apply an accent colour to a brand asset.
 
 ---
 
@@ -82,14 +51,14 @@ accent colour to a brand asset, and never assume the two should match: check the
 | `lockup-dark.svg` | Full logo — symbol plus wordmark — for **dark** backgrounds. |
 | `lockup-light.svg` | Full logo for **light** backgrounds. |
 | `lockup-mono.svg` | Full logo in a single `currentColor`, for one-colour reproduction (print, embroidery, an installer bitmap). |
-| `favicon.svg` | The browser tab icon. Identical to `symbol.svg`. |
+| `favicon.svg` | The browser tab icon. Identical to `symbol-small.svg`. |
 | `icon-192.png`, `icon-512.png` | Web app manifest icons. |
 | `apple-touch-icon.png` | 180×180, for iOS home screens. |
 | `../og-image.png`, `../og-image.webp` | 1200×630 social sharing card. |
 
-The wordmark in the lockups is drawn as **stroked paths**, not live text, so the files render
-identically on a machine that has never heard of the site's font stack. Its round caps and joins
-echo the symbol's corner radius.
+The wordmark in the lockups is **live text** (Inter, falling back to the system UI font), because the
+old stroked-path wordmark spelled "Open Cut" and has not been redrawn. Convert to outlines before
+using a lockup anywhere the font may be missing.
 
 The website header does not use a lockup file — it inlines the **simplified** symbol next to real
 HTML text, so the wordmark stays selectable, searchable and correctly sized at every breakpoint,

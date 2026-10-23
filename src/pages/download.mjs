@@ -223,11 +223,12 @@ export function downloadPage() {
     <section class="cta">
       <div class="wrap">
         <h2>Questions before you install?</h2>
-        <p class="lede">The help centre covers prerequisites, formats, where your files live and what is
+        <p class="lede">The help center covers prerequisites, formats, where your files live and what is
           and isn’t built yet.</p>
         <div class="btn-row">
           ${button({ href: '/help/', label: 'Help & FAQ', large: true })}
           ${button({ href: '/features/', label: 'See the features', variant: 'secondary', large: true })}
+          ${site.contact.community ? button({ href: site.contact.community, label: 'Join the Discord', icon: icons.discord, variant: 'secondary', large: true }) : ''}
         </div>
       </div>
     </section>`;

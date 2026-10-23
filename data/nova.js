@@ -15,22 +15,15 @@
  * `id` must match the `current` id passed to `novaSwitcher()` in layout.mjs so the switcher can
  * mark "you are here" instead of linking a product back to itself.
  *
- * `url` is a TODO. None of these products has a confirmed public domain yet — these are the
- * names the products already use for themselves in their own config (Nova Cut's is `site.origin`
- * above), guessed to the same pattern for the others. CONFIRM THE REAL URL before this ships;
- * until then a wrong guess here just sends someone to an unregistered domain, not somewhere
- * unsafe, but it should still be fixed before launch.
+ * Every `url` here is a real, deployed address except Nova Games, which has none and renders as
+ * "Soon". Nova Cut's own row goes to the download page.
  */
 export const novaProducts = [
-  {
-    id: 'nova-cut',
-    label: 'Nova Cut',
-    tagline: 'Create and edit',
-    icon: 'scissors',
-    url: 'https://novacut.app', // matches data/site.js `origin` above
-  },
+  // ── Apps ──
+  { id: 'nova-cut', group: 'Apps', label: 'Nova Cut', tagline: 'Create and edit', icon: 'scissors', url: '/download/' },
   {
     id: 'replay-gg',
+    group: 'Apps',
     label: 'Replay.GG',
     tagline: 'Record and clip gameplay',
     icon: 'gamepad',
@@ -38,21 +31,56 @@ export const novaProducts = [
   },
   {
     id: 'atlas',
+    group: 'Apps',
     label: 'Atlas',
     tagline: 'Your desktop assistant',
     icon: 'sparkle',
-    url: 'https://atlas.app', // TODO: confirm real domain — Atlas may not have a public site yet
+    url: 'https://atlas-website.shadylabs.workers.dev/',
+  },
+  /** No games are published yet, so this renders disabled instead of guessing a destination. */
+  { id: 'nova-games', group: 'Apps', label: 'Nova Games', tagline: 'Coming soon', icon: 'gamepad', url: null },
+
+  // ── Websites ──
+  {
+    id: 'nova-help',
+    group: 'Websites',
+    label: 'Nova.Help',
+    tagline: 'Support and guides',
+    icon: 'lifebuoy',
+    url: 'https://nova-help.shadylabs.workers.dev/',
   },
   {
-    id: 'nova-games',
-    label: 'Nova Games',
-    tagline: 'Coming soon',
-    icon: 'gamepad',
-    /**
-     * No games are published under a Nova Games storefront yet — there's nothing to link to
-     * honestly, so this row renders disabled instead of guessing a destination. Give it a `url`
-     * once that's a real thing to open.
-     */
-    url: null,
+    id: 'atlas-site',
+    group: 'Websites',
+    label: 'Atlas Website',
+    tagline: 'Download and learn about Atlas',
+    icon: 'sparkle',
+    url: 'https://atlas-website.shadylabs.workers.dev/',
+  },
+  { id: 'nova', group: 'Websites', label: 'Nova', tagline: 'The Nova home page', icon: 'earth', url: 'https://nova-780.pages.dev/' },
+  {
+    id: 'nova-legal',
+    group: 'Websites',
+    label: 'Nova Legal',
+    tagline: 'Terms and privacy',
+    icon: 'file',
+    url: 'https://nova-legal.shadylabs.workers.dev/',
+  },
+  {
+    id: 'nova-review',
+    group: 'Websites',
+    label: 'Nova.Review',
+    tagline: 'Reviews and suggestions',
+    icon: 'star',
+    url: 'https://nova-review.shadylabs.workers.dev/',
+  },
+  /** This site. It is the current page, so it renders as "You're here". */
+  {
+    id: 'nova-cut-site',
+    group: 'Websites',
+    label: 'Nova Cut Website',
+    tagline: 'Nova Cut download site',
+    icon: 'scissors',
+    url: 'https://novacut.app',
   },
 ];

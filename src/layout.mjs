@@ -14,18 +14,24 @@
  */
 
 import { site, nav, footerLinks, version } from '../data/site.js';
+import { readFileSync } from 'node:fs';
 import { esc, escJson, icons, novaSwitcher, novaAllProducts } from './components.mjs';
 
 /*
  * The mark, inlined so the header needs no extra request.
  *
  * This is the SIMPLIFIED drawing (public/brand/symbol-small.svg), not the full artwork, because
- * the header and footer both render it at 26px — well inside the range where the full mark's two
- * translucent frames and 12px bracket strokes collapse into a blue smudge. The application draws
- * its 22px title-bar mark from the same simplified source for exactly the same reason. Anything
- * showing the mark at 48px or larger should use the full artwork instead.
+ * the header and footer both render it at 26px, where the hairline edge and the narrow channel
+ * between the mark's planes fall below a pixel. The application draws its 22px title-bar mark from
+ * the same simplified source for exactly the same reason. Anything showing the mark at 48px or
+ * larger should use the full artwork instead. It is read from the file at build time so the inline
+ * copy can never drift from public/brand/.
  */
-const SYMBOL = `<svg viewBox="0 0 1024 1024" aria-hidden="true"><rect width="1024" height="1024" rx="228" fill="#0A84FF"/><g transform="translate(512, 512)"><rect x="-288" y="-208" width="576" height="416" rx="56" fill="#FFFFFF"/><path d="M-72,-104 L-72,104 L104,0 Z" fill="#0A84FF"/></g></svg>`;
+const SYMBOL_SVG = readFileSync(new URL('../public/brand/symbol-small.svg', import.meta.url), 'utf8')
+  .replace(/<title>.*?<\/title>/s, '')
+  .replace(/ width="1024" height="1024"/, ' aria-hidden="true"');
+/** Gradient ids are per document, so header and footer each get their own copy. */
+const symbol = (n) => SYMBOL_SVG.replace(/id="(\w+)"/g, `id="$1-${n}"`).replace(/url\(#(\w+)\)/g, `url(#$1-${n})`);
 
 /**
  * Written inline in <head>, and it does two things that MUST happen before the first paint.
@@ -52,8 +58,8 @@ function header(current) {
   return `<div class="brandline" aria-hidden="true"></div>
   <header class="header" id="site-header">
     <div class="wrap header__inner">
-      <a class="logo" href="/" aria-label="Nova Cut — home">${SYMBOL}<span>Nova Cut</span></a>
-      ${novaSwitcher('nova-cut', 'Nova Cut Website')}
+      <a class="logo" href="/" aria-label="Nova Cut — home">${symbol(1)}<span>Nova Cut</span></a>
+      ${novaSwitcher('nova-cut-site')}
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
         <span class="icon-open">${icons.menu}</span><span class="icon-close">${icons.close}</span>
       </button>
@@ -91,7 +97,7 @@ function footer() {
     <div class="wrap">
       <div class="footer__top">
         <div class="footer__brand">
-          <a class="logo" href="/">${SYMBOL}<span>Nova Cut</span></a>
+          <a class="logo" href="/">${symbol(2)}<span>Nova Cut</span></a>
           <p>${esc(site.tagline)} A desktop video and photo editor whose core editing features will always be free.</p>
         </div>
         ${footerLinks.map(column).join('')}
@@ -194,7 +200,7 @@ export function page({ title, description, path, body, current, jsonLd }) {
 ${body}
   </main>
   ${footer()}
-  ${novaAllProducts('nova-cut', 'Nova Cut Website')}
+  ${novaAllProducts('nova-cut-site')}
   <script src="/site.js" defer></script>
 </body>
 </html>

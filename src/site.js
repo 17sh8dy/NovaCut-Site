@@ -3,11 +3,12 @@
  * with JavaScript disabled the site is fully readable, fully navigable and correctly themed
  * (the inline head script handles the theme; the footer carries every nav link).
  *
- * Four jobs:
+ * Five jobs:
  *   1. theme control      — three states, matching the application's System / Light / Dark
  *   2. mobile navigation  — the only nav that needs JS, hence the footer fallback
  *   3. scroll reveal      — adds the hidden state itself, so it can never strand content
  *   4. header shadow      — a border that appears once the page has scrolled
+ *   5. motion             — scroll progress rule, hero parallax, reveal of untagged blocks
  */
 (function () {
   'use strict';
@@ -84,7 +85,7 @@
     });
 
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 860) setOpen(false);
+      if (window.innerWidth > 1100) setOpen(false);
     });
   }
 
@@ -206,6 +207,35 @@
     onScroll();
   }
 
+  /* ── Scroll progress + hero parallax ───────────────────────────────────────────── */
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+
+    var heroShot = document.querySelector('.hero__shot');
+    var ticking = false;
+    var frame = function () {
+      ticking = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      root.style.setProperty('--scroll', max > 0 ? String(Math.min(1, window.scrollY / max)) : '0');
+      if (heroShot) root.style.setProperty('--parallax', String(Math.min(40, window.scrollY * 0.06)));
+    };
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(frame);
+        }
+      },
+      { passive: true }
+    );
+    frame();
+  }
+
   /* ── Scroll reveal ──────────────────────────────────────────────────────────────── */
 
   /*
@@ -214,8 +244,23 @@
    * this block is what reveals it again. If IntersectionObserver is missing, or the visitor has
    * asked for reduced motion, everything is revealed immediately instead.
    */
-  var targets = document.querySelectorAll('[data-reveal]');
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /*
+   * Also reveal the common building blocks pages did not tag by hand: section headings, ledes,
+   * cards, feature rows and the closing call to action. Anything inside something already tagged,
+   * or inside the hero (which animates on load instead), is left alone.
+   */
+  if (!reduced && 'IntersectionObserver' in window) {
+    document
+      .querySelectorAll('.section-head, .card, .feature, .dl-card, .faq-group, .release, .cta .wrap > *')
+      .forEach(function (el) {
+        if (el.hasAttribute('data-reveal') || el.closest('[data-reveal], .hero')) return;
+        el.setAttribute('data-reveal', '');
+      });
+  }
+
+  var targets = document.querySelectorAll('[data-reveal]');
 
   if (targets.length && 'IntersectionObserver' in window && !reduced) {
     var observer = new IntersectionObserver(

@@ -74,6 +74,11 @@ export const icons = {
   linux: svg('<path d="M12 2.6c-2.2 0-3.1 1.8-3 4 .05 1.3.1 2.2-.5 3.2-1 1.7-2.4 3.6-2.4 5.6 0 1 .4 1.6 1.1 1.9-.3 1.3.2 2.3 1.2 2.7 1.4.6 3-.3 3.6-.3s2.2.9 3.6.3c1-.4 1.5-1.4 1.2-2.7.7-.3 1.1-.9 1.1-1.9 0-2-1.4-3.9-2.4-5.6-.6-1-.55-1.9-.5-3.2.1-2.2-.8-4-3-4Z"/><path d="M10.4 7.5v.5M13.6 7.5v.5M10.7 10.4c.8.7 1.8.7 2.6 0"/>'),
   earth: svg('<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3Z"/>'),
   scissors: svg('<circle cx="6.5" cy="6.5" r="2.5"/><circle cx="6.5" cy="17.5" r="2.5"/><path d="m20 5-13 13"/><path d="M8.4 8.4 20 19"/>'),
+  globe: svg('<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3Z"/>'),
+  lifebuoy: svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="m5.6 5.6 3.9 3.9M14.5 14.5l3.9 3.9M18.4 5.6l-3.9 3.9M9.5 14.5l-3.9 3.9"/>'),
+  file: svg('<path d="M6.5 3h7.2L19 8.3V20a1 1 0 0 1-1 1H6.5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M13.5 3v5.5H19"/><path d="M8.5 13h7M8.5 16.5h5"/>'),
+  star: svg('<path d="m12 3.5 2.5 5.3 5.8.7-4.3 4 1.1 5.7L12 16.3 6.9 19.2 8 13.5l-4.3-4 5.8-.7L12 3.5Z"/>'),
+  discord: svg('<path d="M8.6 7.2c1-.4 2-.6 3.4-.6s2.4.2 3.4.6c1.9.6 3 2.6 3.5 5.6.2 1.7.1 3.3-.1 4.1-.9.6-1.9 1-2.9 1.3l-.9-1.6c.4-.1.8-.3 1.2-.6-1.1.5-2.3.8-4.2.8s-3.1-.3-4.2-.8c.4.3.8.5 1.2.6l-.9 1.6c-1-.3-2-.7-2.9-1.3-.2-.8-.3-2.4-.1-4.1.5-3 1.6-5 3.5-5.6Z"/><circle cx="9.6" cy="12.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.4" cy="12.6" r="1.1" fill="currentColor" stroke="none"/>'),
   gamepad: svg('<rect x="2.5" y="7.5" width="19" height="10" rx="4"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="15.3" cy="10.8" r="0.9" fill="currentColor" stroke="none"/><circle cx="17.6" cy="13.1" r="0.9" fill="currentColor" stroke="none"/>'),
 };
 
@@ -189,6 +194,14 @@ const NOVA_MARK = `<svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" 
  *   and the shared product list both call the product "Nova Cut" — accurate for the desktop app,
  *   not for the page you're actually on, which is the marketing website for it.
  */
+/** Render `items` under a small heading per `group`, in the order the groups first appear. */
+function grouped(items, render, headingClass) {
+  const groups = [...new Set(items.map((p) => p.group))];
+  return groups
+    .map((g) => `<p class="${headingClass}">${esc(g)}</p>${items.filter((p) => p.group === g).map(render).join('')}`)
+    .join('');
+}
+
 export function novaSwitcher(current, currentLabel) {
   const item = (p) => {
     const isCurrent = p.id === current;
@@ -214,7 +227,7 @@ export function novaSwitcher(current, currentLabel) {
       </button>
       <div class="switcher__menu" id="nova-switcher-menu" role="menu" aria-labelledby="nova-switcher-trigger" hidden>
         <p class="switcher__eyebrow">Nova</p>
-        ${novaProducts.map(item).join('')}
+        ${grouped(novaProducts, item, 'switcher__eyebrow switcher__eyebrow--group')}
         <button class="switcher__viewall" type="button" id="nova-switcher-viewall" aria-haspopup="dialog" aria-controls="nova-all">
           <span>View all</span>${icons.arrowRight}
         </button>
@@ -259,7 +272,14 @@ export function novaAllProducts(current, currentLabel) {
         <p class="nova-all__eyebrow">${NOVA_MARK}<span>Nova</span></p>
         <h2 class="nova-all__title" id="nova-all-title">All products</h2>
         <p class="nova-all__subtitle">Everything Nova makes, in one place.</p>
-        <div class="nova-all__grid">${novaProducts.map(card).join('')}</div>
+        ${[...new Set(novaProducts.map((p) => p.group))]
+          .map(
+            (g) => `<h3 class="nova-all__group">${esc(g)}</h3><div class="nova-all__grid">${novaProducts
+              .filter((p) => p.group === g)
+              .map(card)
+              .join('')}</div>`,
+          )
+          .join('')}
       </div>
     </div>`;
 }

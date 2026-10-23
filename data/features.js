@@ -106,7 +106,7 @@ export const featureGroups = [
       {
         title: 'Transitions that never shorten your edit',
         status: 'stable',
-        body: 'A transition window is centred on the cut and clamped to a third of the shorter clip, so adding one changes how the cut looks without changing how long the sequence is.',
+        body: 'A transition window is centered on the cut and clamped to a third of the shorter clip, so adding one changes how the cut looks without changing how long the sequence is.',
       },
       {
         title: 'One renderer for preview and export',
