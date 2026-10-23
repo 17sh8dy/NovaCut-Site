@@ -11,8 +11,8 @@ import { esc } from '../components.mjs';
  * an invented entity to bind it — would be a fabrication with real consequences.
  *
  * What IS asserted here was verified in the source: the editor makes no outbound network
- * requests, contains no analytics or crash reporting, has no account system, and has no
- * auto-updater. If any of that changes, this page changes with it.
+ * requests, contains no analytics or crash reporting, has no required account (a Nova Account
+ * is optional), and its only network request is the optional update check against GitHub releases. If any of that changes, this page changes with it.
  *
  * The hosting paragraph is written as a conditional rather than a claim, because the site's
  * eventual host is not known at build time and a promise about server logs that nobody has
@@ -44,12 +44,16 @@ export function privacyPage() {
     'A plain description of what Nova Cut does with your data. It is short because the answer is mostly “nothing”.',
     `<h2>The application</h2>
      <p><strong>Nova Cut runs entirely on your computer.</strong> Your projects, your media and your exports
-       stay on your own disk. The editor works with no internet connection at all.</p>
+       stay on your own disk. The editor works with no internet connection at all; only the optional update check and Nova Account sign-in need one.</p>
      <ul>
-       <li>There is no account, no sign-in and no licence check.</li>
+       <li>There is no licence check.</li>
+       <li>A Nova Account is optional. Signing in connects the shared Nova identity; it does not upload
+         your projects or media, and the editor is fully usable without one.</li>
        <li>There is no analytics, usage tracking or crash reporting of any kind. None is collected, and
          none is sent anywhere.</li>
-       <li>There is no auto-updater, so the application does not contact a server to check for versions.</li>
+       <li>The installed app can check GitHub’s release hosting for a newer version. That check downloads
+         nothing; it only reads the latest release’s version, and an update is downloaded only if you
+         choose to. You can turn the check off in Settings.</li>
        <li>Your media is never uploaded. Import, editing, preview and export all happen locally.</li>
      </ul>
      <p>Nova Cut stores preferences, your recent-projects list, autosave snapshots and caches in its own
@@ -69,6 +73,12 @@ export function privacyPage() {
      <p>If Nova Cut ever gains a feature that sends data anywhere — an optional AI service being the obvious
        candidate — it will be opt-in, it will say what it sends before it sends it, and this page will be
        updated before the feature ships rather than after.</p>
+
+     <h2>Nova-wide terms</h2>
+     <p>Nova Cut is part of the Nova ecosystem. The
+       <a href="https://nova-780.pages.dev/privacy" target="_blank" rel="noreferrer">Nova Privacy Policy</a>
+       covers the Nova Account and the wider ecosystem; this page covers what the application itself
+       does.</p>
 
      <h2>Questions</h2>
      <p>Nova Cut is an independent project with no published contact channel yet. When there is one, it will

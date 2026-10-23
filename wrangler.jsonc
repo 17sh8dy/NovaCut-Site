@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/wrangler/config-schema.json",
+  "name": "nova-cut-site",
+  "compatibility_date": "2026-09-21",
+  "assets": {
+    "directory": "./dist"
+  }
+}
