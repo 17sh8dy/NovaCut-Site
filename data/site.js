@@ -65,16 +65,16 @@ export const site = {
  */
 export const releaseStatus = 'released';
 
-export const version = '1.0.0';
+export const version = '1.0.1';
 
 /** ISO date, or null while unreleased. Never guess this. */
-export const releaseDate = '2026-10-22';
+export const releaseDate = '2026-10-26';
 
 /**
  * The date the current Windows artifacts were produced locally. This is a BUILD date, not a
  * release date, and every surface that shows it labels it as such.
  */
-export const buildDate = '2026-10-22';
+export const buildDate = '2026-10-26';
 
 export const platforms = {
   windows: {
@@ -88,11 +88,11 @@ export const platforms = {
         id: 'win-installer',
         label: 'Installer',
         format: 'NSIS installer (.exe)',
-        filename: 'Nova Cut-1.0.0-x64.exe',
+        filename: 'Nova Cut-1.0.1-x64.exe',
         /** Exact byte size of the produced artifact. */
-        sizeBytes: 156727489,
+        sizeBytes: 156724688,
         /** null while unreleased — the button renders disabled rather than 404ing. */
-        url: 'https://github.com/17sh8dy/NovaCut/releases/download/v1.0.0/Nova-Cut-1.0.0-x64.exe',
+        url: 'https://github.com/17sh8dy/NovaCut/releases/download/v1.0.1/Nova-Cut-1.0.1-x64.exe',
         recommended: true,
         note: 'Lets you choose the install location, adds Start menu and desktop shortcuts, and associates .novacut project files.',
       },
@@ -100,9 +100,9 @@ export const platforms = {
         id: 'win-portable',
         label: 'Portable',
         format: 'Portable executable (.exe)',
-        filename: 'Nova Cut-1.0.0-portable.exe',
-        sizeBytes: 156436922,
-        url: 'https://github.com/17sh8dy/NovaCut/releases/download/v1.0.0/Nova-Cut-1.0.0-portable.exe',
+        filename: 'Nova Cut-1.0.1-portable.exe',
+        sizeBytes: 156434132,
+        url: 'https://github.com/17sh8dy/NovaCut/releases/download/v1.0.1/Nova-Cut-1.0.1-portable.exe',
         recommended: false,
         note: 'Runs without installing. Useful on machines where you cannot install software.',
       },

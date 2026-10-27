@@ -19,6 +19,32 @@
 
 export const releases = [
   {
+    version: '1.0.1',
+    name: 'Exports with sound, and vertical video',
+    status: 'released',
+    date: '2026-10-26',
+    summary:
+      'Fixes exports that came out with a silent audio track, makes hardware export recover on its own, and adds ' +
+      'vertical (9:16) and square (1:1) export sizes with a drag-selection box on the timeline.',
+    sections: {
+      new: [
+        'Vertical 1080p and 720p (9:16) and Square 1080p and 720p (1:1) in the export Resolution list.',
+        'Reframe controls for those shapes: Fit shows the whole picture with bars, Fill covers the frame and crops the excess, Stretch forces it to the frame. A clip’s own Scale and Position still apply on top.',
+        'While the Export window is open, the preview shows the shape you are exporting. Closing it puts the project’s own canvas back; the project itself is never changed.',
+        'A drag-selection box on the timeline: drag across empty space to select every clip it touches, Shift or Ctrl-drag to add to the selection, click empty space to clear it.',
+      ],
+      improved: [
+        'Position offsets and title sizes carry over proportionally when the export shape differs from the project, so a title stays inside a narrower frame.',
+        'The export Save dialog is pinned to the chosen format, and the extension is added if the typed name dropped it, so an MP4 export is always an .mp4.',
+        'An unrenamed project’s exported filename uses the time of the export, not the time the project was created.',
+      ],
+      fixed: [
+        'Exported videos had a silent audio track. The audio mixer’s file reads were blocked by the app’s security policy, so every sound was skipped without a message. Sound is now exported, and if a file cannot be read the export names it instead of staying quiet.',
+        'If a GPU encoder fails part-way through an export, Nova Cut now retries the same export with the software encoder instead of stopping.',
+      ],
+    },
+  },
+  {
     version: '1.0.0',
     name: 'First public release',
     status: 'released',
